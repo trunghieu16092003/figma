@@ -3,7 +3,8 @@ const products = [
       title: "Áo thun nam",
       price: "299.000đ",
       oldPrice: "399.000đ",
-      img: "https://via.placeholder.com/300x200",
+      img: "../../images/productIndex/product1.jpg",
+      hoverImg: "../../images/productIndex/product1hover.jpg"
     },
     {
       title: "Giày sneaker",

@@ -16,3 +16,26 @@ button:focus-visible {
 a {
   text-decoration: none;
 }
+
+.product-img {
+  transition: 0.7s ease-in-out !important;
+  cursor: pointer !important;
+}
+
+.icon-img-hover {
+  flex-direction: column;
+  transform: translateX(120px);
+  gap: 12px;
+  transition: all 0.7s ease-in-out;
+}
+
+.icon-img-hover i{
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.5s ease-in-out;
+}
+
+.icon-img-hover i:hover{
+  background-color: #AD6E23;
+  color: #fff;
+}

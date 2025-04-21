@@ -227,6 +227,22 @@
     line-height: normal;
   }
   
-  #wrapper{
+  /* #wrapper{
     margin: 40px;
+  } */
+
+
+  .scroll-fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .scroll-fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .featured-product{
+    background: #dcdbd0;
   }
