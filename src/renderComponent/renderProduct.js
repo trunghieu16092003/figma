@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         productEl.setAttribute('price', product.price);
         productEl.setAttribute('oldPrice', product.oldPrice);
         productEl.setAttribute('img', product.img);
+        productEl.setAttribute('hoverImg', product.hoverImg);
   
         container.appendChild(productEl.cloneNode(true));
       });
