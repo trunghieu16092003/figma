@@ -10,6 +10,7 @@
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="../components/CardProduct.js"></script>
+  <script src="../components/Footer.js"></script>
 </head>
 
 <body>
@@ -110,17 +111,75 @@
       <video class="absolute top-0 left-0 w-full h-full object-cover z-0" autoplay muted loop playsinline>
         <source src="../../images/video/video.mp4" type="video/mp4" />
       </video>
-    
-      <!-- OVERLAY (độ mờ và màu tùy chỉnh) -->
       <div class="absolute inset-0 bg-black/40 z-10 opacity-80"></div>
     
-      <!-- TEXT CONTENT -->
-      <div class="relative z-20 flex items-center justify-center h-full">
+      <div class="relative z-20 flex flex-col items-center justify-center h-full gap-4">
         <h1 class="text-white text-4xl md:text-6xl font-bold text-center">Chào mừng bạn đến với mùa hè 2025</h1>
+        <p class="text-white text-lg md:text-2xl bg-black/50 px-6 py-3 rounded-xl shadow-lg backdrop-blur-sm">
+          Khám phá bộ sưu tập mới với phong cách tươi sáng, năng động – chỉ có trong mùa hè này!
+        </p>
+        <button class="p-4 bg-black text-white rounded-lg cursor-pointer text-xl font-bold hover:opacity-80">Khám phá ngay</button>
       </div>
     </div>
+    <section class="py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">Bài viết mới nhất</h2>
+        <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div class="bg-white shadow-md rounded-xl overflow-hidden transition hover:-translate-y-1 hover:shadow-xl duration-300">
+            <img src="https://source.unsplash.com/600x400/?fashion,style" alt="blog image" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="p-5">
+              <h3 class="text-xl font-semibold mb-2 text-gray-800">Xu hướng thời trang hè 2025</h3>
+              <p class="text-gray-600 mb-4">Khám phá những phong cách mới đang gây sốt, từ sắc màu rực rỡ đến thiết kế phá cách...</p>
+              <div class="flex justify-between text-sm text-gray-500">
+                <span>12 Tháng 4, 2025</span>
+                <span>Tác giả: Tuyết Nhi</span>
+              </div>
+            </div>
+          </div>
     
+          <div class="bg-white shadow-md rounded-xl overflow-hidden transition hover:-translate-y-1 hover:shadow-xl duration-300">
+            <img src="https://source.unsplash.com/600x400/?clothes,spring" alt="blog image" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="p-5">
+              <h3 class="text-xl font-semibold mb-2 text-gray-800">Top 5 item không thể thiếu mùa xuân</h3>
+              <p class="text-gray-600 mb-4">Bạn đã sẵn sàng để tỏa sáng với những món đồ "must-have" trong mùa xuân này chưa?</p>
+              <div class="flex justify-between text-sm text-gray-500">
+                <span>8 Tháng 4, 2025</span>
+                <span>Tác giả: Ngọc Trâm</span>
+              </div>
+            </div>
+          </div>
+    
+          <div class="bg-white shadow-md rounded-xl overflow-hidden transition hover:-translate-y-1 hover:shadow-xl duration-300">
+            <img src="https://source.unsplash.com/600x400/?model,magazine" alt="blog image" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="p-5">
+              <h3 class="text-xl font-semibold mb-2 text-gray-800">Bên trong hậu trường buổi chụp hình</h3>
+              <p class="text-gray-600 mb-4">Một cái nhìn thú vị vào cách tạo nên những bức ảnh thời trang đỉnh cao từ đội ngũ chuyên nghiệp.</p>
+              <div class="flex justify-between text-sm text-gray-500">
+                <span>2 Tháng 4, 2025</span>
+                <span>Tác giả: Thanh Duy</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white shadow-md rounded-xl overflow-hidden transition hover:-translate-y-1 hover:shadow-xl duration-300">
+            <img src="../../images/productIndex/product1.jpg" alt="blog image" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+            <div class="p-5">
+              <h3 class="text-xl font-semibold mb-2 text-gray-800">Bên trong hậu trường buổi chụp hình</h3>
+              <p class="text-gray-600 mb-4">Một cái nhìn thú vị vào cách tạo nên những bức ảnh thời trang đỉnh cao từ đội ngũ chuyên nghiệp.</p>
+              <div class="flex justify-between text-sm text-gray-500">
+                <span>2 Tháng 4, 2025</span>
+                <span>Tác giả: Thanh Duy</span>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+    </section>
+    
+
   </div>
+  <app-footer></app-footer>
+  
 </body>
 <script>
 
