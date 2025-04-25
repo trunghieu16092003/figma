@@ -24,9 +24,9 @@ a {
 
 .icon-img-hover {
   flex-direction: column;
-  transform: translateX(120px);
   gap: 12px;
   transition: all 0.7s ease-in-out;
+  transform: translateX(38%);
 }
 
 .icon-img-hover i{

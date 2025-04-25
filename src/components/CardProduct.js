@@ -20,7 +20,7 @@ class CardProduct extends HTMLElement {
           <div class="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
 
           <div class="absolute inset-0 flex justify-center items-center z-20">
-            <div class="icon-img-hover flex gap-3 opacity-0 translate-x-[100px] group-hover:opacity-100">
+            <div class="icon-img-hover absolute inset-0 justify-center items-center z-20 flex gap-3 opacity-0 translate-x-[200%] group-hover:opacity-100">
               <i class="fa-solid fa-heart text-[#AD6E23] bg-white p-3 rounded-full shadow cursor-pointer"></i>
               <i class="fa-solid  fa-cart-shopping text-[#AD6E23] bg-white p-3 rounded-full shadow cursor-pointer "></i>
               <i class="fa-solid fa-eye text-[#AD6E23] bg-white p-3 rounded-full shadow cursor-pointer "></i>
