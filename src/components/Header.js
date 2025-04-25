@@ -1,47 +1,74 @@
 class Header extends HTMLElement {
-    connectedCallback() {
-      this.innerHTML = `
-        <header class="bg-white shadow-sm px-4 py-3">
-          <div class="max-w-7xl mx-auto flex items-center justify-between">
-  
-            <!-- Logo -->
-            <div class="text-xl font-bold text-orange-700">FASHION</div>
-  
-            <!-- Hamburger icon -->
-            <button id="menu-toggle" class="md:hidden text-2xl text-gray-700">
-              &#9776;
-            </button>
-  
-            <!-- Universal nav (mobile & desktop) -->
-            <nav id="main-nav"
-              class="hidden absolute top-full left-0 w-full bg-white px-4 py-2 flex-col space-y-2 text-sm text-gray-700 font-medium shadow-md
-                     md:static md:flex md:flex-row md:space-y-0 md:space-x-6 md:bg-transparent md:shadow-none md:w-auto md:items-center">
-  
-              <a href="#" class="hover:text-orange-600">Trang chủ</a>
-              <a href="#" class="hover:text-orange-600">Sản phẩm</a>
-              <a href="#" class="hover:text-orange-600">Tin tức</a>
-              <a href="#" class="hover:text-orange-600">Liên hệ</a>
-              <a href="#" class="hover:text-orange-600">Tuyển dụng</a>
-            </nav>
-  
-            <!-- Search & Cart -->
-            <div class="flex items-center space-x-3">
-              <input type="text" placeholder="Tìm kiếm sản phẩm"
-                class="hidden md:block border rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring focus:border-orange-500" />
-              <button class="text-gray-600 hover:text-orange-600">🛒</button>
-            </div>
+  connectedCallback() {
+    this.innerHTML = `
+      <header class="bg-white shadow-sm px-4 py-6 relative">
+        <div class="max-w-7xl mx-auto flex items-center justify-between relative md:gap-8">
+
+          <button id="menu-toggle" class="md:hidden text-2xl text-gray-700 z-30">
+            &#9776;
+          </button>
+
+          <div class="absolute left-1/2 transform -translate-x-1/2 text-xl font-bold text-orange-700 md:static md:transform-none">
+            FASHION
           </div>
-        </header>
-      `;
-  
-      const toggle = this.querySelector('#menu-toggle');
-      const nav = this.querySelector('#main-nav');
-  
-      toggle.addEventListener('click', () => {
-        nav.classList.toggle('hidden');
-      });
-    }
+
+          <nav id="main-nav"
+            class="hidden fixed top-0 left-0 w-3/4 h-full bg-white px-4 flex-col space-y-4 text-sm text-gray-700 font-medium shadow-md z-30
+                   md:static md:flex md:flex-row md:space-y-0 md:space-x-6 md:bg-transparent md:shadow-none md:w-auto md:h-auto md:items-center">
+            <a href="#" class="hover:text-orange-600 block md:inline-block px-4 py-2 hover:bg-yellow-300">Trang chủ</a>
+
+            <div class="relative group md:cursor-pointer">
+              <a href="#" id="product-toggle" class="group-hover:text-orange-600 px-4 py-2 group-hover:bg-yellow-300 block md:inline-block">Sản phẩm</a>
+              <ul id="product-submenu"
+                class="hidden flex-col space-y-2 pl-4 mt-2 md:absolute md:top-full md:left-0 md:mt-0 md:bg-white md:shadow-lg md:p-4 md:rounded-md md:space-y-1 md:min-w-[200px] md:hidden group-hover:block z-40">
+                <li><a href="#" class="block hover:text-orange-600 px-4 py-2">Thời trang nữ</a></li>
+                <li><a href="#" class="block hover:text-orange-600 px-4 py-2">Thời trang nam</a></li>
+                <li><a href="#" class="block hover:text-orange-600 px-4 py-2">Phụ kiện</a></li>
+                <li><a href="#" class="block hover:text-orange-600 px-4 py-2">Bộ sưu tập mới nhất</a></li>
+              </ul>
+            </div>
+
+            <a href="#" class="hover:text-orange-600 block md:inline-block px-4 py-2 hover:bg-yellow-300">Tin tức</a>
+            <a href="#" class="hover:text-orange-600 block md:inline-block px-4 py-2 hover:bg-yellow-300">Liên hệ</a>
+            <a href="#" class="hover:text-orange-600 block md:inline-block px-4 py-2 hover:bg-yellow-300">Tuyển dụng</a>
+          </nav>
+
+          <div class="flex items-center space-x-3 absolute right-4 md:static z-30">
+            <input type="text" placeholder="Tìm kiếm sản phẩm"
+              class="hidden md:block border rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring focus:border-orange-500" />
+            <button class="text-gray-600 hover:text-orange-600">🛒</button>
+          </div>
+        </div>
+
+        <div id="overlay" class="hidden fixed inset-0 bg-black/50 z-20 md:hidden"></div>
+      </header>
+    `;
+
+    const toggle = this.querySelector('#menu-toggle');
+    const nav = this.querySelector('#main-nav');
+    const overlay = this.querySelector('#overlay');
+    const productToggle = this.querySelector('#product-toggle');
+    const productSubmenu = this.querySelector('#product-submenu');
+
+    const closeMenu = () => {
+      nav.classList.add('hidden');
+      overlay.classList.add('hidden');
+    };
+
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('hidden');
+      overlay.classList.toggle('hidden');
+    });
+
+    overlay.addEventListener('click', closeMenu);
+
+    productToggle.addEventListener('click', (e) => {
+      if (window.innerWidth < 768) {
+        e.preventDefault();
+        productSubmenu.classList.toggle('hidden');
+      }
+    });
   }
-  
-  customElements.define('app-header', Header);
-  
+}
+
+customElements.define('app-header', Header);
