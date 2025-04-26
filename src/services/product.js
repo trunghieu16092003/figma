@@ -1,5 +1,6 @@
 const products = [
     {
+      id: 1,
       title: "Áo thun nam",
       price: "299.000đ",
       oldPrice: "399.000đ",
