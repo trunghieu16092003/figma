@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     containers.forEach(container => {
       products.forEach(product => {
         const productEl = document.createElement('card-product');
+        productEl.setAttribute('id', product.id);
         productEl.setAttribute('title', product.title);
         productEl.setAttribute('price', product.price);
         productEl.setAttribute('oldPrice', product.oldPrice);
