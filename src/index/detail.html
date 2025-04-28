@@ -15,6 +15,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet">
   <script src="../components/ProductDetail.js"></script>
+  <script src="../components/CardProduct.js"></script>
   <script src="../components/Footer.js"></script>
   <script src="../components/Header.js"></script>
 </head>
@@ -23,43 +24,38 @@
   <app-header></app-header>
   <div class="px-20">
     <product-detail></product-detail>
+
+    <div class=" bg-white rounded-2xl w-full md:w-4/5 ">
+      <h2 class="text-2xl font-semibold mb-4 text-gray-800">Đánh giá</h2>
+      <form action="" class="flex flex-col space-y-4">
+        <textarea 
+          name="" 
+          id="" 
+          placeholder="Gửi đánh giá của bạn..." 
+          class="w-full h-32 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#AD6E23] resize-none"
+        ></textarea>
+        <div class="flex justify-end">
+          <button 
+            type="submit" 
+            class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all"
+          >
+            Gửi
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div>
+      <h1>San pham lien quan</h1>
+      <div class="card-product-container grid grid-cols-2 md:grid-cols-4 gap-4" data-product="product">
+      </div>
+    </div>
+    
   </div>
   
   <app-footer></app-footer>
 
 </body>
-<script>
-
-  const textBlock = document.getElementById('text-block');
-  const imageStack = document.getElementById('image-stack');
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          if (entry.target.id === 'text-block') {
-            entry.target.classList.remove('opacity-0', 'translate-y-16');
-            entry.target.classList.add('opacity-100', 'translate-y-0');
-          }
-
-          if (entry.target.id === 'image-stack') {
-            const images = entry.target.querySelectorAll('.stacked-img');
-            images[1].style.transform = 'translateX(60%) translateY(-60%)';
-            images[2].style.transform = 'translateX(17rem) translateY(-18rem)';
-          }
-        }
-      });
-    },
-    {
-      threshold: 0.5
-    }
-  );
-
-  observer.observe(textBlock);
-  observer.observe(imageStack);
-</script>
-
-
 <script type="module" src="../renderComponent/renderProduct.js"></script>
 
 </html>
