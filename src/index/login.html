@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../output.css">
+    <link rel="stylesheet" href="../../global.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/just-validate@4.2.0/dist/css/just-validate.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/just-validate@4.2.0/dist/just-validate.production.min.js"></script>
+    <script src="../components/Input.js"></script>
+</head>
+
+<body>
+    <div class="flex flex-row h-full">
+        <div class="hidden md:block relative w-full md:w-1/2 h-1/3 md:h-full ">
+            <img src="../../images/login.png" alt="" class="w-full h-full object-cover object-top" />
+        </div>
+        <div class="w-full md:w-1/2 flex items-center h-full justify-center p-6 bg-white/80 md:bg-white
+            bg-[url('../../images/login.png')] bg-cover bg-center md:bg-none">
+            <form id="login-form" class="w-full max-w-md bg-white md:bg-none p-6 rounded-md shadow-md md:shadow-none">
+                <h1 class="text-center text-2xl font-bold mb-4">Đăng nhập </h1>
+                <custom-input type="email" name="email" label="Email"></custom-input>
+                <custom-input type="password" name="password" label="Mật khẩu"></custom-input>
+                <div class="flex items-center gap-3">
+                    <input type="checkbox">
+                    <label for="">Nhớ mật khẩu</label>
+                </div>
+                <div class="mt-4">
+                    <span>Bạn chưa có tài khoản ?</span>
+                    <a href="./register.html" class="text-[#AD6E23] underline">Đăng ký</a>
+                </div>
+                <button type="submit" class="bg-white w-full text-[#AD6E23] hover:text-white border transition-all border-[#AD6E23] px-4 py-3 hover:bg-[#AD6E23] mt-4 rounded">Đăng nhập</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const validator = new JustValidate('#login-form', {
+                errorFieldCssClass: 'is-invalid',
+                errorLabelCssClass: 'text-red-500 text-xs mt-1',
+                focusInvalidField: true,
+                lockForm: true,
+            });
+
+            validator.addField('#email', [
+                {
+                    rule: 'required',
+                    errorMessage: 'Email không được để trống',
+                },
+                {
+                    rule: 'email',
+                    errorMessage: 'Email không đúng định dạng',
+                },
+            ]);
+            validator.addField('#password', [
+                {
+                    rule: 'required',
+                    errorMessage: 'Mật khẩu không được để trống',
+                },
+            ]);
+        });
+    </script>
+
+
+</body>
+<script>
+
+
+
+</script>
+
+</html>

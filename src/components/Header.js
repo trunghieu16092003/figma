@@ -1,44 +1,49 @@
 class Header extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <header class="bg-white shadow-sm px-10 py-6 relative">
+      <header class="fixed top-0 w-full bg-white shadow-sm px-2 md:px-10 py-4 z-50">
         <div class=" flex items-center justify-between relative md:gap-8">
 
           <button id="menu-toggle" class="md:hidden text-2xl text-gray-700 z-30">
             &#9776;
           </button>
 
-          <div class="absolute left-1/2 transform -translate-x-1/2 text-xl font-bold text-orange-700 md:static md:transform-none">
-            FASHION
+          <div class="absolute left-1/2 transform -translate-x-1/2 text-xl w-20 h-20 font-bold text-orange-700 md:static md:transform-none">
+          <a href="./index.html">  <img src="../../images/logo/logo.png" /> </a>
+          
           </div>
 
           <nav id="main-nav"
             class="hidden fixed top-0 left-0 w-3/4 h-full bg-white px-4 flex-col space-y-4 text-sm text-gray-700 font-medium shadow-md z-30
                    md:static md:flex md:flex-row md:space-y-0 md:bg-transparent md:shadow-none md:w-auto md:h-auto md:items-center">
-            <a href="./" class="hover:text-orange-600 block md:inline-block px-4 py-2 hover:bg-yellow-300">Trang chủ</a>
+            <a href="./" class="hover:text-white block md:inline-block px-4 py-2 hover:bg-[#AD6E23]">Trang chủ</a>
 
             <div class="relative group md:cursor-pointer">
-              <a href="#" id="product-toggle" class="group-hover:text-orange-600 px-4 py-2 group-hover:bg-yellow-300 block md:inline-block md:ml-0">Sản phẩm</a>
+              <a href="#" id="product-toggle" class="group-hover:text-white px-4 py-2 group-hover:bg-[#AD6E23] block md:inline-block md:ml-0">Sản phẩm</a>
               <ul id="product-submenu"
-                class="hidden flex-col space-y-2 pl-4 mt-2 md:absolute md:top-full md:left-0 md:mt-0 md:bg-white md:shadow-lg md:p-4 md:rounded-md md:space-y-1 md:min-w-[200px] md:hidden group-hover:block z-40">
-                <li><a href="#" class="block hover:text-orange-600 px-4 py-2">Thời trang nữ</a></li>
-                <li><a href="#" class="block hover:text-orange-600 px-4 py-2">Thời trang nam</a></li>
-                <li><a href="#" class="block hover:text-orange-600 px-4 py-2">Phụ kiện</a></li>
-                <li><a href="#" class="block hover:text-orange-600 px-4 py-2">Bộ sưu tập mới nhất</a></li>
+                class="hidden flex-col space-y-2 mt-2 md:absolute md:top-full md:left-0 md:mt-0 pt-2 md:bg-white md:shadow-lg  md:rounded-md md:space-y-1 md:min-w-[200px] md:hidden group-hover:block z-40">
+                <li><a href="./category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Thời trang nữ</a></li>
+                <li><a href="./category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Thời trang nam</a></li>
+                <li><a href="./category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Phụ kiện</a></li>
+                <li><a href="./category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Bộ sưu tập mới nhất</a></li>
               </ul>
             </div>
 
-            <a href="#" class="hover:text-orange-600 block md:inline-block px-4 py-2 hover:bg-yellow-300">Tin tức</a>
-            <a href="#" class="hover:text-orange-600 block md:inline-block px-4 py-2 hover:bg-yellow-300">Liên hệ</a>
-            <a href="#" class="hover:text-orange-600 block md:inline-block px-4 py-2 hover:bg-yellow-300">Tuyển dụng</a>
+            <a href="#" class="hover:text-white block md:inline-block px-4 py-2 hover:bg-[#AD6E23]">Tin tức</a>
+            <a href="#" class="hover:text-white block md:inline-block px-4 py-2 hover:bg-[#AD6E23]">Liên hệ</a>
+            <a href="#" class="hover:text-white block md:inline-block px-4 py-2 hover:bg-[#AD6E23]">Tuyển dụng</a>
           </nav>
 
           <div class="flex items-center space-x-3 absolute right-4 md:static z-30">
-            <input type="text" placeholder="Tìm kiếm sản phẩm"
-              class="hidden md:block border rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring focus:border-orange-500" />
+            <form class="relative">
+              <input type="text" placeholder="Tìm kiếm sản phẩm"
+              class="hidden md:block border w-[270px] h-10 rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring focus:ring-[#efc28c] focus:border-[#AD6E23]" />
+              <button class="absolute top-0 right-0 py-3 px-2"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+           
               <div class="relative group inline-block">
   <span class="cursor-pointer flex items-center gap-2">
-    <i class="fa-solid fa-user"></i> Tài khoản
+    <i class="fa-solid fa-user"></i> <span class="hidden md:inline">Tài khoản</span>
   </span>
 
   <!-- Dropdown content -->
@@ -55,7 +60,7 @@ class Header extends HTMLElement {
     >Đăng ký</a>
   </div>
 </div>
-            <button id="cart-toggle" class="text-gray-600 hover:text-orange-600">🛒</button>
+            <button id="cart-toggle" class="text-[#AD6E23] "><i class="fa-solid fa-cart-shopping"></i></button>
           </div>
         </div>
 

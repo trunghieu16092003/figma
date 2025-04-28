@@ -22,7 +22,7 @@
 <body>
   <app-header></app-header>
 
-  <div class="banner">
+  <div class="banner mt-[113px]">
     <div class="overlap">
       <div class="frame">
         <div class="frame-wrapper">
@@ -63,7 +63,7 @@
   <div id="wrapper">
     <div class="product p-10">
       <div class="best-seller">
-        <h1 class="text-red-500">Sản phẩm bán chạy</h1>
+        <h1 class="mb-6 text-3xl font-bold">Sản phẩm bán chạy</h1>
         <div class="card-product-container grid grid-cols-2 md:grid-cols-4 gap-4" data-product="product">
         </div>
         <div id="pagination" class="flex justify-center items-center space-x-2">
@@ -89,12 +89,12 @@
       </div>
     </div>
 
-    <div class="featured-product md:px-10 pt-[176px] pb-10 h-[700px] py-20">
-      <div class=" flex h-full gap-8 items-center">
-        <div class="w-1/2 opacity-0 translate-y-16 transition-all duration-700 ease-in-out" id="text-block">
+    <div class="featured-product md:px-10 md:pt-[176px] pb-10 h-auto md:h-[700px] py-20">
+      <div class=" flex gap-8 items-center">
+        <div class="w-full md:w-1/2 px-4 md:px-0 opacity-0 translate-y-16 transition-all duration-700 ease-in-out" id="text-block">
           <h2 class=" md:text-4xl font-bold text-gray-800 mb-6">Sản phẩm nổi bật</h2>
-          <h1 class=" font-semibold mb-2 text-[60px]">Áo len họa tiết mây – Every Cloud Intarsia</h1>
-          <p class="mb-4 text-gray-600">
+          <h1 class=" font-semibold mb-2 text-[40px] md:text-[60px]">Áo len họa tiết mây – Every Cloud Intarsia</h1>
+          <p class="mb-4 text-gray-600 leading-loose">
             Chào đón bầu trời xanh rực rỡ! Chiếc áo len 100% cotton này mang đến cảm giác thoải mái, mát mẻ với họa tiết
             mây bồng bềnh trên nền trời xanh nổi bật. Thiết kế dáng cổ điển, cổ tròn, bo gấu và tay áo tinh tế – hoàn
             hảo để bạn vừa ấm áp vừa phong cách.
@@ -103,7 +103,7 @@
             ngay</button>
         </div>
 
-        <div class="w-1/2 flex items-center relative justify-center ml-0 sm:ml-[10%] lg:ml-[20%]" id="image-stack">
+        <div class="hidden md:flex w-1/2 items-center relative justify-center ml-0 sm:ml-[10%] lg:ml-[20%]" id="image-stack">
           <img src="../../images/featured/feature_1.jpg" alt=""
             class="stacked-img absolute top-0 left-0  rounded-xl z-30 h-[220px] transition-all duration-700 ease-in-out" />
           <img src="../../images/featured/feature_2.jpg" alt=""

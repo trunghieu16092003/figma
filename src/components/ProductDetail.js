@@ -2,6 +2,7 @@ class ProductDetail extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <section class="product-detail">
+        <p class="mb-5 text-xs">Trang chủ / Áo thun nữ </p>
         <div class="grid grid-cols-1 md:grid-cols-2">
           <div class="product-info-left flex flex-col md:flex-row gap-4 items-center md:items-start">
             <div class="product-images relative overflow-hidden w-full max-w-xl h-[700px] mb-6 md:mb-0">

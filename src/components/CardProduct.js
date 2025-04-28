@@ -10,12 +10,12 @@ class CardProduct extends HTMLElement {
     const detailUrl = `detail.html?slug=${slug}&id=${id}`;
 
     this.innerHTML = `
-      <div class="bg-white rounded-lg shadow hover:shadow-md transition p-4">
-        <div class="relative overflow-hidden rounded-md h-[350px] group cursor-pointer product-click">
+      <div class="bg-white rounded-lg shadow hover:shadow-md transition">
+        <div class="relative overflow-hidden rounded-t-md rounded-b-none h-40 md:h-[400px] group cursor-pointer product-click">
           <img 
             src="${img}" 
             alt="${title}" 
-            class="product-img w-full h-full object-cover rounded-md transition-transform ease-in-out group-hover:scale-110"
+            class="product-img w-full h-full object-cover transition-transform ease-in-out group-hover:scale-110"
             data-default="${img}"
             data-hover="${hoverImg}" 
           />
@@ -29,7 +29,7 @@ class CardProduct extends HTMLElement {
           </div>
         </div>
 
-        <div>
+        <div class="p-4">
           <h3 class="text-lg font-semibold mb-2 cursor-pointer product-title">${title}</h3>
           <div class="flex items-center text-yellow-400 mb-1">
             <i class="fa-solid fa-star text-[#AD6E23]"></i>
