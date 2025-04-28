@@ -1,8 +1,8 @@
 class Header extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <header class="bg-white shadow-sm px-4 py-6 relative">
-        <div class="max-w-7xl mx-auto flex items-center justify-between relative md:gap-8">
+      <header class="bg-white shadow-sm px-10 py-6 relative">
+        <div class=" flex items-center justify-between relative md:gap-8">
 
           <button id="menu-toggle" class="md:hidden text-2xl text-gray-700 z-30">
             &#9776;
@@ -15,7 +15,7 @@ class Header extends HTMLElement {
           <nav id="main-nav"
             class="hidden fixed top-0 left-0 w-3/4 h-full bg-white px-4 flex-col space-y-4 text-sm text-gray-700 font-medium shadow-md z-30
                    md:static md:flex md:flex-row md:space-y-0 md:bg-transparent md:shadow-none md:w-auto md:h-auto md:items-center">
-            <a href="#" class="hover:text-orange-600 block md:inline-block px-4 py-2 hover:bg-yellow-300">Trang chủ</a>
+            <a href="./" class="hover:text-orange-600 block md:inline-block px-4 py-2 hover:bg-yellow-300">Trang chủ</a>
 
             <div class="relative group md:cursor-pointer">
               <a href="#" id="product-toggle" class="group-hover:text-orange-600 px-4 py-2 group-hover:bg-yellow-300 block md:inline-block md:ml-0">Sản phẩm</a>
