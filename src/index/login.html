@@ -37,7 +37,9 @@
                     <span>Bạn chưa có tài khoản ?</span>
                     <a href="./register.html" class="text-[#AD6E23] underline">Đăng ký</a>
                 </div>
-                <button type="submit" class="bg-white w-full text-[#AD6E23] hover:text-white border transition-all border-[#AD6E23] px-4 py-3 hover:bg-[#AD6E23] mt-4 rounded">Đăng nhập</button>
+                <button type="submit"
+                    class="bg-white w-full text-[#AD6E23] hover:text-white border transition-all border-[#AD6E23] px-4 py-3 hover:bg-[#AD6E23] mt-4 rounded">Đăng
+                    nhập</button>
             </form>
         </div>
     </div>
@@ -70,12 +72,38 @@
             ]);
         });
     </script>
+    <script src="../services/callApi.js">
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('login-form');
 
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault(); // Ngăn form reload
+
+                // Lấy input thật từ custom-input (giả sử nó có shadow DOM)
+                const email = form.querySelector('custom-input[name="email"]').querySelector('input').value;
+                const password = form.querySelector('custom-input[name="password"]').querySelector('input').value;
+
+                // Gửi request tới API đăng nhập
+                try {
+                    const res = await window.apiClient.post('users/login', { email, password });
+                    if (res.success === true) {
+                        localStorage.setItem('token', res.token)
+                        localStorage.setItem('email', email)
+                        window.location.href = './index.html';
+                    }
+
+                } catch (err) {
+                    console.error('Lỗi đăng nhập:', err.message);
+                    alert('Sai email hoặc mật khẩu');
+                }
+            });
+        });
+    </script>
 
 </body>
 <script>
-
-
 
 </script>
 

@@ -75,22 +75,24 @@ class ProductDetail extends HTMLElement {
               </form>
             </div>
 
-           <div class="w-full max-w-xl mx-auto">
+           <div class="w-full max-w-xl">
   <!-- Tabs -->
-  <div class="flex border-b border-gray-300 mb-4">
-    <button id="tab-intro" class="py-2 px-4 text-gray-600 border-b-2 border-transparent hover:text-black focus:outline-none active-tab">
+  <div class="tab-detail flex border-b mt-6 ">
+    <button id="tab-intro" class="py-3 px-5 bg-[#AD6E23] rounded-t-lg text-white font-semibold text-[16px] border-b-2 border-transparent hover:text-white hover:bg-[#AD6E23] focus:outline-none active-tab">
       Giới thiệu
     </button>
-    <button id="tab-care" class="py-2 px-4 text-gray-600 border-b-2 border-transparent hover:text-black focus:outline-none">
+    <button id="tab-care" class="py-3 px-5 text-gray-600 border-b-2 border-transparent hover:text-black focus:outline-none">
       Bảo quản
     </button>
   </div>
 
   <div id="content-intro">
     <div id="intro-wrapper" class="relative overflow-hidden">
-      <div id="intro-text" class="line-clamp-3 transition-all duration-300 text-gray-700">
+      <div id="intro-text" class="line-clamp-3 leading-10 transition-all duration-300 text-gray-700">
         Đây là phần giới thiệu sản phẩm. Nội dung này sẽ rất dài nên mình cần cắt bớt để khi người dùng nhấn "Xem thêm" thì mới hiện ra hết toàn bộ nội dung chi tiết liên quan đến sản phẩm, mô tả, thông tin chi tiết về sản phẩm...
         Mong cac ban thong cam nha hehehee
+        asfdjksajflkasjfksjfkjasfjksl
+        afjksajdfklsjalkfdasssssssssss
       </div>
       <!-- Hiệu ứng mờ -->
       <div id="fade-overlay" class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
@@ -99,7 +101,7 @@ class ProductDetail extends HTMLElement {
   </div>
 
   <div id="content-care" class="hidden">
-    <p class="text-gray-700">
+    <p class="text-gray-700 leading-10">
       Hướng dẫn bảo quản sản phẩm: tránh ánh sáng trực tiếp, bảo quản nơi khô ráo thoáng mát, tránh ẩm mốc...
     </p>
   </div>
