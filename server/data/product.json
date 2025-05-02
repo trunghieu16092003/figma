@@ -1,40 +1,57 @@
 {
-    "product": {
-        "data" : [
+  "data": [
+    {
+      "id": 1,
+      "name": "Áo jacket nữ",
+      "price": "299.000đ",
+      "oldPrice": "399.000đ",
+      "img": "../../images/productIndex/product1.jpg",
+      "hoverImg": "../../images/productIndex/product1hover.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Áo nỉ nhung chất lụa  ",
+      "price": "850.000đ",
+      "oldPrice": "900.000đ",
+      "color": [
         {
-          "id": 1,
-          "title": "Áo thun nam",
-          "price": "299.000đ",
-          "oldPrice": "399.000đ",
-          "img": "../../images/productIndex/product1.jpg",
-          "hoverImg": "../../images/productIndex/product1hover.jpg"
+          "name": "red",
+          "code": "red"
         },
         {
-          "title": "Giày sneaker",
-          "price": "850.000đ",
-          "oldPrice": "900.000đ",
-          "img": "https://via.placeholder.com/300x200"
+          "name": "yellow",
+          "code": "yellow"
         },
         {
-          "title": "Giày sneaker",
-          "price": "850.000đ",
-          "oldPrice": "900.000đ",
-          "img": "https://via.placeholder.com/300x200"
-        },
-        {
-          "title": "Giày sneaker",
-          "price": "850.000đ",
-          "oldPrice": "900.000đ",
-          "img": "https://via.placeholder.com/300x200"
-        },
-        {
-          "title": "Giày sneaker",
-          "price": "850.000đ",
-          "oldPrice": "900.000đ",
-          "img": "https://via.placeholder.com/300x200"
+          "name": "black",
+          "code": "black"
         }
-      ]
+      ],
+      "img": [
+        "../../images/productIndex/product-detail-01-1.jpg",
+        "../../images/productIndex/product-detail-01-2.jpg",
+        "../../images/productIndex/product-detail-01-3.jpg"
+      ],
+      "desc": "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+      "care": "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời"
+    },
+    {
+      "title": "Giày sneaker",
+      "price": "850.000đ",
+      "oldPrice": "900.000đ",
+      "img": "https://via.placeholder.com/300x200"
+    },
+    {
+      "title": "Giày sneaker",
+      "price": "850.000đ",
+      "oldPrice": "900.000đ",
+      "img": "https://via.placeholder.com/300x200"
+    },
+    {
+      "title": "Giày sneaker",
+      "price": "850.000đ",
+      "oldPrice": "900.000đ",
+      "img": "https://via.placeholder.com/300x200"
     }
-    
-  }
-  
+  ]
+}

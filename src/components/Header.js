@@ -3,12 +3,11 @@ class Header extends HTMLElement {
     this.innerHTML = `
       <header class="fixed top-0 w-full bg-white shadow-sm px-2 md:px-10 py-4 z-50">
         <div class=" flex items-center justify-between relative md:gap-8">
-
           <button id="menu-toggle" class="md:hidden text-2xl text-gray-700 z-30">
             &#9776;
           </button>
 
-          <div class="absolute left-1/2 transform -translate-x-1/2 text-xl w-20 h-20 font-bold text-orange-700 md:static md:transform-none">
+          <div class="absolute left-1/2 transform -translate-x-1/2 text-xl w-16 h-16 font-bold text-orange-700 md:static md:transform-none">
           <a href="./index.html">  <img src="../../images/logo/logo.png" /> </a>
           
           </div>
@@ -51,7 +50,7 @@ class Header extends HTMLElement {
     class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
   >
     <a
-      href="#"
+      href="./login.html"
       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
     >Đăng nhập</a>
     <a
@@ -103,63 +102,95 @@ class Header extends HTMLElement {
       </header>
     `;
 
-    const toggle = this.querySelector('#menu-toggle');
-    const nav = this.querySelector('#main-nav');
-    const overlay = this.querySelector('#overlay');
-    const productToggle = this.querySelector('#product-toggle');
-    const productSubmenu = this.querySelector('#product-submenu');
-    const cartToggle = this.querySelector('#cart-toggle');
-    const cartModal = this.querySelector('#cart-modal');
-    const closeCart = this.querySelector('#close-cart');
+    const toggle = this.querySelector("#menu-toggle");
+    const nav = this.querySelector("#main-nav");
+    const overlay = this.querySelector("#overlay");
+    const productToggle = this.querySelector("#product-toggle");
+    const productSubmenu = this.querySelector("#product-submenu");
+    const cartToggle = this.querySelector("#cart-toggle");
+    const cartModal = this.querySelector("#cart-modal");
+    const closeCart = this.querySelector("#close-cart");
 
     const closeMenu = () => {
-      nav.classList.add('hidden');
-      overlay.classList.add('hidden');
+      nav.classList.add("hidden");
+      overlay.classList.add("hidden");
     };
 
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('hidden');
-      overlay.classList.toggle('hidden');
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("hidden");
+      overlay.classList.toggle("hidden");
     });
 
-    overlay.addEventListener('click', () => {
+    overlay.addEventListener("click", () => {
       closeMenu();
       closeMobileCart();
     });
 
-    productToggle.addEventListener('click', (e) => {
+    productToggle.addEventListener("click", (e) => {
       if (window.innerWidth < 768) {
         e.preventDefault();
-        productSubmenu.classList.toggle('hidden');
+        productSubmenu.classList.toggle("hidden");
       }
     });
 
-    cartToggle.addEventListener('click', () => {
+    cartToggle.addEventListener("click", () => {
       const isMobile = window.innerWidth < 768;
 
       if (isMobile) {
-        cartModal.classList.remove('hidden');
+        cartModal.classList.remove("hidden");
         setTimeout(() => {
-          cartModal.classList.remove('translate-x-full');
+          cartModal.classList.remove("translate-x-full");
         }, 10);
-        overlay.classList.remove('hidden');
+        overlay.classList.remove("hidden");
       } else {
-        cartModal.classList.toggle('hidden');
+        cartModal.classList.toggle("hidden");
       }
     });
 
     const closeMobileCart = () => {
-      cartModal.classList.add('translate-x-full');
+      cartModal.classList.add("translate-x-full");
       setTimeout(() => {
-        cartModal.classList.add('hidden');
+        cartModal.classList.add("hidden");
       }, 300);
-      overlay.classList.add('hidden');
+      overlay.classList.add("hidden");
     };
 
-    closeCart?.addEventListener('click', () => {
+    closeCart?.addEventListener("click", () => {
       closeMobileCart();
     });
+
+    this.updateHeaderUI();
+  }
+
+  updateHeaderUI() {
+    const email = localStorage.getItem("email");
+    const userIcon = this.querySelector(".fa-user");
+    const accountText = this.querySelector(".fa-user + span");
+    const dropdownMenu = userIcon.closest(".group").querySelector("div");
+
+    if (email) {
+      if (accountText) {
+        const displayEmail =
+          email.length > 7 ? email.slice(0, 7) + "..." : email;
+        accountText.textContent = displayEmail;
+      }
+
+      if (dropdownMenu) {
+        dropdownMenu.innerHTML = `
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Thông tin tài khoản</a>
+        <a href="#" id="logout-btn" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng xuất</a>
+      `;
+
+        dropdownMenu
+          .querySelector("#logout-btn")
+          .addEventListener("click", (e) => {
+            e.preventDefault();
+            localStorage.removeItem("email");
+            location.reload();
+          });
+      }
+    }
   }
 }
 
-customElements.define('app-header', Header);
+customElements.define("app-header", Header);
