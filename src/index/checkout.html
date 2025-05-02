@@ -1,86 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../output.css">
+    <link rel="stylesheet" href="../output.css" />
     <link rel="stylesheet" href="../../global.css" />
     <link rel="stylesheet" href="../../style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
     <script src="../components/CartCheckout.js"></script>
     <script src="../components/Footer.js"></script>
     <script src="../components/Header.js"></script>
     <title>Thanh toán</title>
-</head>
-<body>
+  </head>
+  <body>
     <app-header></app-header>
-    <div id="checkout-template" class="flex flex-col md:flex-row">
-      
+    <div id="checkout-template" class="flex flex-col md:flex-row mt-[113px]">
       <app-checkout></app-checkout>
       <div class="w-full max-w-xl mx-auto p-4 bg-white rounded shadow">
         <!-- Stepper -->
-        <div class="flex justify-between mb-6 text-sm font-semibold text-gray-500">
+        <div
+          class="flex justify-between mb-6 text-sm font-semibold text-gray-500"
+        >
           <div class="step text-blue-600" id="step1">1. Thông tin</div>
           <div class="step" id="step2">2. Thanh toán</div>
           <div class="step" id="step3">3. Xác nhận</div>
         </div>
-    
+
         <form id="checkoutForm" class="space-y-6">
           <!-- Thông tin người nhận -->
           <div id="shippingInfo">
             <h2 class="text-lg font-semibold mb-2">Thông tin người nhận</h2>
             <div class="space-y-4">
               <div>
-                <label class="block text-sm font-medium text-gray-700">Họ tên</label>
-                <input type="text" name="fullname" required class="w-full border rounded px-3 py-2" />
+                <label class="block text-sm font-medium text-gray-700"
+                  >Họ tên</label
+                >
+                <input
+                  type="text"
+                  name="fullname"
+                  required
+                  class="w-full border rounded px-3 py-2"
+                />
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700">Số điện thoại</label>
-                <input type="tel" name="phone" required class="w-full border rounded px-3 py-2" />
+                <label class="block text-sm font-medium text-gray-700"
+                  >Số điện thoại</label
+                >
+                <input
+                  type="tel"
+                  name="phone"
+                  required
+                  class="w-full border rounded px-3 py-2"
+                />
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700">Địa chỉ</label>
-                <input type="text" name="address" required class="w-full border rounded px-3 py-2" />
+                <label class="block text-sm font-medium text-gray-700"
+                  >Địa chỉ</label
+                >
+                <input
+                  type="text"
+                  name="address"
+                  required
+                  class="w-full border rounded px-3 py-2"
+                />
               </div>
-              <button type="button" id="toPaymentBtn"
-                class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+              <button
+                type="button"
+                id="toPaymentBtn"
+                class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+              >
                 Tiếp tục
               </button>
             </div>
           </div>
-    
+
           <!-- Phương thức thanh toán -->
           <div id="paymentMethods" class="hidden">
             <h2 class="text-lg font-semibold mb-2">Phương thức thanh toán</h2>
             <div class="space-y-4">
               <div>
-                <label class="block text-sm font-medium text-gray-700">Chọn phương thức</label>
-                <select name="paymentMethod" required class="w-full border rounded px-3 py-2">
+                <label class="block text-sm font-medium text-gray-700"
+                  >Chọn phương thức</label
+                >
+                <select
+                  name="paymentMethod"
+                  required
+                  class="w-full border rounded px-3 py-2"
+                >
                   <option value="">-- Chọn --</option>
                   <option value="cod">Thanh toán khi nhận hàng (COD)</option>
                   <option value="bank">Chuyển khoản ngân hàng</option>
                   <option value="momo">Ví MoMo</option>
                 </select>
               </div>
-              <button type="button" id="toConfirmBtn"
-                class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+              <button
+                type="button"
+                id="toConfirmBtn"
+                class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+              >
                 Tiếp tục
               </button>
             </div>
           </div>
-    
+
           <!-- Xác nhận -->
           <div id="confirmOrder" class="hidden">
             <h2 class="text-lg font-semibold mb-2">Xác nhận đơn hàng</h2>
-            <p class="text-sm text-gray-600 mb-4">Vui lòng kiểm tra thông tin trước khi đặt hàng.</p>
-            <button type="submit"
-              class="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">Đặt hàng</button>
+            <p class="text-sm text-gray-600 mb-4">
+              Vui lòng kiểm tra thông tin trước khi đặt hàng.
+            </p>
+            <button
+              type="submit"
+              class="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700"
+            >
+              Đặt hàng
+            </button>
           </div>
         </form>
       </div>
@@ -88,52 +133,58 @@
     <app-footer></app-footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const shipping = document.getElementById('shippingInfo');
-            const payment = document.getElementById('paymentMethods');
-            const confirm = document.getElementById('confirmOrder');
-            
-            const step1 = document.getElementById('step1');
-            const step2 = document.getElementById('step2');
-            const step3 = document.getElementById('step3');
+      document.addEventListener("DOMContentLoaded", () => {
+        const shipping = document.getElementById("shippingInfo");
+        const payment = document.getElementById("paymentMethods");
+        const confirm = document.getElementById("confirmOrder");
 
-            // Chuyển sang bước thanh toán
-            document.getElementById('toPaymentBtn').addEventListener('click', () => {
-                if (!validateSection(shipping)) return;
-                shipping.classList.add('hidden');
-                payment.classList.remove('hidden');
-                step1.classList.remove('text-blue-600');
-                step2.classList.add('text-blue-600');
-            });
+        const step1 = document.getElementById("step1");
+        const step2 = document.getElementById("step2");
+        const step3 = document.getElementById("step3");
 
-            // Chuyển sang bước xác nhận
-            document.getElementById('toConfirmBtn').addEventListener('click', () => {
-                if (!validateSection(payment)) return;
-                payment.classList.add('hidden');
-                confirm.classList.remove('hidden');
-                step2.classList.remove('text-blue-600');
-                step3.classList.add('text-blue-600');
-            });
+        // Chuyển sang bước thanh toán
+        document
+          .getElementById("toPaymentBtn")
+          .addEventListener("click", () => {
+            if (!validateSection(shipping)) return;
+            shipping.classList.add("hidden");
+            payment.classList.remove("hidden");
+            step1.classList.remove("text-blue-600");
+            step2.classList.add("text-blue-600");
+          });
 
-            // Xử lý Đặt hàng
-            document.getElementById('checkoutForm').addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Đặt hàng thành công!');
-                // TODO: fetch POST request có thể thêm ở đây
-            });
+        // Chuyển sang bước xác nhận
+        document
+          .getElementById("toConfirmBtn")
+          .addEventListener("click", () => {
+            if (!validateSection(payment)) return;
+            payment.classList.add("hidden");
+            confirm.classList.remove("hidden");
+            step2.classList.remove("text-blue-600");
+            step3.classList.add("text-blue-600");
+          });
 
-            // Kiểm tra tính hợp lệ của các input trong mỗi bước
-            function validateSection(section) {
-                const inputs = section.querySelectorAll('input, select');
-                for (let input of inputs) {
-                    if (!input.checkValidity()) {
-                        input.reportValidity();
-                        return false;
-                    }
-                }
-                return true;
+        // Xử lý Đặt hàng
+        document
+          .getElementById("checkoutForm")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+            alert("Đặt hàng thành công!");
+            // TODO: fetch POST request có thể thêm ở đây
+          });
+
+        // Kiểm tra tính hợp lệ của các input trong mỗi bước
+        function validateSection(section) {
+          const inputs = section.querySelectorAll("input, select");
+          for (let input of inputs) {
+            if (!input.checkValidity()) {
+              input.reportValidity();
+              return false;
             }
-        });
+          }
+          return true;
+        }
+      });
     </script>
-</body>
+  </body>
 </html>

@@ -1,9 +1,9 @@
 class Cart extends HTMLElement {
-    connectedCallback() {
-      this.innerHTML = `
-        <section class="bg-gray-100 py-10 px-4">
-          <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-bold mb-6 text-center md:text-left">Giỏ hàng của bạn</h2>
+  connectedCallback() {
+    this.innerHTML = `
+        <section class="md:py-10 px-4 mt-[113px]">
+          <div class="max-w-6xl mx-auto bg-white p-6 ">
+            <h2 class="text-2xl font-bold mb-6 text-center">Giỏ hàng của bạn</h2>
   
             <!-- Header -->
             <div class="hidden md:grid grid-cols-7 gap-4 font-semibold text-gray-700 border-b pb-3 mb-4 text-sm md:text-base">
@@ -16,7 +16,7 @@ class Cart extends HTMLElement {
             </div>
   
             <!-- Danh sách sản phẩm -->
-            <div class="space-y-6 border border-gray-400">
+            <div class="space-y-6 border-b border-gray-400 border-solid">
   <div class="flex md:grid md:grid-cols-7 items-center gap-4 border-b pb-4">
 
     <!-- Ảnh -->
@@ -52,8 +52,8 @@ class Cart extends HTMLElement {
 
     <!-- Nút xóa -->
     <div class="flex md:justify-end items-center md:col-span-1 justify-center md:order-1">
-      <button class="bg-red-500 hover:bg-red-600 text-white rounded p-2 transition">
-        🗑️
+      <button class="bg-[#AD6E23] text-white rounded p-2 transition">
+        <i class="fa-solid fa-trash"></i>
       </button>
     </div>
   </div>
@@ -62,18 +62,17 @@ class Cart extends HTMLElement {
   
             <!-- Tổng cộng -->
             <div class="flex flex-col md:flex-row justify-between items-center mt-10 space-y-4 md:space-y-0">
-              <div class="text-lg font-semibold">
-                Tổng cộng: <span class="text-orange-500">250.000₫</span>
+              <div class="">
+                <span class="text-xs">Tổng cộng:</span> <span class="text-[#AD6E23] text-lg font-semibold">250.000₫</span>
               </div>
-              <a href="./checkout.html" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded transition">
+              <a href="./checkout.html" class="bg-[#AD6E23] hover:bg-[#AD6E23 ] text-white font-bold py-3 px-6 rounded transition">
                 Thanh toán
               </a>
             </div>
           </div>
         </section>
       `;
-    }
   }
-  
-  customElements.define('app-cart', Cart);
-  
+}
+
+customElements.define("app-cart", Cart);

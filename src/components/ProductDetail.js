@@ -36,7 +36,7 @@ class ProductDetail extends HTMLElement {
               </div>
                 
               <div class="product-price flex gap-4">
-                <span class="price-new text-xl text-red-500">1.000.000đ</span>
+                <span class="price-new text-xl text-red-500 font-semibold ">1.000.000đ</span>
                 <span class="price-old text-lg text-gray-500 line-through">1.200.000đ</span>
               </div>
               <div class="product-options flex flex-col gap-4">
@@ -50,17 +50,17 @@ class ProductDetail extends HTMLElement {
                 </div>
                 
                 <div class="flex gap-2 mt-2">
-                  <span style="border: 1px solid #e1e1e1;" class="inline-flex items-center justify-center w-12 h-12 border-4 rounded cursor-pointer transition-all hover:border-black active:border-black">S</span>
-                  <span style="border: 1px solid #e1e1e1;" class="inline-flex items-center justify-center w-12 h-12 border rounded cursor-pointer transition-all hover:border-black active:border-black">M</span>
-                  <span style="border: 1px solid #e1e1e1;" class="inline-flex items-center justify-center w-12 h-12 border rounded cursor-pointer transition-all hover:border-black active:border-black">L</span>
-                  <span style="border: 1px solid #e1e1e1;" class="inline-flex items-center justify-center w-12 h-12 border rounded cursor-pointer transition-all hover:border-black active:border-black">XL</span>
-                  <span style="border: 1px solid #e1e1e1;" class="inline-flex items-center justify-center w-12 h-12 border rounded cursor-pointer transition-all hover:border-black active:border-black">XXL</span>
+                  <span style="border: 1px solid #e1e1e1;" class="inline-flex items-center justify-center w-12 h-12 border rounded cursor-pointer transition-all hover:border-[#AD6E23] active:border-[#AD6E23]">S</span>
+                  <span style="border: 1px solid #e1e1e1;" class="inline-flex items-center justify-center w-12 h-12 border rounded cursor-pointer transition-all hover:border-[#AD6E23] active:border-[#AD6E23]">M</span>
+                  <span style="border: 1px solid #e1e1e1;" class="inline-flex items-center justify-center w-12 h-12 border rounded cursor-pointer transition-all hover:border-[#AD6E23] active:border-[#AD6E23]">L</span>
+                  <span style="border: 1px solid #e1e1e1;" class="inline-flex items-center justify-center w-12 h-12 border rounded cursor-pointer transition-all hover:border-[#AD6E23] active:border-[#AD6E23]">XL</span>
+                  <span style="border: 1px solid #e1e1e1;" class="inline-flex items-center justify-center w-12 h-12 border rounded cursor-pointer transition-all hover:border-[#AD6E23] active:border-[#AD6E23]">XXL</span>
                 </div>  
               </div>
 
               <form>
                 <div class="flex items-center gap-4">
-                  <span>So luong</span>
+                  <span>Số lượng: </span>
                   <div style="border: 1px solid #AD6E23;" class="inline-flex rounded-tl-lg rounded-br-lg items-center border border-gray-400">
                     <button type="button" class="w-10 h-10 flex items-center justify-center border-r border-[#AD6E23] rounded-br-lg hover:bg-gray-100 hover:rounded-tl-lg" onclick="decrease()">-</button>
                     <input id="quantity" class="w-10 h-10 text-center rounded flex items-center" value="1" min="1"/>
@@ -81,7 +81,7 @@ class ProductDetail extends HTMLElement {
     <button id="tab-intro" class="py-3 px-5 bg-[#AD6E23] rounded-t-lg text-white font-semibold text-[16px] border-b-2 border-transparent hover:text-white hover:bg-[#AD6E23] focus:outline-none active-tab">
       Giới thiệu
     </button>
-    <button id="tab-care" class="py-3 px-5 text-gray-600 border-b-2 border-transparent hover:text-black focus:outline-none">
+    <button id="tab-care" class="py-3 px-5 text-gray-600 rounded-t-lg border-b-2 border-transparent focus:outline-none">
       Bảo quản
     </button>
   </div>
@@ -157,6 +157,25 @@ class ProductDetail extends HTMLElement {
       fadeOverlay.classList.toggle("hidden", expanded);
       toggleBtn.textContent = expanded ? "Thu gọn" : "Xem thêm";
     };
+
+    //click tab
+    Object.keys(tabs).forEach((key) => {
+      document.getElementById(`tab-${key}`).onclick = () => {
+        Object.keys(tabs).forEach((k) => {
+          // Hiển thị nội dung tab
+          document
+            .getElementById(tabs[k])
+            .classList.toggle("hidden", k !== key);
+
+          // Xử lý giao diện tab
+          const tabElement = document.getElementById(`tab-${k}`);
+          tabElement.classList.toggle("text-white", k === key);
+          tabElement.classList.toggle("bg-[#AD6E23]", k === key);
+          tabElement.classList.toggle("text-[#AD6E23]", k !== key);
+          tabElement.classList.toggle("bg-white", k !== key);
+        });
+      };
+    });
   }
 }
 

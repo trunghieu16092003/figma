@@ -1,9 +1,9 @@
 class Footer extends HTMLElement {
-    connectedCallback() {
-      this.innerHTML = `
-        <footer class="bg-[#AD6E23] text-white pt-10">
-          <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-sm">
-            <div>
+  connectedCallback() {
+    this.innerHTML = `
+        <footer class="bg-[#AD6E23] text-white pt-10 ">
+          <div class="flex-col md:flex text-sm md:justify-between px-10">
+            <div class="mb-4 md:mb-0 md:w-2/5">
               <div class="mb-4">
                 <div class="text-2xl font-bold text-white">FASHION</div>
               </div>
@@ -13,49 +13,52 @@ Với tinh thần không ngừng sáng tạo và cập nhật xu hướng, [Bran
               </p>
             </div>
   
-            <div>
-              <h3 class="font-semibold text-white mb-3">Hỗ trợ khách hàng</h3>
-              <ul class="space-y-2 text-white/90">
-                <li>Hướng dẫn mua hàng</li>
-                <li>Phương thức thanh toán</li>
-                <li>Chính sách đổi trả</li>
-                <li>Chăm sóc khách hàng</li>
-                <li>Chính sách vận chuyển</li>
-                <li>Chính sách thường gặp</li>
-              </ul>
-            </div>
-  
-            <!-- Công ty -->
-            <div>
-              <h3 class="font-semibold text-white mb-3">Công ty</h3>
-              <ul class="space-y-2 text-white/90">
-                <li>Về chúng tôi</li>
-                <li>Liên hệ</li>
-                <li>Tuyển dụng</li>
-              </ul>
-            </div>
-  
-            <!-- Sản phẩm chính -->
-            <div>
-              <h3 class="font-semibold text-white mb-3">Các sản phẩm chính</h3>
-              <ul class="space-y-2 text-white/90">
-                <li>Mẫu thời trang công sở</li>
-                <li>Thời trang hè 2025</li>
-                <li>Bộ sưu tập xuân</li>
-                <li>Áo</li>
-                <li>Váy</li>
-                <li>Mũ</li>
-              </ul>
-            </div>
-  
-            <!-- Liên kết -->
-            <div>
-              <h3 class="font-semibold text-white mb-3">Liên kết</h3>
-              <div class="flex space-x-4 text-white/90">
-                <span>FB</span>
-                <span>IG</span>
-                <span>YT</span>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+              <div>
+                <h3 class="font-semibold text-white mb-3">Hỗ trợ khách hàng</h3>
+                <ul class="space-y-2 text-white/90">
+                  <li>Hướng dẫn mua hàng</li>
+                  <li>Phương thức thanh toán</li>
+                  <li>Chính sách đổi trả</li>
+                  <li>Chăm sóc khách hàng</li>
+                  <li>Chính sách vận chuyển</li>
+                  <li>Chính sách thường gặp</li>
+                </ul>
               </div>
+    
+              <!-- Công ty -->
+              <div>
+                <h3 class="font-semibold text-white mb-3">Công ty</h3>
+                <ul class="space-y-2 text-white/90">
+                  <li>Về chúng tôi</li>
+                  <li>Liên hệ</li>
+                  <li>Tuyển dụng</li>
+                </ul>
+              </div>
+    
+              <!-- Sản phẩm chính -->
+              <div>
+                <h3 class="font-semibold text-white mb-3">Các sản phẩm chính</h3>
+                <ul class="space-y-2 text-white/90">
+                  <li>Mẫu thời trang công sở</li>
+                  <li>Thời trang hè 2025</li>
+                  <li>Bộ sưu tập xuân</li>
+                  <li>Áo</li>
+                  <li>Váy</li>
+                  <li>Mũ</li>
+                </ul>
+              </div>
+    
+              <!-- Liên kết -->
+              <div>
+                <h3 class="font-semibold text-white mb-3">Liên kết</h3>
+                <div class="flex space-x-4 text-white/90">
+                  <span>FB</span>
+                  <span>IG</span>
+                  <span>YT</span>
+                </div>
+              </div>
+            
             </div>
           </div>
   
@@ -66,8 +69,7 @@ Với tinh thần không ngừng sáng tạo và cập nhật xu hướng, [Bran
           </div>
         </footer>
       `;
-    }
   }
-  
-  customElements.define('app-footer', Footer);
-  
+}
+
+customElements.define("app-footer", Footer);
