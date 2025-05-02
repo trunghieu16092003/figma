@@ -21,6 +21,7 @@
     <script src="../components/CartCheckout.js"></script>
     <script src="../components/Footer.js"></script>
     <script src="../components/Header.js"></script>
+    <script src="../components/Input.js"></script>
     <title>Thanh toán</title>
   </head>
   <body>
@@ -42,39 +43,26 @@
           <div id="shippingInfo">
             <h2 class="text-lg font-semibold mb-2">Thông tin người nhận</h2>
             <div class="space-y-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700"
-                  >Họ tên</label
-                >
-                <input
-                  type="text"
-                  name="fullname"
-                  required
-                  class="w-full border rounded px-3 py-2"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700"
-                  >Số điện thoại</label
-                >
-                <input
-                  type="tel"
-                  name="phone"
-                  required
-                  class="w-full border rounded px-3 py-2"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700"
-                  >Địa chỉ</label
-                >
-                <input
-                  type="text"
-                  name="address"
-                  required
-                  class="w-full border rounded px-3 py-2"
-                />
-              </div>
+              <custom-input
+                type="text"
+                name="fullname"
+                label="Họ và tên"
+              ></custom-input>
+              <custom-input
+                type="text"
+                name="phonne"
+                label="Số điện thoại"
+              ></custom-input>
+              <custom-input
+                type="text"
+                name="address"
+                label="Địa chỉ chi tiết"
+              ></custom-input>
+              <custom-input
+                type="text"
+                name="note"
+                label="Ghi chú"
+              ></custom-input>
               <button
                 type="button"
                 id="toPaymentBtn"

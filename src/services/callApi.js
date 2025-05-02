@@ -1,8 +1,9 @@
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = "http://localhost:3000";
 
-const apiClient = {
+const callApi = {
   get: async (endpoint) => {
     const response = await fetch(`${API_BASE_URL}/${endpoint}`);
+    console.log(response);
     return handleResponse(response);
   },
 
@@ -12,10 +13,9 @@ const apiClient = {
   },
 
   post: async (endpoint, data) => {
-    console.log(data)
     const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     return handleResponse(response);
@@ -23,8 +23,8 @@ const apiClient = {
 
   put: async (endpoint, id, data) => {
     const response = await fetch(`${API_BASE_URL}/${endpoint}/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     return handleResponse(response);
@@ -32,8 +32,8 @@ const apiClient = {
 
   patch: async (endpoint, id, data) => {
     const response = await fetch(`${API_BASE_URL}/${endpoint}/${id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
     return handleResponse(response);
@@ -41,7 +41,7 @@ const apiClient = {
 
   delete: async (endpoint, id) => {
     const response = await fetch(`${API_BASE_URL}/${endpoint}/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
     return handleResponse(response);
   },
@@ -56,5 +56,4 @@ async function handleResponse(response) {
 }
 
 // Gắn vào window để dùng global trong HTML
-window.apiClient = apiClient;
-
+export default callApi;

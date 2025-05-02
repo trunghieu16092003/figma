@@ -1,26 +1,34 @@
 class ProductDetail extends HTMLElement {
   connectedCallback() {
+    const name = this.getAttribute("name") || "Sản phẩm";
+    const price = this.getAttribute("price") || "0đ";
+    const desc = this.getAttribute("desc") || "";
+    const care = this.getAttribute("care") || "";
+    const colors = JSON.parse(this.getAttribute("colors")) || "";
+    const img = this.getAttribute("img") || "";
+    const imgChanges = JSON.parse(this.getAttribute("imgChange")) || "";
+    const oldPrice = this.getAttribute("oldPrice") || "0đ";
+    const id = this.getAttribute("id") || "0";
+
     this.innerHTML = `
-      <section class="product-detail">
-        <p class="mb-5 text-xs">Trang chủ / Áo thun nữ </p>
-        <div class="grid grid-cols-1 md:grid-cols-2">
+      <section>
+        <p class="mb-5 text-xs">Trang chủ / ${name} </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 md:gap-8">
           <div class="product-info-left flex flex-col md:flex-row gap-4 items-center md:items-start">
             <div class="product-images relative overflow-hidden w-full max-w-xl h-[700px] mb-6 md:mb-0">
               <div
                 id="product-img"
                 class="w-full h-full bg-center bg-no-repeat bg-cover transition-transform duration-300 ease-in-out"
-                style="background-image: url('../../images/productIndex/product1.jpg');"
+                style="background-image: url('${img}');"
               ></div>
              </div>
 
-            <div class="hover-imgs flex md:flex-col gap-2 justify-center mt-4 md:mt-0">
-              <img src="your-image-url.jpg" alt="Product Image" class="w-20 h-20 object-cover cursor-pointer"/>
-              <img src="your-image-url.jpg" alt="Product Image" class="w-20 h-20 object-cover cursor-pointer"/>
+            <div class="img-change flex md:flex-col gap-8 justify-center mt-4 md:mt-0">
             </div>
           </div>
-          <div class="product-info-right">
+          <div class="product-info-right mt-4 md:mt-0">
             <div class="product-info flex flex-col gap-4">
-              <h1 class="product-title text-2xl font-bold">Tên Sản Phẩm</h1>
+              <h1 class="product-title text-2xl font-bold">${name}</h1>
               <div class="flex">
                 <span>SKU: 37477979</span>
                 <div class="flex ml-4 gap-3">
@@ -36,16 +44,13 @@ class ProductDetail extends HTMLElement {
               </div>
                 
               <div class="product-price flex gap-4">
-                <span class="price-new text-xl text-red-500 font-semibold ">1.000.000đ</span>
-                <span class="price-old text-lg text-gray-500 line-through">1.200.000đ</span>
+                <span class="price-new text-xl text-red-500 font-semibold ">${price}</span>
+                <span class="price-old text-lg text-gray-500 line-through">${oldPrice}</span>
               </div>
               <div class="product-options flex flex-col gap-4">
                 <div class="color-option">
                   <label for="color" class="font-semibold text-gray-700">Màu sắc: Xanh</label>
                   <div class="color-select flex gap-2 md: mt-3">
-                    <span class="color-swatch w-8 h-8 rounded-full cursor-pointer" style="background-color: red;"></span>
-                    <span class="color-swatch w-8 h-8 rounded-full cursor-pointer" style="background-color: blue;"></span>
-                    <span class="color-swatch w-8 h-8 rounded-full cursor-pointer" style="background-color: green;"></span>
                   </div>
                 </div>
                 
@@ -89,20 +94,17 @@ class ProductDetail extends HTMLElement {
   <div id="content-intro">
     <div id="intro-wrapper" class="relative overflow-hidden">
       <div id="intro-text" class="line-clamp-3 leading-10 transition-all duration-300 text-gray-700">
-        Đây là phần giới thiệu sản phẩm. Nội dung này sẽ rất dài nên mình cần cắt bớt để khi người dùng nhấn "Xem thêm" thì mới hiện ra hết toàn bộ nội dung chi tiết liên quan đến sản phẩm, mô tả, thông tin chi tiết về sản phẩm...
-        Mong cac ban thong cam nha hehehee
-        asfdjksajflkasjfksjfkjasfjksl
-        afjksajdfklsjalkfdasssssssssss
+        ${desc}
       </div>
       <!-- Hiệu ứng mờ -->
       <div id="fade-overlay" class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
     </div>
-    <div id="toggle-more" class="mt-2 inline-block cursor-pointer text-blue-500 hover:underline text-sm">Xem thêm</div>
+    <div id="toggle-more" class="mt-2 inline-block cursor-pointer text-[#AD6E23] hover:underline text-sm">Xem thêm</div>
   </div>
 
   <div id="content-care" class="hidden">
     <p class="text-gray-700 leading-10">
-      Hướng dẫn bảo quản sản phẩm: tránh ánh sáng trực tiếp, bảo quản nơi khô ráo thoáng mát, tránh ẩm mốc...
+      ${care}
     </p>
   </div>
 </div>
@@ -111,6 +113,25 @@ class ProductDetail extends HTMLElement {
         </div>
       </section>
     `;
+
+    //xu ly mang color
+    const colorSeclect = document.querySelector(".color-select");
+    colorSeclect.innerHTML = colors
+      .map(
+        (color) =>
+          `<span class="color-swatch w-8 h-8 rounded-full cursor-pointer" style="background-color: ${color.code};"></span>`
+      )
+      .join("");
+
+    // xu ly hien thi cac anh
+    const imgChangeDocument = document.querySelector(".img-change");
+    console.log(imgChanges);
+    imgChangeDocument.innerHTML = imgChanges
+      .map(
+        (img) =>
+          `<img src="${img}" alt="Product Image" class="w-32 h-32 object-cover cursor-pointer"/>`
+      )
+      .join("");
 
     // Xu ly scale anh khi mouse hover
     const productImg = this.querySelector("#product-img");
@@ -175,6 +196,21 @@ class ProductDetail extends HTMLElement {
           tabElement.classList.toggle("bg-white", k !== key);
         });
       };
+    });
+
+    //Xu ly su kien click vao anh
+    this.handleImageChange(this);
+  }
+
+  handleImageChange(productElement) {
+    const productImgEl = productElement.querySelector("#product-img");
+    const imgChangeItems = productElement.querySelectorAll(".img-change img");
+
+    imgChangeItems.forEach((imgEl) => {
+      imgEl.addEventListener("click", () => {
+        const src = imgEl.getAttribute("src");
+        productImgEl.style.backgroundImage = `url('${src}')`;
+      });
     });
   }
 }

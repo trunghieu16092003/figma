@@ -26,10 +26,10 @@
 
   <body>
     <app-header></app-header>
-    <div class="px-20 mt-[143px]">
-      <product-detail></product-detail>
+    <div class="px-2 md:px-20 mt-[143px]">
+      <div id="product-detail"></div>
 
-      <div class="bg-white rounded-2xl w-full md:w-4/5 mt-3">
+      <div class="bg-white rounded-2xl w-full md:w-4/5 mt-4">
         <h2 class="text-2xl font-semibold mb-4 text-gray-800">Đánh giá</h2>
         <form action="" class="flex flex-col space-y-4">
           <textarea
@@ -41,7 +41,7 @@
           <div class="flex justify-end">
             <button
               type="submit"
-              class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all"
+              class="px-6 py-2 bg-[#AD6E23] text-white rounded-lg transition-all"
             >
               Gửi
             </button>
@@ -61,4 +61,5 @@
     <app-footer></app-footer>
   </body>
   <script type="module" src="../renderComponent/renderProduct.js"></script>
+  <script type="module" src="../renderComponent/renderDetail.js"></script>
 </html>
