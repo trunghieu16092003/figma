@@ -26,7 +26,7 @@
   <body>
     <app-header></app-header>
 
-    <div id="wrapper" class="md:p-10 p-3 mt-[113px]">
+    <div id="wrapper" class="relative md:p-10 p-3 mt-[97px] z-0">
       <div class="mb-5 text-xs">Trang chủ / <span>Áo thu đông nữ</span></div>
       <div>
         <div class="md:flex md:justify-between gap-5">
@@ -43,17 +43,20 @@
                 </button>
               </div>
 
-              <div class="space-y-4">
+              <div>
                 <!-- Size -->
-                <div class="mb-5">
-                  <button
-                    class="toggle-button w-full py-5 text-left border-b border-b-gray-300 font-medium cursor-pointer flex justify-between items-center"
-                    onclick="toggleFilter(this)"
+                <div class="filter-option">
+                  <div
+                    class="w-full py-5 text-left border-b border-solid border-b-gray-300 font-medium cursor-pointer flex justify-between items-center"
                   >
                     Size
-                    <span class="toggle-icon">+</span>
-                  </button>
-                  <div class="mt-2 pl-2 hidden">
+                    <span onclick="toggleFilter(this)" class="toggle-icon"
+                      >+</span
+                    >
+                  </div>
+                  <div
+                    class="mt-2 pl-2 hidden dropdown-content border-b border-solid border-b-gray-300 pb-3"
+                  >
                     <div class="flex gap-2">
                       <span
                         style="border: 1px solid #e1e1e1"
@@ -85,79 +88,115 @@
                 </div>
 
                 <!-- Màu sắc -->
-                <div>
-                  <button
-                    class="w-full text-left font-medium outline-none border-b border-b-gray-300"
-                    onclick="toggleFilter(this)"
+                <div class="filter-option">
+                  <div
+                    class="w-full py-5 text-left border-b border-solid border-b-gray-300 font-medium cursor-pointer flex justify-between items-center"
                   >
                     Màu sắc
-                  </button>
-                  <div class="mt-2 pl-2 hidden">
-                    <label
-                      ><input type="checkbox" name="color" value="Đen" />
-                      Đen</label
-                    ><br />
-                    <label
-                      ><input type="checkbox" name="color" value="Trắng" />
-                      Trắng</label
-                    ><br />
-                    <label
-                      ><input type="checkbox" name="color" value="Đỏ" />
-                      Đỏ</label
-                    ><br />
-                    <label
-                      ><input type="checkbox" name="color" value="Xanh" />
-                      Xanh</label
+                    <span onclick="toggleFilter(this)" class="toggle-icon"
+                      >+</span
                     >
+                  </div>
+                  <div
+                    class="mt-2 pl-2 hidden dropdown-content border-b border-solid border-b-gray-300 pb-3"
+                  >
+                    <div class="mt-4">
+                      <label
+                        ><input type="checkbox" name="color" value="Đen" />
+                        Đen</label
+                      >
+                    </div>
+                    <div class="mt-4">
+                      <label
+                        ><input type="checkbox" name="color" value="Đỏ" />
+                        Đỏ</label
+                      >
+                    </div>
+                    <div class="mt-4">
+                      <label
+                        ><input type="checkbox" name="color" value="Xanh" />
+                        Xanh</label
+                      >
+                    </div>
+                    <div class="mt-4">
+                      <label
+                        ><input type="checkbox" name="color" value="Xám" />
+                        Xám</label
+                      >
+                    </div>
+                    <div class="mt-4">
+                      <label
+                        ><input type="checkbox" name="color" value="Trắng" />
+                        Vàng</label
+                      >
+                    </div>
                   </div>
                 </div>
 
                 <!-- Giá tiền -->
-                <div>
-                  <button
+                <div class="pb-5 border-b border-solid border-b-gray-300">
+                  <div
                     class="w-full text-left py-5 font-medium border-b border-b-gray-300"
-                    onclick="toggleFilter(this)"
                   >
                     Giá tiền
-                  </button>
+                  </div>
                   <div class="mt-2 pl-2">
                     <input
                       type="range"
                       min="0"
                       max="2000000"
                       step="50000"
+                      value="1000000"
                       id="priceRange"
                       class="custom-range w-full h-2 rounded-lg appearance-none cursor-pointer"
                     />
-                    <div>Giá: <span id="priceValue">0</span> VNĐ</div>
+                    <div class="mt-2">
+                      Giá: <span id="priceValue">0</span> VNĐ
+                    </div>
                   </div>
                 </div>
 
                 <!-- Chất liệu -->
-                <div>
-                  <button
-                    class="w-full text-left font-medium"
-                    onclick="toggleFilter(this)"
+                <div class="filter-option">
+                  <div
+                    class="w-full py-5 text-left border-b border-solid border-b-gray-300 font-medium cursor-pointer flex justify-between items-center"
                   >
                     Chất liệu
-                  </button>
-                  <div class="mt-2 pl-2 hidden">
-                    <label
-                      ><input type="checkbox" name="material" value="Cotton" />
-                      Cotton</label
-                    ><br />
-                    <label
-                      ><input type="checkbox" name="material" value="Len" />
-                      Len</label
-                    ><br />
-                    <label
-                      ><input
-                        type="checkbox"
-                        name="material"
-                        value="Polyester"
-                      />
-                      Polyester</label
+                    <span onclick="toggleFilter(this)" class="toggle-icon"
+                      >+</span
                     >
+                  </div>
+                  <div
+                    class="mt-2 pl-2 hidden dropdown-content border-b border-solid border-b-gray-300 pb-3"
+                  >
+                    <div class="mt-4">
+                      <label
+                        ><input
+                          type="checkbox"
+                          name="material"
+                          value="cotton"
+                        />
+                        Cotton</label
+                      >
+                    </div>
+
+                    <div class="mt-4">
+                      <label
+                        ><input type="checkbox" name="material" value="len" />
+                        Len</label
+                      >
+                    </div>
+
+                    <div class="mt-4">
+                      <label
+                        ><input
+                          type="checkbox"
+                          name="material"
+                          value="polyester"
+                        />
+                        Polyester</label
+                      >
+                    </div>
                   </div>
                 </div>
 
@@ -257,15 +296,17 @@
     const priceRange = document.getElementById("priceRange");
     const priceValue = document.getElementById("priceValue");
 
-    function toggleFilter(button) {
-      const content = button.nextElementSibling;
-      const icon = button.querySelector(".toggle-icon");
+    //hien thi dropdown filters
+    function toggleFilter(icon) {
+      const container = icon.closest(".filter-option");
+      const parentElement = icon.closest("div");
+      const dropdownContent = container.querySelector(".dropdown-content");
 
-      content.classList.toggle("hidden");
-
-      if (icon) {
-        icon.textContent = content.classList.contains("hidden") ? "+" : "−";
-      }
+      parentElement.classList.toggle("border-b");
+      dropdownContent.classList.toggle("hidden");
+      icon.textContent = dropdownContent.classList.contains("hidden")
+        ? "+"
+        : "−";
     }
 
     filterToggle?.addEventListener("click", () => {
@@ -290,6 +331,9 @@
       updateRangeBackground(priceRange);
     });
 
-    updateRangeBackground(priceRange);
+    if (priceRange) {
+      priceValue.textContent = Number(priceRange.value).toLocaleString();
+      updateRangeBackground(priceRange);
+    }
   </script>
 </html>
