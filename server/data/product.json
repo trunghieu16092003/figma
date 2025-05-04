@@ -2,11 +2,37 @@
   "data": [
     {
       "id": 1,
-      "name": "Áo jacket nữ",
-      "price": "299.000đ",
-      "oldPrice": "399.000đ",
-      "img": "../../images/productIndex/product1.jpg",
-      "hoverImg": "../../images/productIndex/product1hover.jpg"
+      "name": "Áo blazer nữ  ",
+      "price": "350.000đ",
+      "oldPrice": "500.000đ",
+      "color": [
+        {
+          "name": "đỏ",
+          "code": "red"
+        },
+        {
+          "name": "vàng",
+          "code": "yellow"
+        },
+        {
+          "name": "xanh lá",
+          "code": "green"
+        }
+      ],
+      "img": [
+        "../../images/productIndex/product-detail-02-1.jpg",
+        "../../images/productIndex/product-detail-02-2.jpg",
+        "../../images/productIndex/product-detail-02-3.jpg"
+      ],
+      "desc": "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+      "care": "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời",
+      "rate": [
+        {
+          "id": 1,
+          "number": 4,
+          "comment": "Sản phẩm này rất đáng sử dụng, giao đúng giờ nữa"
+        }
+      ]
     },
     {
       "id": 2,

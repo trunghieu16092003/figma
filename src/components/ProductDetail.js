@@ -67,9 +67,9 @@ class ProductDetail extends HTMLElement {
                 <div class="flex items-center gap-4">
                   <span>Số lượng: </span>
                   <div style="border: 1px solid #AD6E23;" class="inline-flex rounded-tl-lg rounded-br-lg items-center border border-gray-400">
-                    <button type="button" class="w-10 h-10 flex items-center justify-center border-r border-[#AD6E23] rounded-br-lg hover:bg-gray-100 hover:rounded-tl-lg" onclick="decrease()">-</button>
+                    <button type="button" class="decrease w-10 h-10 flex items-center justify-center border-r border-[#AD6E23] rounded-br-lg hover:bg-gray-100 hover:rounded-tl-lg" onclick="decrease()">-</button>
                     <input id="quantity" class="w-10 h-10 text-center rounded flex items-center" value="1" min="1"/>
-                    <button type="button" class="w-10 h-10 flex items-center justify-center rounded-tl-lg border-l border-[#AD6E23] hover:bg-gray-100 hover:rounded-br-lg" onclick="increase()">+</button>
+                    <button type="button"  class="increase w-10 h-10 flex items-center justify-center rounded-tl-lg border-l border-[#AD6E23] hover:bg-gray-100 hover:rounded-br-lg" onclick="increase()">+</button>
                   </div>
                 </div>
                   
@@ -119,7 +119,10 @@ class ProductDetail extends HTMLElement {
     colorSeclect.innerHTML = colors
       .map(
         (color) =>
-          `<span class="color-swatch w-8 h-8 rounded-full cursor-pointer" style="background-color: ${color.code};"></span>`
+          `<div >
+        <span class="color-swatch inline-block w-8 h-8 rounded-full cursor-pointer" style="background-color: ${color.code};"></span>
+        </div>
+        `
       )
       .join("");
 
@@ -200,6 +203,30 @@ class ProductDetail extends HTMLElement {
 
     //Xu ly su kien click vao anh
     this.handleImageChange(this);
+
+    //xu lu su kien click bang mau
+    this.handleColorClick(this);
+
+    //tang giam so luong
+    const inputQuantity = this.querySelector("#quantity");
+
+    const increase = () => {
+      let currentValue = parseInt(inputQuantity.value) || 1;
+      inputQuantity.value = currentValue + 1;
+    };
+
+    const decrease = () => {
+      let currentValue = parseInt(inputQuantity.value) || 1;
+      if (currentValue > 1) {
+        inputQuantity.value = currentValue - 1;
+      }
+    };
+
+    this.querySelector(".decrease").onclick = decrease;
+    this.querySelector(".increase").onclick = increase;
+
+    //ham xu ly click size
+    this.handleSizeClick(this);
   }
 
   handleImageChange(productElement) {
@@ -210,6 +237,51 @@ class ProductDetail extends HTMLElement {
       imgEl.addEventListener("click", () => {
         const src = imgEl.getAttribute("src");
         productImgEl.style.backgroundImage = `url('${src}')`;
+      });
+    });
+  }
+
+  handleColorClick(wrapperElement) {
+    const swatches = wrapperElement.querySelectorAll(".color-swatch");
+
+    swatches.forEach((swatch) => {
+      swatch.addEventListener("click", () => {
+        swatches.forEach((s) => {
+          s.classList.remove(
+            "border-white",
+            "outline-black",
+            "outline",
+            "border",
+            "border-solid",
+            "oulineoutline-offset-[4px]"
+          );
+          s.classList.add("border-transparent", "outline-transparent");
+        });
+
+        swatch.classList.remove("border-transparent", "outline-transparent");
+        swatch.classList.add(
+          "border-white",
+          "outline-black",
+          "outline",
+          "border",
+          "border-solid",
+          "oulineoutline-offset-[4px]"
+        );
+      });
+    });
+  }
+
+  handleSizeClick(wrapperElement) {
+    const sizeElements = wrapperElement.querySelectorAll(
+      ".product-options span"
+    );
+
+    sizeElements.forEach((el) => {
+      el.addEventListener("click", () => {
+        sizeElements.forEach((e) => {
+          e.style.borderColor = "#e1e1e1";
+        });
+        el.style.borderColor = "#AD6E23";
       });
     });
   }

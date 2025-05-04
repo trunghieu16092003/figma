@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault(); // Ngăn form reload
 
-    console.log(1);
     const email = form
       .querySelector('custom-input[name="email"]')
       .querySelector("input").value;

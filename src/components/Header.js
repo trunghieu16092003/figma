@@ -37,11 +37,11 @@ class Header extends HTMLElement {
             <form class="relative">
               <input type="text" placeholder="Tìm kiếm sản phẩm"
               class="hidden md:block border w-[270px] h-10 rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring focus:ring-[#efc28c] focus:border-[#AD6E23]" />
-              <button class="absolute top-0 right-0 py-3 px-2"><i class="fa-solid fa-magnifying-glass"></i></button>
+              <button class="absolute top-0 right-0 py-3 text-[#AD6E23] px-2"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
            
               <div class="relative group inline-block">
-  <span class="cursor-pointer flex items-center gap-2">
+  <span class="cursor-pointer text-[#AD6E23] flex items-center gap-2">
     <i class="fa-solid fa-user"></i> <span class="hidden md:inline">Tài khoản</span>
   </span>
 
@@ -94,9 +94,9 @@ class Header extends HTMLElement {
             </div>
           </div>
 
-          <div class="flex justify-between mt-4">
+          <div class="flex justify-between items-center mt-4">
             <span class="font-medium text-lg">Tổng: 300.000 VND</span>
-            <button class="bg-orange-500 text-white px-4 py-2 rounded-md">Thanh toán</button>
+            <button class="bg-[#AD6E23] text-white px-4 py-2 rounded-md">Thanh toán</button>
           </div>
         </div>
       </header>

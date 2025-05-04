@@ -1,21 +1,24 @@
 const API_BASE_URL = "http://localhost:3000";
 
 const callApi = {
-  get: async (endpoint) => {
-    const response = await fetch(`${API_BASE_URL}/${endpoint}`);
-    console.log(response);
+  get: async (endpoint, token) => {
+    const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
+      headers: getHeaders(token),
+    });
     return handleResponse(response);
   },
 
-  getById: async (endpoint, id) => {
-    const response = await fetch(`${API_BASE_URL}/${endpoint}/${id}`);
+  getById: async (endpoint, id, token) => {
+    const response = await fetch(`${API_BASE_URL}/${endpoint}/${id}`, {
+      headers: getHeaders(token),
+    });
     return handleResponse(response);
   },
 
-  post: async (endpoint, data) => {
+  post: async (endpoint, data, token) => {
     const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: getHeaders(token),
       body: JSON.stringify(data),
     });
     return handleResponse(response);
@@ -30,22 +33,42 @@ const callApi = {
     return handleResponse(response);
   },
 
-  patch: async (endpoint, id, data) => {
+  put: async (endpoint, id, data, token) => {
     const response = await fetch(`${API_BASE_URL}/${endpoint}/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
+      method: "PUT",
+      headers: getHeaders(token),
       body: JSON.stringify(data),
     });
     return handleResponse(response);
   },
 
-  delete: async (endpoint, id) => {
+  patch: async (endpoint, id, data, token) => {
+    const response = await fetch(`${API_BASE_URL}/${endpoint}/${id}`, {
+      method: "PATCH",
+      headers: getHeaders(token),
+      body: JSON.stringify(data),
+    });
+    return handleResponse(response);
+  },
+
+  delete: async (endpoint, id, token) => {
     const response = await fetch(`${API_BASE_URL}/${endpoint}/${id}`, {
       method: "DELETE",
+      headers: getHeaders(token),
     });
     return handleResponse(response);
   },
 };
+
+function getHeaders(token) {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+  return headers;
+}
 
 async function handleResponse(response) {
   if (!response.ok) {
