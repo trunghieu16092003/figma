@@ -644,6 +644,18 @@ video {
   top: 0.5rem;
 }
 
+.top-4 {
+  top: 1rem;
+}
+
+.top-\[67px\] {
+  top: 67px;
+}
+
+.top-16 {
+  top: 4rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -757,12 +769,12 @@ video {
   margin-top: 2rem;
 }
 
-.mt-\[113px\] {
-  margin-top: 113px;
-}
-
 .mt-\[143px\] {
   margin-top: 143px;
+}
+
+.mt-\[67px\] {
+  margin-top: 67px;
 }
 
 .mt-\[97px\] {
@@ -1252,6 +1264,11 @@ video {
   background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
 }
 
+.bg-gray-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
@@ -1263,6 +1280,10 @@ video {
 
 .bg-opacity-30 {
   --tw-bg-opacity: 0.3;
+}
+
+.bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
 }
 
 .bg-\[url\(\'\.\.\/\.\.\/images\/login\.png\'\)\] {
@@ -1891,6 +1912,10 @@ video {
 
   .md\:mt-0 {
     margin-top: 0px;
+  }
+
+  .md\:mt-\[97px\] {
+    margin-top: 97px;
   }
 
   .md\:block {
