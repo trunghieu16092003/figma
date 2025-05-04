@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       products.forEach((product) => {
         const productEl = document.createElement("card-product");
         productEl.setAttribute("id", product.id);
-        productEl.setAttribute("title", product.title);
+        productEl.setAttribute("name", product.name);
         productEl.setAttribute("price", product.price);
         productEl.setAttribute("oldPrice", product.oldPrice);
         productEl.setAttribute("img", product.img[0]);

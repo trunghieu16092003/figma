@@ -1,12 +1,12 @@
 class CardProduct extends HTMLElement {
   connectedCallback() {
-    const title = this.getAttribute("title") || "Sản phẩm";
+    const name = this.getAttribute("name") || "Sản phẩm";
     const price = this.getAttribute("price") || "0đ";
     const img = this.getAttribute("img") || "";
     const hoverImg = this.getAttribute("hoverImg") || img;
     const oldPrice = this.getAttribute("oldPrice") || "0đ";
     const id = this.getAttribute("id") || "0";
-    const slug = this.slugify(title);
+    const slug = this.slugify(name);
     const detailUrl = `detail.html?slug=${slug}&id=${id}`;
 
     this.innerHTML = `
@@ -14,7 +14,7 @@ class CardProduct extends HTMLElement {
         <div class="relative overflow-hidden rounded-t-md rounded-b-none h-40 md:h-[400px] group cursor-pointer product-click">
           <img 
             src="${img}" 
-            alt="${title}" 
+            alt="${name}" 
             class="product-img w-full h-full object-cover transition-transform ease-in-out group-hover:scale-110"
             data-default="${img}"
             data-hover="${hoverImg}" 
@@ -30,7 +30,7 @@ class CardProduct extends HTMLElement {
         </div>
 
         <div class="p-4">
-          <h3 class="text-lg font-semibold mb-2 cursor-pointer product-title">${title}</h3>
+          <h3 class="text-lg font-semibold mb-2 cursor-pointer product-title">${name}</h3>
           <div class="flex items-center text-yellow-400 mb-1">
             <i class="fa-solid fa-star text-[#AD6E23]"></i>
             <i class="fa-solid fa-star text-[#AD6E23]"></i>
@@ -56,14 +56,14 @@ class CardProduct extends HTMLElement {
     const container = this.querySelector(".group");
 
     // Hover ảnh
-    container.addEventListener("mouseenter", () => imgEl.src = hoverSrc);
-    container.addEventListener("mouseleave", () => imgEl.src = defaultSrc);
+    container.addEventListener("mouseenter", () => (imgEl.src = hoverSrc));
+    container.addEventListener("mouseleave", () => (imgEl.src = defaultSrc));
 
     // Các phần tử cần click
     // Ngăn sự kiện click từ icon không bị lan lên container
     const icons = this.querySelectorAll(".icon-img-hover i");
-    icons.forEach(icon => {
-      icon.addEventListener("click", e => {
+    icons.forEach((icon) => {
+      icon.addEventListener("click", (e) => {
         e.stopPropagation(); // Không cho lan lên
         // Ở đây bạn có thể thêm hành động tùy từng icon
         const className = icon.className;
@@ -74,12 +74,9 @@ class CardProduct extends HTMLElement {
       });
     });
 
-    const clickToDetailEls = [
-      container,
-      this.querySelector(".product-title"),
-    ];
+    const clickToDetailEls = [container, this.querySelector(".product-title")];
 
-    clickToDetailEls.forEach(el => {
+    clickToDetailEls.forEach((el) => {
       el.addEventListener("click", (e) => {
         e.stopPropagation();
         window.location.href = detailUrl;
@@ -88,10 +85,13 @@ class CardProduct extends HTMLElement {
   }
 
   slugify(str) {
-    return str.toLowerCase()
-      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    return str
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
       .replace(/[^a-z0-9\s-]/g, "")
-      .trim().replace(/\s+/g, "-");
+      .trim()
+      .replace(/\s+/g, "-");
   }
 }
 

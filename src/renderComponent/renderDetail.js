@@ -6,10 +6,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const id = params.get("id");
     const product = await callApi.getById("products", id);
     const container = document.querySelector("#product-detail");
-    console.log(product);
 
     const productEl = document.createElement("product-detail");
-    console.log(product.color);
     productEl.setAttribute("id", product.id);
     productEl.setAttribute("name", product.name);
     productEl.setAttribute("price", product.price);

@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "id": 2,
+      "userId": 1,
+      "img": "../../images/productIndex/product-detail-02-1.jpg",
+      "size": "XL",
+      "color": "đỏ",
+      "quantity": 2,
+      "name": "Áo blazer nữ  ",
+      "price": 340000,
+      "oldPrice": 500000
+    }
+  ]
+}

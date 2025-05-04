@@ -119,7 +119,10 @@ class ProductDetail extends HTMLElement {
     colorSeclect.innerHTML = colors
       .map(
         (color) =>
-          `<span class="color-swatch w-8 h-8 rounded-full cursor-pointer" style="background-color: ${color.code};"></span>`
+          `<div >
+        <span class="color-swatch inline-block w-8 h-8 rounded-full cursor-pointer" style="background-color: ${color.code};"></span>
+        </div>
+        `
       )
       .join("");
 
@@ -200,6 +203,8 @@ class ProductDetail extends HTMLElement {
 
     //Xu ly su kien click vao anh
     this.handleImageChange(this);
+
+    this.handleColorClick(this);
   }
 
   handleImageChange(productElement) {
@@ -210,6 +215,36 @@ class ProductDetail extends HTMLElement {
       imgEl.addEventListener("click", () => {
         const src = imgEl.getAttribute("src");
         productImgEl.style.backgroundImage = `url('${src}')`;
+      });
+    });
+  }
+
+  handleColorClick(wrapperElement) {
+    const swatches = wrapperElement.querySelectorAll(".color-swatch");
+
+    swatches.forEach((swatch) => {
+      swatch.addEventListener("click", () => {
+        swatches.forEach((s) => {
+          s.classList.remove(
+            "border-white",
+            "outline-black",
+            "outline",
+            "border",
+            "border-solid",
+            "oulineoutline-offset-[4px]"
+          );
+          s.classList.add("border-transparent", "outline-transparent");
+        });
+
+        swatch.classList.remove("border-transparent", "outline-transparent");
+        swatch.classList.add(
+          "border-white",
+          "outline-black",
+          "outline",
+          "border",
+          "border-solid",
+          "oulineoutline-offset-[4px]"
+        );
       });
     });
   }

@@ -18,6 +18,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
+    <!-- SweetAlert2 CSS & JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/just-validate@4.2.0/dist/just-validate.production.min.js"></script>
     <script src="../components/CartCheckout.js"></script>
     <script src="../components/Footer.js"></script>
     <script src="../components/Header.js"></script>
@@ -26,152 +30,220 @@
   </head>
   <body>
     <app-header></app-header>
-    <div id="checkout-template" class="flex flex-col md:flex-row mt-[113px]">
-      <app-checkout></app-checkout>
-      <div class="w-full max-w-xl mx-auto p-4 bg-white rounded shadow">
-        <!-- Stepper -->
+    <div id="checkout-template" class="mt-[97px]">
+      <div
+        class="step flex justify-center items-center mb-6 text-sm font-semibold text-gray-500 space-x-2 mt-40"
+      >
         <div
-          class="flex justify-between mb-6 text-sm font-semibold text-gray-500"
+          class="w-14 h-14 rounded-full border-2 text-[#AD6E23] text-2xl border-[#AD6E23] flex items-center border-solid justify-center"
         >
-          <div class="step text-blue-600" id="step1">1. Thông tin</div>
-          <div class="step" id="step2">2. Thanh toán</div>
-          <div class="step" id="step3">3. Xác nhận</div>
+          <i class="fa-solid fa-cart-shopping"></i>
         </div>
+        <div class="h-1 w-44 bg-[#AD6E23]"></div>
+        <div
+          class="w-14 h-14 rounded-full border-2 text-2xl text-[#AD6E23] border-[#AD6E23] flex items-center border-solid justify-center"
+        >
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div class="last-step-line h-1 w-44 bg-gray-300"></div>
 
-        <form id="checkoutForm" class="space-y-6">
-          <!-- Thông tin người nhận -->
-          <div id="shippingInfo">
-            <h2 class="text-lg font-semibold mb-2">Thông tin người nhận</h2>
-            <div class="space-y-4">
-              <custom-input
-                type="text"
-                name="fullname"
-                label="Họ và tên"
-              ></custom-input>
-              <custom-input
-                type="text"
-                name="phonne"
-                label="Số điện thoại"
-              ></custom-input>
-              <custom-input
-                type="text"
-                name="address"
-                label="Địa chỉ chi tiết"
-              ></custom-input>
-              <custom-input
-                type="text"
-                name="note"
-                label="Ghi chú"
-              ></custom-input>
-              <button
-                type="button"
-                id="toPaymentBtn"
-                class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
-              >
-                Tiếp tục
-              </button>
-            </div>
-          </div>
-
-          <!-- Phương thức thanh toán -->
-          <div id="paymentMethods" class="hidden">
-            <h2 class="text-lg font-semibold mb-2">Phương thức thanh toán</h2>
-            <div class="space-y-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700"
-                  >Chọn phương thức</label
+        <div
+          class="step-success w-14 h-14 rounded-full border-2 text-2xl flex items-center border-solid justify-center"
+        >
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+      </div>
+      <div id="checkout-content" class="flex flex-col md:flex-row mt-8">
+        <app-checkout></app-checkout>
+        <div class="w-full max-w-xl mx-auto p-4 bg-white rounded shadow">
+          <form id="checkout-form" class="space-y-6">
+            <!-- Thông tin người nhận -->
+            <div id="shippingInfo">
+              <h2 class="text-lg font-semibold mb-2">Thông tin người nhận</h2>
+              <div class="space-y-4">
+                <custom-input
+                  type="text"
+                  name="fullname"
+                  label="Họ và tên"
+                ></custom-input>
+                <custom-input
+                  type="text"
+                  name="phone"
+                  label="Số điện thoại"
+                ></custom-input>
+                <custom-input
+                  type="text"
+                  name="address"
+                  label="Địa chỉ chi tiết"
+                ></custom-input>
+                <custom-input
+                  type="text"
+                  name="note"
+                  label="Ghi chú"
+                ></custom-input>
+                <div id="paymentMethods">
+                  <h2 class="text-lg font-semibold mb-2">
+                    Phương thức thanh toán
+                  </h2>
+                  <div class="space-y-4">
+                    <div>
+                      <p class="block text-sm font-medium text-gray-700">
+                        Chọn phương thức
+                      </p>
+                      <div class="space-y-2 mt-2">
+                        <label class="flex items-center space-x-2">
+                          <input
+                            type="radio"
+                            name="paymentMethod"
+                            id="paymentMethod"
+                            value="cod"
+                            required
+                          />
+                          <span>Thanh toán khi nhận hàng (COD)</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                          <input
+                            type="radio"
+                            name="paymentMethod"
+                            id="paymentMethod"
+                            value="bank"
+                          />
+                          <span>Chuyển khoản ngân hàng</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                          <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="momo"
+                            id="paymentMethod"
+                          />
+                          <span>Ví MoMo</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  id="toPaymentBtn"
+                  class="w-full bg-[#AD6E23] text-white py-2 px-4 rounded hover:opacity-80"
                 >
-                <select
-                  name="paymentMethod"
-                  required
-                  class="w-full border rounded px-3 py-2"
-                >
-                  <option value="">-- Chọn --</option>
-                  <option value="cod">Thanh toán khi nhận hàng (COD)</option>
-                  <option value="bank">Chuyển khoản ngân hàng</option>
-                  <option value="momo">Ví MoMo</option>
-                </select>
+                  Tiếp tục
+                </button>
               </div>
-              <button
-                type="button"
-                id="toConfirmBtn"
-                class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
-              >
-                Tiếp tục
-              </button>
             </div>
-          </div>
-
-          <!-- Xác nhận -->
-          <div id="confirmOrder" class="hidden">
-            <h2 class="text-lg font-semibold mb-2">Xác nhận đơn hàng</h2>
-            <p class="text-sm text-gray-600 mb-4">
-              Vui lòng kiểm tra thông tin trước khi đặt hàng.
-            </p>
-            <button
-              type="submit"
-              class="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700"
-            >
-              Đặt hàng
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
     <app-footer></app-footer>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const shipping = document.getElementById("shippingInfo");
-        const payment = document.getElementById("paymentMethods");
-        const confirm = document.getElementById("confirmOrder");
+        const form = document.getElementById("checkout-form");
+        const validator = new JustValidate("#checkout-form", {
+          errorFieldCssClass: "is-invalid",
+          errorLabelCssClass: "text-red-500 text-xs mt-1",
+          focusInvalidField: true,
+          lockForm: true,
+        });
 
-        const step1 = document.getElementById("step1");
-        const step2 = document.getElementById("step2");
-        const step3 = document.getElementById("step3");
+        validator.addField("#fullname", [
+          {
+            rule: "required",
+            errorMessage: "Thông tin không được để trống",
+          },
+        ]);
+        validator.addField("#phone", [
+          {
+            rule: "required",
+            errorMessage: "Điện thoại không được để trống",
+          },
+        ]);
 
-        // Chuyển sang bước thanh toán
-        document
-          .getElementById("toPaymentBtn")
-          .addEventListener("click", () => {
-            if (!validateSection(shipping)) return;
-            shipping.classList.add("hidden");
-            payment.classList.remove("hidden");
-            step1.classList.remove("text-blue-600");
-            step2.classList.add("text-blue-600");
-          });
+        validator.addField("#address", [
+          {
+            rule: "required",
+            errorMessage: "Địa chỉ không được để trống",
+          },
+        ]);
+      });
+    </script>
+    <script>
+      const form = document.querySelector("#checkout-form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Ngăn form submit mặc định
 
-        // Chuyển sang bước xác nhận
-        document
-          .getElementById("toConfirmBtn")
-          .addEventListener("click", () => {
-            if (!validateSection(payment)) return;
-            payment.classList.add("hidden");
-            confirm.classList.remove("hidden");
-            step2.classList.remove("text-blue-600");
-            step3.classList.add("text-blue-600");
-          });
+        const fullname = form.querySelector("#fullname").value;
+        const phone = form.querySelector("#phone").value;
+        const address = form.querySelector("#address").value;
+        const note = form.querySelector("#note").value;
+        const paymentMethod = form.querySelector(
+          '[name="paymentMethod"]:checked'
+        )?.value;
 
-        // Xử lý Đặt hàng
-        document
-          .getElementById("checkoutForm")
-          .addEventListener("submit", (e) => {
-            e.preventDefault();
-            alert("Đặt hàng thành công!");
-            // TODO: fetch POST request có thể thêm ở đây
-          });
+        const checkoutInfo = {
+          fullname,
+          phone,
+          address,
+          note,
+          paymentMethod,
+        };
 
-        // Kiểm tra tính hợp lệ của các input trong mỗi bước
-        function validateSection(section) {
-          const inputs = section.querySelectorAll("input, select");
-          for (let input of inputs) {
-            if (!input.checkValidity()) {
-              input.reportValidity();
-              return false;
-            }
+        Swal.fire({
+          title: "Xác nhận đặt hàng?",
+          text: "Bạn có chắc chắn muốn đặt đơn hàng với thông tin này không?",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonText: "Đặt hàng",
+          cancelButtonText: "Hủy",
+          confirmButtonColor: "#AD6E23",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            localStorage.setItem("checkoutInfo", JSON.stringify(checkoutInfo));
+            Swal.fire({
+              title: "Thành công!",
+              text: "Thông tin đặt hàng đã được lưu.",
+              icon: "success",
+              confirmButtonColor: "#AD6E23",
+            }).then(() => {
+              const oldContent = document.getElementById("checkout-content");
+              const parent = oldContent?.parentElement;
+
+              if (oldContent && parent) {
+                const newContent = document.createElement("div");
+                newContent.innerHTML = `
+      <div class="text-center p-6 bg-white rounded shadow text-gray-700 mt-8">
+        <h2 class="text-2xl font-semibold text-green-600 mb-4">Cảm ơn quý khách!</h2>
+        <p class="mb-2">
+          Cảm ơn quý khách đã tin tưởng sử dụng dịch vụ của chúng tôi.
+          Đơn hàng của quý khách sẽ đến trong vòng <strong>3 ngày tới</strong>.
+        </p>
+        <p class="mb-4">
+          Quý khách có nhu cầu mua hàng vui lòng
+          <a href="./index.html" class="text-[#AD6E23] underline font-medium">ấn vào đây</a>
+          để tiếp tục mua sắm.
+        </p>
+      </div>
+    `;
+                newContent.id = "checkout-content";
+                parent.replaceChild(newContent, oldContent);
+              }
+
+              //Đổi màu các step
+              const checkStep = document.querySelector(".step-success");
+              if (checkStep) {
+                checkStep.classList.add("text-[#AD6E23]", "border-[#AD6E23]");
+              }
+
+              const lastLine = document.querySelector(".last-step-line");
+              if (lastLine) {
+                lastLine.classList.remove("bg-gray-300");
+                lastLine.classList.add("bg-[#AD6E23]");
+              }
+            });
           }
-          return true;
-        }
+        });
       });
     </script>
   </body>

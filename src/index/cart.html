@@ -1,26 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
-  <link rel="stylesheet" href="../output.css">
-  <link rel="stylesheet" href="../../global.css" />
-  <link rel="stylesheet" href="../../style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet">
-  <script src="../components/Cart.js"></script>
-  <script src="../components/Footer.js"></script>
-  <script src="../components/Header.js"></script>
-  <title>Giỏ hàng</title>
-</head>
-<body>
+    <link rel="stylesheet" href="../output.css" />
+    <link rel="stylesheet" href="../../global.css" />
+    <link rel="stylesheet" href="../../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="../components/Cart.js"></script>
+    <script src="../components/Footer.js"></script>
+    <script src="../components/Header.js"></script>
+    <script type="module" src="../renderComponent/renderCart.js"></script>
+    <title>Giỏ hàng</title>
+  </head>
+  <body>
     <app-header></app-header>
-    <app-cart></app-cart>
+    <div class="mt-[97px]">
+      <div
+        class="flex justify-center items-center mb-6 text-sm font-semibold text-gray-500 space-x-2 mt-40"
+      >
+        <div
+          class="w-14 h-14 rounded-full border-2 text-[#AD6E23] text-2xl border-[#AD6E23] flex items-center border-solid justify-center"
+        >
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+        <div class="h-1 w-44 bg-gray-300"></div>
+        <div
+          class="w-14 h-14 rounded-full border-2 text-2xl flex items-center border-solid justify-center"
+        >
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div class="h-1 w-44 bg-gray-300"></div>
+
+        <div
+          class="w-14 h-14 rounded-full border-2 text-2xl flex items-center border-solid justify-center"
+        >
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+      </div>
+      <section class="md:py-10 px-4">
+        <div class="max-w-6xl mx-auto bg-white p-6">
+          <h2 class="text-2xl font-bold mb-6 text-center">Giỏ hàng của bạn</h2>
+
+          <!-- Header -->
+          <div
+            class="hidden md:grid grid-cols-6 gap-4 font-semibold text-gray-700 border-b pb-3 mb-4 text-sm md:text-base"
+          >
+            <div class="col-span-1 flex items-center justify-center">Ảnh</div>
+            <div class="col-span-1 flex items-center justify-center">
+              Sản phẩm
+            </div>
+            <div class="col-span-1 flex items-center justify-center">
+              Số lượng
+            </div>
+            <div class="col-span-1 flex items-center justify-center">Giá</div>
+            <div class="col-span-1 flex items-center justify-center">
+              Thành tiền
+            </div>
+            <div class="col-span-1 flex items-center justify-center">
+              Hành động
+            </div>
+          </div>
+          <div class="cart-table"></div>
+          <!-- Tổng cộng -->
+          <div
+            class="flex flex-col md:flex-row justify-between items-center mt-10 space-y-4 md:space-y-0"
+          >
+            <div class="">
+              <span class="text-xs">Tổng cộng:</span>
+              <span
+                class="cart-total-amount text-[#AD6E23] text-lg font-semibold"
+              ></span>
+            </div>
+            <a
+              href="./checkout.html"
+              class="bg-[#AD6E23] hover:bg-[#AD6E23 ] text-white font-bold py-3 px-6 rounded transition"
+            >
+              Thanh toán
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
     <app-footer></app-footer>
-</body>
+  </body>
 </html>
