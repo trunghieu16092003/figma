@@ -54,10 +54,10 @@
                 <!-- Size -->
                 <div class="filter-option">
                   <div
-                    class="w-full py-5 text-left border-b border-solid border-b-gray-300 font-medium cursor-pointer flex justify-between items-center"
+                    class="w-full py-5 text-left border-b border-solid border-b-gray-300 font-medium flex justify-between items-center"
                   >
                     Size
-                    <span onclick="toggleFilter(this)" class="toggle-icon"
+                    <span onclick="toggleFilter(this)" class="toggle-icon cursor-pointer"
                       >+</span
                     >
                   </div>
@@ -97,10 +97,10 @@
                 <!-- Màu sắc -->
                 <div class="filter-option">
                   <div
-                    class="w-full py-5 text-left border-b border-solid border-b-gray-300 font-medium cursor-pointer flex justify-between items-center"
+                    class="w-full py-5 text-left border-b border-solid border-b-gray-300 font-medium flex justify-between items-center"
                   >
                     Màu sắc
-                    <span onclick="toggleFilter(this)" class="toggle-icon"
+                    <span onclick="toggleFilter(this)" class="toggle-icon cursor-pointer"
                       >+</span
                     >
                   </div>
@@ -166,10 +166,10 @@
                 <!-- Chất liệu -->
                 <div class="filter-option">
                   <div
-                    class="w-full py-5 text-left border-b border-solid border-b-gray-300 font-medium cursor-pointer flex justify-between items-center"
+                    class="w-full py-5 text-left border-b border-solid border-b-gray-300 font-medium flex justify-between items-center"
                   >
                     Chất liệu
-                    <span onclick="toggleFilter(this)" class="toggle-icon"
+                    <span onclick="toggleFilter(this)" class="toggle-icon cursor-pointer"
                       >+</span
                     >
                   </div>
@@ -226,16 +226,21 @@
           </div>
 
           <div class="md:w-4/5">
-            <div class="flex justify-between items-center">
-              <h1 class="text-3xl mb-5">Áo thu đông nữ</h1>
+            <div class="flex justify-between items-center mb-5">
+              <h1 class="text-3xl ">Áo thu đông nữ</h1>
               <div class="flex gap-3 items-center">
                 <form action="">
-                  <select name="" id="">
-                    <option value="">Sắp xếp theo</option>
-                    <option value="">Từ cao đến thấp</option>
-                    <option value="">Từ thấp đến cao</option>
+                  <select
+                    name="sort"
+                    id="sort"
+                    class="bg-white border border-[#AD6E23] px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#AD6E23] cursor-pointer"
+                  >
+                    <option value="" class="py-2 block">Sắp xếp theo</option>
+                    <option value="desc">Từ cao đến thấp</option>
+                    <option value="asc">Từ thấp đến cao</option>
                   </select>
                 </form>
+                
                 <div class="flex justify-between items-center mb-4 md:hidden">
                   <button
                     id="filterToggle"

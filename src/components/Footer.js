@@ -1,78 +1,82 @@
 class Footer extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-        <footer class="bg-[#AD6E23] text-white pt-10 ">
-          <div class="flex-col md:flex md:flex-row text-sm md:justify-between px-10">
-            <div class="mb-4 md:mb-0 md:w-2/5">
-              <div class="mb-4">
-                <div class="text-2xl font-bold text-white flex justify-center">
-                  <a href="./index.html">
-                    <img src="../../images/logo/logo_footer.png" />
-                  </a>
-                </div>
+      <footer class="bg-[#AD6E23] text-white">
+        <div class="container mx-auto px-4 py-12">
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+            <!-- Column 1: Logo & About -->
+            <div class="md:col-span-2">
+              <div class="mb-6 flex justify-center md:justify-start">
+                <a href="./index.html" class="text-2xl font-bold">
+                  <img src="../../images/logo/logo_footer.png" alt="FASHION Logo" class="h-12">
+                </a>
               </div>
-              <p class="text-white/90">
-               FASHION là thương hiệu thời trang được tạo ra với mong muốn mang đến những thiết kế hiện đại, tinh tế và phù hợp với nhịp sống năng động của thế hệ trẻ. Chúng tôi tin rằng mỗi bộ trang phục không chỉ đơn thuần là một món đồ mặc trên người, mà còn là phương tiện để thể hiện cá tính, tâm trạng và phong cách sống riêng biệt của mỗi người.
-Với tinh thần không ngừng sáng tạo và cập nhật xu hướng, FASHION luôn đặt chất lượng, trải nghiệm khách hàng và sự chỉn chu trong từng chi tiết lên hàng đầu. Từ những thiết kế cơ bản đến các items mang dấu ấn riêng, tất cả đều được làm ra để bạn luôn cảm thấy tự tin, thoải mái và đúng với chính mình.
+              <p class="text-white/90 text-sm leading-relaxed mb-4">
+                FASHION là thương hiệu thời trang được tạo ra với mong muốn mang đến những thiết kế hiện đại, tinh tế...
               </p>
+              <div class="flex space-x-4 mt-4">
+                <a href="#" class="text-white/80 hover:text-white transition">
+                  <i class="fab fa-facebook-f text-lg"></i>
+                </a>
+                <a href="#" class="text-white/80 hover:text-white transition">
+                  <i class="fab fa-instagram text-lg"></i>
+                </a>
+                <a href="#" class="text-white/80 hover:text-white transition">
+                  <i class="fab fa-tiktok text-lg"></i>
+                </a>
+              </div>
             </div>
-  
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
-              <div>
-                <h3 class="font-semibold text-white mb-3">Hỗ trợ khách hàng</h3>
-                <ul class="space-y-2 text-white/90">
-                  <li>Hướng dẫn mua hàng</li>
-                  <li>Phương thức thanh toán</li>
-                  <li>Chính sách đổi trả</li>
-                  <li>Chăm sóc khách hàng</li>
-                  <li>Chính sách vận chuyển</li>
-                  <li>Chính sách thường gặp</li>
-                </ul>
-              </div>
-    
-              <!-- Công ty -->
-              <div>
-                <h3 class="font-semibold text-white mb-3">Công ty</h3>
-                <ul class="space-y-2 text-white/90">
-                  <li>Về chúng tôi</li>
-                  <li>Liên hệ</li>
-                  <li>Tuyển dụng</li>
-                </ul>
-              </div>
-    
-              <!-- Sản phẩm chính -->
-              <div>
-                <h3 class="font-semibold text-white mb-3">Các sản phẩm chính</h3>
-                <ul class="space-y-2 text-white/90">
-                  <li>Mẫu thời trang công sở</li>
-                  <li>Thời trang hè 2025</li>
-                  <li>Bộ sưu tập xuân</li>
-                  <li>Áo</li>
-                  <li>Váy</li>
-                  <li>Mũ</li>
-                </ul>
-              </div>
-    
-              <!-- Liên kết -->
-              <div>
-                <h3 class="font-semibold text-white mb-3">Liên kết</h3>
-                <div class="flex gap-4 text-white/90">
-                  <span class="cursor-pointer w-8 h-8 inline-block"><i class="h-full w-full fa-brands fa-facebook"></i></span>
-                  <span class="cursor-pointer w-8 h-8 inline-block"><i class="h-full w-full fa-brands fa-instagram"></i></span>
-                  <span class="cursor-pointer w-8 h-8 inline-block"><i class="h-full w-full fa-brands fa-tiktok"></i></span>
-                </div>
-              </div>
-            
+
+            <!-- Column 2: Customer Support -->
+            <div>
+              <h3 class="text-lg font-semibold mb-4 border-b border-white/20 pb-2">Hỗ trợ khách hàng</h3>
+              <ul class="space-y-2 text-white/90 text-sm">
+                <li><a href="#" class="hover:text-white transition">Hướng dẫn mua hàng</a></li>
+                <li><a href="#" class="hover:text-white transition">Phương thức thanh toán</a></li>
+                <li><a href="#" class="hover:text-white transition">Chính sách đổi trả</a></li>
+                <li><a href="#" class="hover:text-white transition">Chăm sóc khách hàng</a></li>
+              </ul>
+            </div>
+
+            <!-- Column 3: Company -->
+            <div>
+              <h3 class="text-lg font-semibold mb-4 border-b border-white/20 pb-2">Công ty</h3>
+              <ul class="space-y-2 text-white/90 text-sm">
+                <li><a href="#" class="hover:text-white transition">Về chúng tôi</a></li>
+                <li><a href="#" class="hover:text-white transition">Liên hệ</a></li>
+                <li><a href="#" class="hover:text-white transition">Tuyển dụng</a></li>
+                <li><a href="#" class="hover:text-white transition">Hệ thống cửa hàng</a></li>
+              </ul>
+            </div>
+
+            <!-- Column 4: Products -->
+            <div>
+              <h3 class="text-lg font-semibold mb-4 border-b border-white/20 pb-2">Sản phẩm</h3>
+              <ul class="space-y-2 text-white/90 text-sm">
+                <li><a href="#" class="hover:text-white transition">Thời trang công sở</a></li>
+                <li><a href="#" class="hover:text-white transition">Bộ sưu tập hè 2025</a></li>
+                <li><a href="#" class="hover:text-white transition">Áo</a></li>
+                <li><a href="#" class="hover:text-white transition">Váy</a></li>
+              </ul>
             </div>
           </div>
-  
-          <!-- Bottom -->
-          <div class="mt-10 bg-blue-800 text-white py-4 text-center text-xs">
-            <p>Công ty cổ phần abc xyz - Giấy phép kinh doanh số 1234567890</p>
-            <p>Địa chỉ: 123, xã xyz, phường abc, tỉnh Quảng Ninh</p>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="bg-[#8a561c] py-4">
+          <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center text-xs text-white/80">
+              <p>© 2025 FASHION. All rights reserved.</p>
+              <div class="mt-2 md:mt-0">
+                <a href="#" class="hover:text-white transition">Điều khoản sử dụng</a>
+                <span class="mx-2">|</span>
+                <a href="#" class="hover:text-white transition">Chính sách bảo mật</a>
+              </div>
+            </div>
           </div>
-        </footer>
-      `;
+        </div>
+      </footer>
+    `;
   }
 }
 

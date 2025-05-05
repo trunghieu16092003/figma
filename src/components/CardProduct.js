@@ -11,7 +11,7 @@ class CardProduct extends HTMLElement {
 
     this.innerHTML = `
       <div class="bg-white rounded-lg shadow hover:shadow-md transition">
-        <div class="relative overflow-hidden rounded-t-md rounded-b-none h-40 md:h-[400px] group cursor-pointer product-click">
+        <div class="relative overflow-hidden rounded-t-md rounded-b-none h-44 md:h-[400px] group cursor-pointer product-click">
           <img 
             src="${img}" 
             alt="${name}" 
@@ -30,22 +30,21 @@ class CardProduct extends HTMLElement {
         </div>
 
         <div class="p-4">
-          <h3 class="text-lg font-semibold mb-2 cursor-pointer product-title">${name}</h3>
-          <div class="flex items-center text-yellow-400 mb-1">
+          <h3 class="text-lg font-semibold mb-4 cursor-pointer product-title 
+                 line-clamp-1 overflow-hidden text-ellipsis">
+        ${name}
+      </h3>
+          <div class="flex items-center">
             <i class="fa-solid fa-star text-[#AD6E23]"></i>
             <i class="fa-solid fa-star text-[#AD6E23]"></i>
             <i class="fa-solid fa-star text-[#AD6E23]"></i>
             <i class="fa-solid fa-star text-[#AD6E23]"></i>
             <i class="fa-solid fa-star-half text-[#AD6E23]"></i>
           </div>
-          <div class="mb-2">
-            <span class="text-gray-500 line-through font-normal inline-block mr-1">${oldPrice}</span>
-            <span class="text-red-500 font-bold">${price}</span>
+          <div class=" mt-4">
+            <span class="text-gray-500 line-through font-normal text-xs md:text-lg inline-block mr-1">${oldPrice}</span>
+            <span class="text-red-500 font-bold text-[14px] md:text-xl">${price}</span>
           </div>
-          <button class="mt-auto bg-[#AD6E23] text-white py-1 px-3 rounded border border-[#AD6E23] 
-            hover:bg-white hover:text-[#AD6E23] hover:border-[#AD6E23] transition duration-200">
-            Mua ngay
-          </button>
         </div>
       </div>
     `;
@@ -82,6 +81,12 @@ class CardProduct extends HTMLElement {
         window.location.href = detailUrl;
       });
     });
+
+    const cartIcon = this.querySelector(".fa-cart-shopping");
+    cartIcon.addEventListener("click", (e) => {
+      e.stopPropagation();
+      this.showProductModal();
+    });
   }
 
   slugify(str) {
@@ -92,6 +97,58 @@ class CardProduct extends HTMLElement {
       .replace(/[^a-z0-9\s-]/g, "")
       .trim()
       .replace(/\s+/g, "-");
+  }
+
+  showProductModal() {
+    const modal = document.getElementById('product-modal');
+    
+    // Lấy thông tin sản phẩm từ card
+    const productName = this.getAttribute("name") || "Sản phẩm";
+    const productPrice = this.getAttribute("price") || "0đ";
+    const productImage = this.getAttribute("img") || "";
+    
+    // Điền thông tin vào modal
+    document.getElementById('modal-product-name').textContent = productName;
+    document.getElementById('modal-product-price').textContent = productPrice;
+    document.getElementById('modal-product-image').src = productImage;
+    
+    // Hiển thị modal
+    modal.classList.remove('hidden');
+    
+    // Thêm hiệu ứng slide up trên mobile
+    if (window.innerWidth < 768) {
+      setTimeout(() => {
+        const modalContent = modal.querySelector('.absolute.bottom-0');
+        modalContent.classList.remove('translate-y-full');
+      }, 10);
+    }
+    
+    // Thêm sự kiện đóng modal
+    const closeButton = document.getElementById('close-product-modal');
+    closeButton.addEventListener('click', () => {
+      this.hideProductModal();
+    });
+    
+    // Đóng khi click ra ngoài modal
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        this.hideProductModal();
+      }
+    });
+  }
+
+  hideProductModal() {
+    const modal = document.getElementById('product-modal');
+    const modalContent = modal.querySelector('.absolute.bottom-0');
+    
+    if (window.innerWidth < 768) {
+      modalContent.classList.add('translate-y-full');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    } else {
+      modal.classList.add('hidden');
+    }
   }
 }
 
