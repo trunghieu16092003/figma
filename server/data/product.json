@@ -62,22 +62,220 @@
       "care": "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời"
     },
     {
-      "title": "Giày sneaker",
+      "id": 3,
+      "name": "Áo nỉ nhung chất lụa  ",
       "price": "850.000đ",
       "oldPrice": "900.000đ",
-      "img": "https://via.placeholder.com/300x200"
+      "color": [
+        {
+          "name": "red",
+          "code": "red"
+        },
+        {
+          "name": "yellow",
+          "code": "yellow"
+        },
+        {
+          "name": "black",
+          "code": "black"
+        }
+      ],
+      "img": [
+        "../../images/productIndex/product-detail-01-1.jpg",
+        "../../images/productIndex/product-detail-01-2.jpg",
+        "../../images/productIndex/product-detail-01-3.jpg"
+      ],
+      "desc": "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+      "care": "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời"
     },
     {
-      "title": "Giày sneaker",
+      "id": 4,
+      "name": "Áo nỉ nhung chất lụa  ",
       "price": "850.000đ",
       "oldPrice": "900.000đ",
-      "img": "https://via.placeholder.com/300x200"
+      "color": [
+        {
+          "name": "red",
+          "code": "red"
+        },
+        {
+          "name": "yellow",
+          "code": "yellow"
+        },
+        {
+          "name": "black",
+          "code": "black"
+        }
+      ],
+      "img": [
+        "../../images/productIndex/product-detail-01-1.jpg",
+        "../../images/productIndex/product-detail-01-2.jpg",
+        "../../images/productIndex/product-detail-01-3.jpg"
+      ],
+      "desc": "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+      "care": "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời"
     },
     {
-      "title": "Giày sneaker",
+      "id": 5,
+      "name": "Áo nỉ nhung chất lụa  ",
       "price": "850.000đ",
       "oldPrice": "900.000đ",
-      "img": "https://via.placeholder.com/300x200"
+      "color": [
+        {
+          "name": "red",
+          "code": "red"
+        },
+        {
+          "name": "yellow",
+          "code": "yellow"
+        },
+        {
+          "name": "black",
+          "code": "black"
+        }
+      ],
+      "img": [
+        "../../images/productIndex/product-detail-01-1.jpg",
+        "../../images/productIndex/product-detail-01-2.jpg",
+        "../../images/productIndex/product-detail-01-3.jpg"
+      ],
+      "desc": "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+      "care": "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời"
+    },
+    {
+      "id": 6,
+      "name": "Áo nỉ nhung chất lụa  ",
+      "price": "850.000đ",
+      "oldPrice": "900.000đ",
+      "color": [
+        {
+          "name": "red",
+          "code": "red"
+        },
+        {
+          "name": "yellow",
+          "code": "yellow"
+        },
+        {
+          "name": "black",
+          "code": "black"
+        }
+      ],
+      "img": [
+        "../../images/productIndex/product-detail-01-1.jpg",
+        "../../images/productIndex/product-detail-01-2.jpg",
+        "../../images/productIndex/product-detail-01-3.jpg"
+      ],
+      "desc": "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+      "care": "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời"
+    },
+    {
+      "id": 7,
+      "name": "Áo nỉ nhung chất lụa  ",
+      "price": "850.000đ",
+      "oldPrice": "900.000đ",
+      "color": [
+        {
+          "name": "red",
+          "code": "red"
+        },
+        {
+          "name": "yellow",
+          "code": "yellow"
+        },
+        {
+          "name": "black",
+          "code": "black"
+        }
+      ],
+      "img": [
+        "../../images/productIndex/product-detail-01-1.jpg",
+        "../../images/productIndex/product-detail-01-2.jpg",
+        "../../images/productIndex/product-detail-01-3.jpg"
+      ],
+      "desc": "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+      "care": "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời"
+    },
+    {
+      "id": 8,
+      "name": "Áo nỉ nhung chất lụa  ",
+      "price": "850.000đ",
+      "oldPrice": "900.000đ",
+      "color": [
+        {
+          "name": "red",
+          "code": "red"
+        },
+        {
+          "name": "yellow",
+          "code": "yellow"
+        },
+        {
+          "name": "black",
+          "code": "black"
+        }
+      ],
+      "img": [
+        "../../images/productIndex/product-detail-01-1.jpg",
+        "../../images/productIndex/product-detail-01-2.jpg",
+        "../../images/productIndex/product-detail-01-3.jpg"
+      ],
+      "desc": "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+      "care": "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời"
+    },
+    {
+      "id": 9,
+      "name": "Áo nỉ nhung chất lụa  ",
+      "price": "850.000đ",
+      "oldPrice": "900.000đ",
+      "color": [
+        {
+          "name": "red",
+          "code": "red"
+        },
+        {
+          "name": "yellow",
+          "code": "yellow"
+        },
+        {
+          "name": "black",
+          "code": "black"
+        }
+      ],
+      "img": [
+        "../../images/productIndex/product-detail-01-1.jpg",
+        "../../images/productIndex/product-detail-01-2.jpg",
+        "../../images/productIndex/product-detail-01-3.jpg"
+      ],
+      "desc": "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+      "care": "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời"
+    },
+    {
+      "id": 10,
+      "name": "Áo nỉ nhung chất lụa  ",
+      "price": "850.000đ",
+      "oldPrice": "900.000đ",
+      "color": [
+        {
+          "name": "red",
+          "code": "red"
+        },
+        {
+          "name": "yellow",
+          "code": "yellow"
+        },
+        {
+          "name": "black",
+          "code": "black"
+        }
+      ],
+      "img": [
+        "../../images/productIndex/product-detail-01-1.jpg",
+        "../../images/productIndex/product-detail-01-2.jpg",
+        "../../images/productIndex/product-detail-01-3.jpg"
+      ],
+      "desc": "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+      "care": "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời"
     }
   ]
 }

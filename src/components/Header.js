@@ -2,7 +2,7 @@ class Header extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <header class="fixed top-0 w-full bg-white shadow-sm px-2 md:px-10 py-4 z-50">
-        <div class=" flex items-center justify-between relative md:gap-8">
+        <div class=" container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative md:gap-8">
           <button id="menu-toggle" class="md:hidden text-2xl text-gray-700 z-30">
             &#9776;
           </button>
