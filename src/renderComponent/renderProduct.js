@@ -2,15 +2,60 @@ import callApi from "../services/callApi.js";
 
 const itemsPerPage = 8; // 8 sản phẩm/trang
 let currentPage = 1;
+let searchValue = "";
+let displayProducts = []
 
-async function renderProducts(page = 1) {
+
+// Khởi tạo trang đầu tiên
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+   searchValue = urlParams.get('q');
+  
+  if (searchValue) {
+    // Hiển thị từ khóa tìm kiếm trên trang
+    const categoryTitle = document.querySelector('.category-title');
+    if (categoryTitle) {
+      categoryTitle.textContent = `Kết quả tìm kiếm cho: "${searchValue}"`;
+    }
+    renderProducts(currentPage, searchValue);
+  } else {
+    renderProducts(currentPage);
+  }
+});
+
+async function renderProducts(page = 1, searchValue = "") {
   const products = await callApi.get("products");
   const container = document.querySelector('[data-product]');
+  const pagination = document.querySelector('#pagination');
   container.innerHTML = '';
-  
+  if(searchValue){
+    displayProducts = products.filter(product => {
+      return product.name.toLowerCase().includes(searchValue.toLowerCase());
+    })
+  }  else {
+    displayProducts = products;
+  }
+
+  // Kiểm tra nếu không có sản phẩm nào phù hợp khi tìm kiếm
+  if(searchValue && displayProducts.length === 0) {
+    container.classList.remove('grid');
+    container.innerHTML = `
+      <div class="col-span-full text-center py-10">
+        <i class="fas fa-search text-4xl text-gray-400 mb-4"></i>
+        <h3 class="text-xl font-medium text-gray-600">Không tìm thấy sản phẩm nào phù hợp</h3>
+        <p class="text-gray-500 mt-2">Không có sản phẩm nào phù hợp với từ khóa "${searchValue}"</p>
+        <a href="category.html" class="mt-4 inline-block px-4 py-2 bg-[#AD6E23] text-white rounded-md">
+          Xem tất cả sản phẩm
+        </a>
+      </div>
+    `;
+    pagination.innerHTML = '';
+  }
+
+
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const paginatedProducts = products.slice(startIndex, endIndex);
+  const paginatedProducts = displayProducts.slice(startIndex, endIndex);
   
   paginatedProducts.forEach(product => {
     const productEl = document.createElement('card-product');
@@ -28,8 +73,7 @@ async function renderProducts(page = 1) {
 }
 
 async function updatePaginationControls() {
-  const products = await callApi.get("products");
-  const totalPages = Math.ceil(products.length / itemsPerPage);
+  const totalPages = Math.ceil(displayProducts.length / itemsPerPage);
   const prevBtn = document.getElementById('prev');
   const nextBtn = document.getElementById('next');
   
@@ -64,19 +108,18 @@ async function updatePaginationControls() {
 document.getElementById('prev').addEventListener('click', () => {
   if (currentPage > 1) {
     currentPage--;
-    renderProducts(currentPage);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    renderProducts(currentPage, searchValue);
+    document.getElementById('product-list').scrollIntoView({ behavior: 'smooth' });
   }
 });
 
 // Sự kiện click nút Next
-document.getElementById('next').addEventListener('click', async () => {
-  const products = await callApi.get("products");
-  const totalPages = Math.ceil(products.length / itemsPerPage);
+document.getElementById('next').addEventListener('click',  () => {
+  const totalPages = Math.ceil(displayProducts.length / itemsPerPage);
   if (currentPage < totalPages) {
     currentPage++;
-    renderProducts(currentPage);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    renderProducts(currentPage, searchValue);
+    document.getElementById('product-list').scrollIntoView({ behavior: 'smooth' });
   }
 });
 
@@ -86,13 +129,8 @@ document.querySelectorAll('.page-number').forEach(button => {
     const pageNum = parseInt(e.target.textContent);
     if (pageNum !== currentPage) {
       currentPage = pageNum;
-      renderProducts(currentPage);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      renderProducts(currentPage, searchValue);
+      document.getElementById('product-list').scrollIntoView({ behavior: 'smooth' });
     }
   });
-});
-
-// Khởi tạo trang đầu tiên
-document.addEventListener("DOMContentLoaded", () => {
-  renderProducts(currentPage);
 });

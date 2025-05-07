@@ -49,3 +49,33 @@ a {
 .tab-detail{
   border-bottom: 1px solid #AD6E23;
 }
+
+/* Tùy chỉnh cho trình duyệt Chrome, Safari, Opera */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #8B4513; /* Màu nâu */
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Tùy chỉnh cho trình duyệt Firefox */
+input[type="range"]::-moz-range-thumb {
+  background-color: #8B4513; /* Màu nâu */
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+/* Tùy chỉnh cho trình duyệt Edge/IE */
+input[type="range"]::-ms-thumb {
+  background-color: #8B4513; /* Màu nâu */
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}

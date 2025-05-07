@@ -37,7 +37,7 @@ class Header extends HTMLElement {
             <form class="relative">
               <input type="text" placeholder="Tìm kiếm sản phẩm"
               class="hidden md:block border w-[270px] h-10 rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring focus:ring-[#efc28c] focus:border-[#AD6E23]" />
-              <button class="absolute top-0 right-0 py-3 text-[#AD6E23] px-2"><i class="fa-solid fa-magnifying-glass"></i></button>
+              <button type="submit" class="absolute top-0 right-0 py-3 text-[#AD6E23] px-2"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
            
               <div class="relative group inline-block">
@@ -74,24 +74,6 @@ class Header extends HTMLElement {
 
           <h3 class="text-lg font-bold text-gray-800 mb-4">Giỏ hàng</h3>
           <div id="cart-items" class="space-y-4 max-h-80 overflow-y-auto">
-            <div class="flex items-center justify-between">
-              <img src="product1.jpg" alt="Product 1" class="w-16 h-16 object-cover">
-              <div class="flex flex-col justify-between">
-                <span class="text-sm font-medium text-gray-800">Sản phẩm 1</span>
-                <span class="text-sm text-gray-600">Giá: 100.000 VND</span>
-                <span class="text-sm text-gray-600">Số lượng: 1</span>
-              </div>
-              <span class="text-sm text-gray-800">100.000 VND</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <img src="product2.jpg" alt="Product 2" class="w-16 h-16 object-cover">
-              <div class="flex flex-col justify-between">
-                <span class="text-sm font-medium text-gray-800">Sản phẩm 2</span>
-                <span class="text-sm text-gray-600">Giá: 200.000 VND</span>
-                <span class="text-sm text-gray-600">Số lượng: 1</span>
-              </div>
-              <span class="text-sm text-gray-800">200.000 VND</span>
-            </div>
           </div>
 
           <div class="flex justify-between items-center mt-4">
@@ -110,6 +92,14 @@ class Header extends HTMLElement {
     const cartToggle = this.querySelector("#cart-toggle");
     const cartModal = this.querySelector("#cart-modal");
     const closeCart = this.querySelector("#close-cart");
+
+    const searchForm = this.querySelector("form");
+    const searchInput = searchForm.querySelector("input");
+
+    searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      this.handleSearch(searchInput.value);
+    });
 
     const closeMenu = () => {
       nav.classList.add("hidden");
@@ -134,6 +124,15 @@ class Header extends HTMLElement {
     });
 
     cartToggle.addEventListener("click", () => {
+      // Kiểm tra đăng nhập (có token trong localStorage)
+      const token = localStorage.getItem('token');
+      
+      if (!token) {
+        this.showLoginAlert();
+        return;
+      }
+
+      // Nếu đã đăng nhập thì hiển thị giỏ hàng
       const isMobile = window.innerWidth < 768;
 
       if (isMobile) {
@@ -145,6 +144,9 @@ class Header extends HTMLElement {
       } else {
         cartModal.classList.toggle("hidden");
       }
+      
+      // Load giỏ hàng từ localStorage
+      this.loadCartItems();
     });
 
     const closeMobileCart = () => {
@@ -189,6 +191,100 @@ class Header extends HTMLElement {
             location.reload();
           });
       }
+    }
+  }
+
+  showLoginAlert() {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-fade-in';
+    alertDiv.innerHTML = `
+      <div class="flex items-center">
+        <i class="fas fa-exclamation-circle mr-2"></i>
+        <span>Vui lòng đăng nhập để xem giỏ hàng</span>
+      </div>
+    `;
+    
+    document.body.appendChild(alertDiv);
+    
+    // Tự động ẩn sau 3 giây
+    setTimeout(() => {
+      alertDiv.classList.add('animate-fade-out');
+      setTimeout(() => alertDiv.remove(), 300);
+    }, 3000);
+  }
+
+  loadCartItems() {
+    const cartItemsContainer = this.querySelector('#cart-modal #cart-items');
+    const cartTotalElement = this.querySelector('#cart-modal .font-medium.text-lg');
+    
+    const cart = JSON.parse(localStorage.getItem('carts')) || [];
+    
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = `
+        <div class="text-center py-4 text-gray-500">
+          <i class="fas fa-shopping-cart text-2xl mb-2"></i>
+          <p>Giỏ hàng trống</p>
+        </div>
+      `;
+      cartTotalElement.textContent = 'Tổng: 0đ';
+      return;
+    }
+    
+    // Render các sản phẩm trong giỏ hàng
+    cartItemsContainer.innerHTML = cart.map((item,index) => `
+      <div class="flex items-center justify-between py-2 border-b relative">
+        <img src="${item.img}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+        <div class="ml-2 flex-1">
+          <p class="text-sm font-medium">${item.name}</p>
+          <div class="flex items-center gap-2">
+            <p class="text-xs text-gray-500">${item.color}</p>
+            <span class="w-3 h-3 rounded-full" style="background-color: ${item.colorCode}"></span>
+          </div>
+          <div class="flex items-center gap-2">
+            <p class="text-xs text-gray-500">Size: ${item.size}</p>
+            <span class="text-xs px-1 border rounded">${item.size}</span>
+          </div>
+          <p class="text-sm">${item.price} x ${item.quantity}</p>
+        </div>
+        <span class="text-sm font-medium">${(parseInt(item.price.replace(/\D/g, '')) * item.quantity).toLocaleString()}đ</span>
+        <button 
+          class="absolute top-2 right-2 text-gray-400 hover:text-red-500 delete-item" 
+          data-index="${index}"
+        >
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
+    `).join('');
+    this.addDeleteEvents();
+    
+    // Tính tổng tiền
+    const total = cart.reduce((sum, item) => sum + (parseInt(item.price.replace(/\D/g, '')) * item.quantity), 0);
+    cartTotalElement.textContent = `Tổng: ${total.toLocaleString()}đ`;
+  }
+
+  addDeleteEvents() {
+    const buttons = this.querySelectorAll('.delete-item');
+    buttons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        const index = parseInt(button.getAttribute('data-index'));
+        this.handleDeleteItem(index);
+      });
+    });
+  }
+  
+  handleDeleteItem(index) {
+    let cart = JSON.parse(localStorage.getItem('carts')) || [];
+    cart.splice(index, 1);
+    localStorage.setItem('carts', JSON.stringify(cart));
+    this.loadCartItems();
+  }
+
+  handleSearch(value) {
+    if (value.trim() === "") {
+      alert("Vui lòng nhập từ khóa tìm kiếm");
+      return;
+    } else {
+      window.location.href = `./category.html?q=${value}`;
     }
   }
 }

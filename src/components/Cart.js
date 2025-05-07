@@ -6,12 +6,11 @@ class Cart extends HTMLElement {
   connectedCallback() {
     const id = this.getAttribute("id");
     const name = this.getAttribute("name") || "Sản phẩm";
-    const price = this.getAttribute("price") || "0đ";
+    const price = parseInt(this.getAttribute("price")) ;
     const color = this.getAttribute("color") || "";
     const size = this.getAttribute("size") || "";
     const img = this.getAttribute("img") || "";
-    const quantity = JSON.parse(this.getAttribute("quantity"));
-    const oldPrice = this.getAttribute("oldPrice") || "0đ";
+    const quantity = parseInt(this.getAttribute("quantity"));
     let total = quantity * price;
     this.innerHTML = `
       <div class="space-y-6 border-b border-gray-400 border-solid">
@@ -86,18 +85,8 @@ class Cart extends HTMLElement {
       totalAmountElement.textContent = totalAmount + " đ";
     }
   }
-
-  async handleDeleteCart(productId, element) {
+handleDeleteCart(productId, element) {
     try {
-      const token = localStorage.getItem("token");
-
-      const res = await callApi.delete("cart", productId, token);
-
-      if (!res.ok) {
-        throw new Error("Xoá thất bại");
-      }
-
-      // Xoá phần tử trên giao diện nếu API thành công
       element.remove();
       console.log(`Đã xoá sản phẩm ID: ${productId}`);
     } catch (err) {

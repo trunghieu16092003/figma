@@ -2,8 +2,7 @@ import callApi from "../services/callApi.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    const token = localStorage.getItem("token");
-    const carts = await callApi.get("cart", token);
+    const carts = JSON.parse(localStorage.getItem("carts"));
     const container = document.querySelector(".cart-table");
 
     carts.forEach((cart) => {
