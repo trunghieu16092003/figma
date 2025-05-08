@@ -63,6 +63,7 @@ async function renderProducts(page = 1, searchValue = "") {
     productEl.setAttribute('name', product.name);
     productEl.setAttribute('price', product.price);
     productEl.setAttribute('oldPrice', product.oldPrice);
+    productEl.setAttribute("colors", JSON.stringify(product.color));
     productEl.setAttribute('img', product.img[0]);
     productEl.setAttribute('hoverImg', product.img[1] || product.img[0]);
     

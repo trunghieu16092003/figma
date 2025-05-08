@@ -18,15 +18,18 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="../components/CardProduct.js"></script>
     <script src="../components/Footer.js"></script>
     <script src="../components/Header.js"></script>
+    <script src="../components/ProductModal.js"></script>
   </head>
 
   <body>
     <app-header></app-header>
 
-    <div id="wrapper" class="relative container mx-auto px-4 sm:px-6 lg:px-8 mt-[67px] md:mt-[97px] z-0">
+    <div id="wrapper" class="relative container mx-auto px-4 sm:px-6 lg:px-8 mt-[67px] md:mt-[97px] mb-5 z-0">
       <div class="mb-5 text-xs">Trang chủ / <span>Áo thu đông nữ</span></div>
       <div>
         <div class="md:flex md:justify-between gap-5">
@@ -263,7 +266,7 @@
             ></div>
             <div
               id="pagination"
-              class="flex justify-center items-center space-x-2"
+              class="flex justify-center items-center space-x-2 mt-5"
             >
               <!-- Nút Previous -->
               <button
@@ -305,6 +308,8 @@
       </div>
     </div>
     <app-footer></app-footer>
+    <div id="product-modal-container"></div>
+    <!-- <product-modal></product-modal> -->
   </body>
   <script type="module" src="../renderComponent/renderProduct.js"></script>
   <script>

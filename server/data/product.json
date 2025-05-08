@@ -41,15 +41,15 @@
       "oldPrice": "900.000đ",
       "color": [
         {
-          "name": "red",
+          "name": "Đỏ",
           "code": "red"
         },
         {
-          "name": "yellow",
+          "name": "Vàng",
           "code": "yellow"
         },
         {
-          "name": "black",
+          "name": "Đen",
           "code": "black"
         }
       ],
@@ -95,15 +95,15 @@
       "oldPrice": "900.000đ",
       "color": [
         {
-          "name": "red",
+          "name": "Đỏ",
           "code": "red"
         },
         {
-          "name": "yellow",
+          "name": "Vàng",
           "code": "yellow"
         },
         {
-          "name": "black",
+          "name": "Đen",
           "code": "black"
         }
       ],

@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     carts.forEach((cart) => {
       const cartEl = document.createElement("app-cart");
       cartEl.setAttribute("id", cart.id);
+      cartEl.setAttribute("productId", cart.productId);
       cartEl.setAttribute("name", cart.name);
       cartEl.setAttribute("price", cart.price);
       cartEl.setAttribute("oldPrice", cart.oldPrice);

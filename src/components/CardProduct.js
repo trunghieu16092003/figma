@@ -100,18 +100,27 @@ class CardProduct extends HTMLElement {
   }
 
   showProductModal() {
-    const modal = document.getElementById('product-modal');
+    const container = document.querySelector("#product-modal-container");
     
     // Lấy thông tin sản phẩm từ card
-    const productName = this.getAttribute("name") || "Sản phẩm";
-    const productPrice = this.getAttribute("price") || "0đ";
-    const productImage = this.getAttribute("img") || "";
+    const id = this.getAttribute("id")
+    const name = this.getAttribute("name") || "Sản phẩm";
+    const price = this.getAttribute("price") || "0đ";
+    const image = this.getAttribute("img") || "";
+    const colors = JSON.parse(this.getAttribute("colors")) || "";
     
-    // Điền thông tin vào modal
-    document.getElementById('modal-product-name').textContent = productName;
-    document.getElementById('modal-product-price').textContent = productPrice;
-    document.getElementById('modal-product-image').src = productImage;
-    
+    container.innerHTML = '';
+    const productModalEl = document.createElement("product-modal");
+
+    productModalEl.setAttribute("id", id);
+    productModalEl.setAttribute("name", name);
+    productModalEl.setAttribute("price", price);
+    productModalEl.setAttribute("img", image);
+    productModalEl.setAttribute("colors", JSON.stringify(colors));
+
+    container.appendChild(productModalEl.cloneNode(true));
+    const modal = document.getElementById('product-modal');
+
     // Hiển thị modal
     modal.classList.remove('hidden');
     
@@ -126,12 +135,12 @@ class CardProduct extends HTMLElement {
     // Thêm sự kiện đóng modal
     const closeButton = document.getElementById('close-product-modal');
     closeButton.addEventListener('click', () => {
-      this.hideProductModal();
+      this.hideProductModal(); 
     });
     
     // Đóng khi click ra ngoài modal
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
+    container.addEventListener('click', (e) => {
+      if (e.target === container) {
         this.hideProductModal();
       }
     });

@@ -315,7 +315,8 @@ class ProductDetail extends HTMLElement {
 
     // Tạo đối tượng sản phẩm
     const product = {
-      id: productId,
+      id: Date.now(),
+      productId: productId,
       name: productName,
       price: productPrice,
       img: productImg,
@@ -330,7 +331,7 @@ class ProductDetail extends HTMLElement {
 
     // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
     const existingProductIndex = carts.findIndex(item => 
-      item.id === productId && 
+      item.productId === productId && 
       item.color === product.color && 
       item.size === product.size
     );
@@ -347,11 +348,17 @@ class ProductDetail extends HTMLElement {
     // Lưu lại vào localStorage
     localStorage.setItem('carts', JSON.stringify(carts));
 
-
-    // Nếu là nút Mua ngay thì chuyển hướng
     if (redirectToCart) {
       window.location.href = 'cart.html';
-    }
+    } else {
+      Swal.fire({
+        icon: 'success',
+        title: 'Đã thêm vào giỏ hàng!',
+        text: `${product.name} đã được thêm vào giỏ hàng.`,
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }    
   }
 }
 

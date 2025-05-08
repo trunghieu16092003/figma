@@ -12,6 +12,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -607,7 +608,7 @@
     </div>
     <app-footer></app-footer>
     <!-- Modal sản phẩm -->
-    <product-modal></product-modal>
+    <div id="product-modal-container"></div>
   </body>
   <script>
     const textBlock = document.getElementById("text-block");
@@ -640,41 +641,18 @@
     observer.observe(imageStack);
   </script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Xử lý body scroll khi modal mở
-      const body = document.body;
-      const modal = document.getElementById("product-modal");
-
-      const observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-          if (mutation.attributeName === "class") {
-            if (modal.classList.contains("hidden")) {
-              body.classList.remove("modal-open");
-            } else {
-              body.classList.add("modal-open");
-            }
-          }
-        });
-      });
-
-      observer.observe(modal, { attributes: true });
-    });
-  </script>
-  <script>
-    // Set the date we're counting down to (3 days from now)
     const countDownDate = new Date();
     countDownDate.setDate(countDownDate.getDate() + 3);
     countDownDate.setHours(23, 59, 59, 0);
 
-    // Update the count down every 1 second
+  
     const countdownTimer = setInterval(function () {
-      // Get today's date and time
+     
       const now = new Date().getTime();
 
-      // Find the distance between now and the count down date
       const distance = countDownDate - now;
 
-      // Time calculations
+     
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
         (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -682,7 +660,6 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      // Display the result
       document.getElementById("days").textContent = days
         .toString()
         .padStart(2, "0");
