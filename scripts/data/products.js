@@ -1,0 +1,162 @@
+const products = [
+  {
+    id: 1,
+    name: "Áo blazer nữ",
+    price: "350.000đ",
+    oldPrice: "500.000đ",
+    color: [
+      { name: "đỏ", code: "red" },
+      { name: "vàng", code: "yellow" },
+      { name: "xanh lá", code: "green" },
+    ],
+    img: [
+      "../../images/productIndex/product-detail-02-1.jpg",
+      "../../images/productIndex/product-detail-02-2.jpg",
+      "../../images/productIndex/product-detail-02-3.jpg",
+    ],
+    desc: "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+    care: "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời",
+    rate: [
+      {
+        id: 1,
+        number: 4,
+        comment: "Sản phẩm này rất đáng sử dụng, giao đúng giờ nữa",
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Áo nỉ nhung chất lụa",
+    price: "850.000đ",
+    oldPrice: "900.000đ",
+    color: [
+      { name: "Đỏ", code: "red" },
+      { name: "Vàng", code: "yellow" },
+      { name: "Đen", code: "black" },
+    ],
+    img: [
+      "../../images/productIndex/product-detail-01-1.jpg",
+      "../../images/productIndex/product-detail-01-2.jpg",
+      "../../images/productIndex/product-detail-01-3.jpg",
+    ],
+    desc: "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+    care: "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời",
+  },
+  {
+    id: 3,
+    name: "Áo vest công sở",
+    price: "850.000đ",
+    oldPrice: "900.000đ",
+    color: [
+      { name: "Be", code: "#F5F5DC" },
+      { name: "Ghi khói", code: "#708090" },
+    ],
+    img: [
+      "../../images/productIndex/product-detail-03-1.jpg",
+      "../../images/productIndex/product-detail-03-2.jpg",
+      "../../images/productIndex/product-detail-03-3.jpg",
+    ],
+    desc: "Áo Vest Sophia Elegance sở hữu dáng ôm tinh tế, tôn lên đường nét cơ thể, mang lại vẻ chỉn chu và quyến rũ. Phần cổ hai ve được cắt may tỉ mỉ, tạo nên nét sang trọng vượt thời gian.\n\n- Chất liệu Tuytsi cao cấp, mềm mại, thoáng mát và giữ phom dáng tốt\n\n- Thiết kế dáng ôm tinh tế, tôn lên đường nét thanh lịch của người mặc\n\n- Đường may sắc sảo, mang đến sự chỉn chu và chuyên nghiệp\n\n- Dễ phối đồ với các kiểu trang phục như quần tây, chân váy hoặc váy liền thân\n\n- Phù hợp cho nhiều dịp: công sở, họp hành, sự kiện hoặc các buổi gặp gỡ quan trọng",
+    care: "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời",
+  },
+  {
+    id: 4,
+    name: "Áo sơ mi Bamboo Regular tay ngắn",
+    price: "300.000đ",
+    oldPrice: "900.000đ",
+    color: [
+      { name: " Xanh lơ", code: "#6acccf" },
+      { name: "Xanh dương đậm", code: "#2c3959" },
+    ],
+    img: [
+      "../../images/productIndex/product-detail-04-1.jpg",
+      "../../images/productIndex/product-detail-04-2.jpg",
+      "../../images/productIndex/product-detail-04-3.jpg",
+    ],
+    desc: "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+    care: "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời",
+  },
+  {
+    id: 5,
+    name: "Đầm đi chơi",
+    price: "700.000đ",
+    oldPrice: "1.400.000đ",
+    color: [{ name: "Xanh lá", code: "#006400" }],
+    img: [
+      "../../images/productIndex/product-detail-05-1.jpg",
+      "../../images/productIndex/product-detail-05-2.jpg",
+      "../../images/productIndex/product-detail-05-3.jpg",
+    ],
+    desc: "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+    care: "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời",
+  },
+  {
+    id: 6,
+    name: "Quần jeans nam ống rộng lưng thun",
+    price: "1.499.499đ",
+    oldPrice: "1.600.000đ",
+    color: [{ name: "Ghi khói", code: "#708090" }],
+    img: [
+      "../../images/productIndex/product-detail-06-1.jpg",
+      "../../images/productIndex/product-detail-06-2.jpg",
+      "../../images/productIndex/product-detail-06-3.jpg",
+    ],
+    desc: "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+    care: "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời",
+  },
+  {
+    id: 7,
+    name: "Đầm lụa đuôi cá phối nơ",
+    price: "845.000đ",
+    oldPrice: "1.690.000đ",
+    color: [
+      { name: "Be", code: "#c5a781" },
+      { name: "Hồng tím", code: "#b6858f" },
+      { name: "Đen", code: "#000000" },
+    ],
+    img: [
+      "../../images/productIndex/product-detail-07-1.jpg",
+      "../../images/productIndex/product-detail-07-2.jpg",
+      "../../images/productIndex/product-detail-07-3.jpg",
+    ],
+    desc: "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+    care: "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời",
+  },
+  {
+    id: 8,
+    name: "Quần baggy phối phụ kiện",
+    price: "545.000đ",
+    oldPrice: "900.000đ",
+    color: [
+      { name: "Đen", code: "#000000" },
+      { name: "Be vàng", code: "#a3784e" },
+    ],
+    img: [
+      "../../images/productIndex/product-detail-08-1.jpg",
+      "../../images/productIndex/product-detail-08-2.jpg",
+      "../../images/productIndex/product-detail-08-3.jpg",
+    ],
+    desc: "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+    care: "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời",
+  },
+  {
+    id: 9,
+    name: "Áo BLAZER Light stars",
+    price: "850.000đ",
+    oldPrice: "1.790.000đ",
+    color: [
+      { name: "Be", code: "#c6a881" },
+      { name: "Cam đỏ", code: "#c13d31" },
+      { name: "Hồng kẹo", code: "#ec6794" },
+    ],
+    img: [
+      "../../images/productIndex/product-detail-09-1.jpg",
+      "../../images/productIndex/product-detail-09-2.jpg",
+      "../../images/productIndex/product-detail-09-3.jpg",
+    ],
+    desc: "Hôm nay là một ngày thư giãn khi chúng tôi vui lòng thông báo đã có 1 sản phẩm mới nhất xuất hiện. Mang thông điệp cùng niềm khát khao cháy bỏng",
+    care: "Bảo quản ở nơi nhiệt độ khô ráo, thoáng nước, tránh tiếp xúc ánh nắng mặt trời",
+  },
+];
+
+export default products;

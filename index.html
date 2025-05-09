@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../scripts/components/CardProduct.js"></script>
+    <script src="../scripts/components/Footer.js"></script>
+    <script src="../scripts/components/Header.js"></script>
+    <script src="../scripts/components/ProductModal.js"></script>
+  </head>
+
+  <body>
+    <app-header></app-header>
+
+    <div class="hidden md:block banner mt-[97px]">
+      <div class="overlap">
+        <div class="frame">
+          <div class="frame-wrapper">
+            <div class="div">
+              <img src="./images/banner/banner1.png" alt="" srcset="" />
+            </div>
+          </div>
+          <div class="overlap-group">
+            <div class="div-wrapper">
+              <div class="frame-3">
+                <img src="./images/banner/banner2.png" alt="" srcset="" />
+              </div>
+            </div>
+          </div>
+          <div class="frame-4">
+            <div class="frame-5">
+              <img src="./images/banner/banner3.png" alt="" srcset="" />
+            </div>
+          </div>
+        </div>
+        <div class="frame-6">
+          <img src="./images/banner/main-banner.png" alt="" />
+        </div>
+      </div>
+      <div class="frame-7">
+        <p class="text-wrapper">Bộ sưu tập xuân hè mới nhất 2025</p>
+        <div class="frame-8">
+          <div class="sale-of">
+            <p>Sales</p>
+            <p>of</p>
+          </div>
+          <div class="text-wrapper-2">50%</div>
+        </div>
+        <p class="p">Chỉ có trong tháng 5</p>
+        <div class="btn"><span>Xem ngay</span></div>
+      </div>
+    </div>
+    <div id="wrapper" class="mt-[66px] md:mt-0">
+      <div class="product py-10 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="best-seller">
+          <h1 class="mb-4 md:mb-6 text-xl md:text-3xl font-bold">
+            Sản phẩm bán chạy
+          </h1>
+          <div
+            class="card-product-container grid grid-cols-2 md:grid-cols-4 gap-4"
+            data-product="product"
+          ></div>
+          <div class="flex justify-center mt-8">
+            <button
+              id="loadMoreBtn"
+              class="inline-flex items-center px-6 py-3 bg-[#AD6E23] text-white font-medium rounded-full hover:bg-[#8a561c] transition-colors shadow-md hover:shadow-lg"
+            >
+              Xem thêm sản phẩm
+              <i class="fa-solid fa-chevron-down ml-2"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="featured-product md:px-10 md:pt-[176px] pb-10 h-auto py-20">
+        <div
+          class="flex gap-8 items-center container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div
+            class="w-full md:w-1/2 px-4 md:px-0 opacity-0 translate-y-16 transition-all duration-700 ease-in-out"
+            id="text-block"
+          >
+            <h2 class="md:text-4xl font-bold text-gray-800 mb-6">
+              Sản phẩm nổi bật
+            </h2>
+            <h1 class="font-semibold mb-2 text-[40px] md:text-[60px]">
+              Áo len họa tiết mây – Every Cloud Intarsia
+            </h1>
+            <p class="mb-4 text-gray-600 leading-loose">
+              Chào đón bầu trời xanh rực rỡ! Chiếc áo len 100% cotton này mang
+              đến cảm giác thoải mái, mát mẻ với họa tiết mây bồng bềnh trên nền
+              trời xanh nổi bật. Thiết kế dáng cổ điển, cổ tròn, bo gấu và tay
+              áo tinh tế – hoàn hảo để bạn vừa ấm áp vừa phong cách.
+            </p>
+            <button
+              class="mt-2 px-5 py-2 bg-black text-white rounded-lg text-xl font-bold hover:opacity-80 transition"
+            >
+              Mua ngay
+            </button>
+          </div>
+
+          <div
+            class="hidden md:flex w-1/2 items-center relative justify-center ml-0 sm:ml-[10%] lg:ml-[20%]"
+            id="image-stack"
+          >
+            <img
+              src="./images/featured/feature_1.jpg"
+              alt=""
+              class="stacked-img absolute top-0 left-0 rounded-xl z-30 h-[220px] transition-all duration-700 ease-in-out"
+            />
+            <img
+              src="./images/featured/feature_2.jpg"
+              alt=""
+              class="stacked-img absolute top-0 left-0 rounded-xl z-20 h-[290px] transition-all duration-700 ease-in-out"
+            />
+            <img
+              src="./images/featured/feature_3.jpg"
+              alt=""
+              class="stacked-img absolute top-0 left-0 rounded-xl z-10 h-[260px] transition-all duration-700 ease-in-out"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="relative w-auto h-screen overflow-hidden hidden md:block">
+        <!-- VIDEO BACKGROUND -->
+        <video
+          class="absolute w-auto h-auto object-cover z-0"
+          autoplay
+          muted
+          loop
+          playsinline
+        >
+          <source src="./images/video/video.mp4" type="video/mp4" />
+        </video>
+        <div
+          class="absolute inset-0 w-auto h-auto bg-black/40 z-10 opacity-80"
+        ></div>
+
+        <div
+          class="relative z-20 flex flex-col items-center justify-center h-full gap-4"
+        >
+          <h1 class="text-white text-4xl md:text-6xl font-bold text-center">
+            Chào mừng bạn đến với mùa hè 2025
+          </h1>
+          <p class="text-white text-lg md:text-2xl px-6 py-3 rounded-xl">
+            Khám phá bộ sưu tập mới với phong cách tươi sáng, năng động – chỉ có
+            trong mùa hè này!
+          </p>
+          <button
+            class="p-4 bg-black text-white rounded-lg cursor-pointer text-xl font-bold hover:opacity-80"
+          >
+            Khám phá ngay
+          </button>
+        </div>
+      </div>
+      <section class="relative py-12 md:py-16 bg-[#f8f3ed]">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row items-center">
+            <!-- Hình ảnh bên trái -->
+            <div class="w-full md:w-1/2 mb-8 md:mb-0 md:pr-8">
+              <div
+                class="relative overflow-hidden rounded-xl shadow-2xl h-64 md:h-96"
+              >
+                <img
+                  src="./images/productIndex/product1.jpg"
+                  alt="Ưu đãi đặc biệt"
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-black/20 flex items-center justify-center"
+                >
+                  <span
+                    class="text-white text-xl md:text-2xl font-bold bg-[#AD6E23]/90 px-4 py-2 rounded-lg"
+                  >
+                    SALE UP TO 50%
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bộ đếm bên phải -->
+            <div class="w-full md:w-1/2 text-[#3a3a3a]">
+              <!-- Thay text-white bằng text-[#3a3a3a] -->
+              <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[#AD6E23]">
+                <!-- Thêm màu chủ đạo cho tiêu đề -->
+                Ưu đãi kết thúc sau:
+              </h2>
+              <p class="text-lg mb-6 md:mb-8 text-gray-600">
+                <!-- Thay opacity bằng màu xám -->
+                Đừng bỏ lỡ cơ hội mua sắm với giá tốt nhất trong năm!
+              </p>
+
+              <div class="grid grid-cols-4 gap-3 md:gap-4 max-w-md">
+                <!-- Ngày -->
+                <div class="flex flex-col items-center">
+                  <div
+                    class="bg-[#d78528] rounded-lg justify-center flex font-semibold w-full py-4 md:py-5"
+                  >
+                    <!-- Đổi background thành màu chủ đạo -->
+                    <span id="days" class="countdown-number text-white"
+                      >00</span
+                    >
+                    <!-- Thêm text-white -->
+                  </div>
+                  <span class="text-sm mt-2 text-gray-600">Ngày</span>
+                  <!-- Thay opacity bằng màu xám -->
+                </div>
+
+                <!-- Giờ -->
+                <div class="flex flex-col items-center">
+                  <div
+                    class="bg-[#d78528] rounded-lg justify-center flex font-semibold w-full py-4 md:py-5"
+                  >
+                    <span id="hours" class="countdown-number text-white"
+                      >00</span
+                    >
+                  </div>
+                  <span class="text-sm mt-2 text-gray-600">Giờ</span>
+                </div>
+
+                <!-- Phút -->
+                <div class="flex flex-col items-center">
+                  <div
+                    class="bg-[#d78528] rounded-lg justify-center flex font-semibold w-full py-4 md:py-5"
+                  >
+                    <span id="minutes" class="countdown-number text-white"
+                      >00</span
+                    >
+                  </div>
+                  <span class="text-sm mt-2 text-gray-600">Phút</span>
+                </div>
+
+                <!-- Giây -->
+                <div class="flex flex-col items-center">
+                  <div
+                    class="bg-[#d78528] rounded-lg justify-center flex font-semibold w-full py-4 md:py-5"
+                  >
+                    <span id="seconds" class="countdown-number text-white"
+                      >00</span
+                    >
+                  </div>
+                  <span class="text-sm mt-2 text-gray-600">Giây</span>
+                </div>
+              </div>
+
+              <button
+                class="mt-8 px-8 py-3 bg-[#AD6E23] text-white font-bold rounded-lg hover:bg-[#8a561c] transition-all duration-300"
+              >
+                Mua ngay <i class="fa-solid fa-arrow-right ml-2"></i>
+              </button>
+
+              <div class="mt-6 flex items-center text-sm text-gray-600">
+                <i class="fa-solid fa-gift mr-2 text-[#AD6E23]"></i>
+                <span>Miễn phí vận chuyển cho đơn hàng trên 500.000đ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-16">
+        <!-- Đổi background sang màu kem nhạt -->
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Header section -->
+          <div class="text-center mb-14">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#3a3a3a] mb-3">
+              Bài viết mới nhất
+            </h2>
+            <p class="text-[#AD6E23] font-medium">
+              Cập nhật xu hướng và bí quyết thời trang mới nhất
+            </p>
+            <div class="w-20 h-1 bg-[#AD6E23] mx-auto mt-4"></div>
+          </div>
+
+          <!-- Grid layout -->
+          <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <!-- Post 1 -->
+            <article
+              class="group overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+            >
+              <div class="relative overflow-hidden h-60">
+                <img
+                  src="./images/posts/post1.png"
+                  alt="Xu hướng thời trang"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
+                ></div>
+                <span
+                  class="absolute top-4 right-4 bg-[#AD6E23] text-white text-xs font-semibold px-3 py-1 rounded-full"
+                  >MỚI</span
+                >
+              </div>
+
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <span>12 Tháng 4, 2025</span>
+                  <span class="mx-2">•</span>
+                  <span>Tuyết Nhi</span>
+                </div>
+
+                <h3
+                  class="text-xl font-bold text-gray-800 mb-3 leading-tight hover:text-[#AD6E23] transition-colors"
+                >
+                  Xu hướng thời trang hè 2025
+                </h3>
+
+                <p class="text-gray-600 mb-4 line-clamp-2">
+                  Khám phá những phong cách mới đang gây sốt, từ sắc màu rực rỡ
+                  đến thiết kế phá cách...
+                </p>
+
+                <a
+                  href="#"
+                  class="inline-flex items-center text-[#AD6E23] font-medium hover:text-[#8a561c] transition-colors"
+                >
+                  Đọc tiếp
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 ml-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article
+              class="group overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+            >
+              <div class="relative overflow-hidden h-60">
+                <img
+                  src="./images/posts/post2.jpg"
+                  alt="Item mùa xuân"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
+                ></div>
+              </div>
+
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <span>8 Tháng 4, 2025</span>
+                  <span class="mx-2">•</span>
+                  <span>Ngọc Trâm</span>
+                </div>
+
+                <h3
+                  class="text-xl font-bold text-gray-800 mb-3 leading-tight hover:text-[#AD6E23] transition-colors"
+                >
+                  Top 5 item không thể thiếu mùa xuân
+                </h3>
+
+                <p class="text-gray-600 mb-4 line-clamp-2">
+                  Bạn đã sẵn sàng để tỏa sáng với những món đồ "must-have" trong
+                  mùa xuân này chưa?
+                </p>
+
+                <a
+                  href="#"
+                  class="inline-flex items-center text-[#AD6E23] font-medium hover:text-[#8a561c] transition-colors"
+                >
+                  Đọc tiếp
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 ml-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article
+              class="group overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+            >
+              <div class="relative overflow-hidden h-60">
+                <img
+                  src="./images/posts/post3.jpg"
+                  alt="Hậu trường chụp hình"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
+                ></div>
+                <span
+                  class="absolute top-4 left-4 bg-white text-[#AD6E23] text-xs font-semibold px-3 py-1 rounded-full"
+                  >HOT</span
+                >
+              </div>
+
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <span>2 Tháng 4, 2025</span>
+                  <span class="mx-2">•</span>
+                  <span>Thanh Duy</span>
+                </div>
+
+                <h3
+                  class="text-xl font-bold text-gray-800 mb-3 leading-tight hover:text-[#AD6E23] transition-colors"
+                >
+                  Bên trong hậu trường buổi chụp hình
+                </h3>
+
+                <p class="text-gray-600 mb-4 line-clamp-2">
+                  Một cái nhìn thú vị vào cách tạo nên những bức ảnh thời trang
+                  đỉnh cao từ đội ngũ chuyên nghiệp.
+                </p>
+
+                <a
+                  href="#"
+                  class="inline-flex items-center text-[#AD6E23] font-medium hover:text-[#8a561c] transition-colors"
+                >
+                  Đọc tiếp
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 ml-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Post 4 -->
+            <article
+              class="group overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+            >
+              <div class="relative overflow-hidden h-60">
+                <img
+                  src="./images/posts/post4.jpeg"
+                  alt="Bộ sưu tập mới"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"
+                ></div>
+              </div>
+
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <span>28 Tháng 3, 2025</span>
+                  <span class="mx-2">•</span>
+                  <span>Minh Anh</span>
+                </div>
+
+                <h3
+                  class="text-xl font-bold text-gray-800 mb-3 leading-tight hover:text-[#AD6E23] transition-colors"
+                >
+                  Khám phá bộ sưu tập Xuân-Hè 2025
+                </h3>
+
+                <p class="text-gray-600 mb-4 line-clamp-2">
+                  Những thiết kế độc đáo lấy cảm hứng từ thiên nhiên và văn hóa
+                  bản địa.
+                </p>
+
+                <a
+                  href="#"
+                  class="inline-flex items-center text-[#AD6E23] font-medium hover:text-[#8a561c] transition-colors"
+                >
+                  Đọc tiếp
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 ml-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Xem thêm button -->
+          <div class="text-center mt-12">
+            <a
+              href="#"
+              class="inline-block px-8 py-3 bg-[#AD6E23] text-white font-semibold rounded-full hover:bg-[#8a561c] transition-colors shadow-md hover:shadow-lg"
+            >
+              Xem tất cả bài viết
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="py-16 bg-gradient-to-r from-amber-50 to-orange-50">
+        <div class="container mx-auto px-4">
+          <div class="max-w-4xl mx-auto text-center">
+            <!-- Tiêu đề -->
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Đăng ký nhận ưu đãi độc quyền
+            </h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+              Nhận thông báo về sản phẩm mới, khuyến mãi đặc biệt và nhiều hơn
+              nữa!
+            </p>
+
+            <!-- Form đăng ký -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <input
+                type="email"
+                placeholder="Nhập email của bạn..."
+                class="flex-grow px-6 py-3 rounded-full border border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                required
+              />
+              <button
+                type="submit"
+                class="px-8 py-3 bg-[#AD6E23] text-white font-medium rounded-full hover:bg-[#8a561c] transition-all transform hover:scale-105 shadow-lg hover:shadow-orange-200"
+              >
+                Đăng ký ngay
+                <i class="fa-solid fa-paper-plane ml-2"></i>
+              </button>
+            </div>
+
+            <!-- Cam kết bảo mật -->
+            <p
+              class="text-sm text-gray-500 mt-6 flex items-center justify-center"
+            >
+              <i class="fa-solid fa-lock mr-2 text-orange-400"></i>
+              Chúng tôi cam kết không spam email của bạn
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <app-footer></app-footer>
+    <!-- Modal sản phẩm -->
+    <div id="product-modal-container"></div>
+  </body>
+  <script>
+    const textBlock = document.getElementById("text-block");
+    const imageStack = document.getElementById("image-stack");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target.id === "text-block") {
+              entry.target.classList.remove("opacity-0", "translate-y-16");
+              entry.target.classList.add("opacity-100", "translate-y-0");
+            }
+
+            if (entry.target.id === "image-stack") {
+              const images = entry.target.querySelectorAll(".stacked-img");
+              images[1].style.transform = "translateX(60%) translateY(-60%)";
+              images[2].style.transform =
+                "translateX(17rem) translateY(-18rem)";
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    observer.observe(textBlock);
+    observer.observe(imageStack);
+  </script>
+  <script>
+    const countDownDate = new Date();
+    countDownDate.setDate(countDownDate.getDate() + 3);
+    countDownDate.setHours(23, 59, 59, 0);
+
+    const countdownTimer = setInterval(function () {
+      const now = new Date().getTime();
+
+      const distance = countDownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days
+        .toString()
+        .padStart(2, "0");
+      document.getElementById("hours").textContent = hours
+        .toString()
+        .padStart(2, "0");
+      document.getElementById("minutes").textContent = minutes
+        .toString()
+        .padStart(2, "0");
+      document.getElementById("seconds").textContent = seconds
+        .toString()
+        .padStart(2, "0");
+
+      // If countdown finished
+      if (distance < 0) {
+        clearInterval(countdownTimer);
+        document.querySelectorAll(".countdown-number").forEach((el) => {
+          el.textContent = "00";
+        });
+      }
+    }, 1000);
+  </script>
+
+  <script
+    type="module"
+    src="./scripts/renderComponent/renderProduct.js"
+  ></script>
+</html>
