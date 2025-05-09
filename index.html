@@ -2,9 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../output.css" />
-    <link rel="stylesheet" href="../../global.css" />
-    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -12,17 +11,17 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <script src="../components/CardProduct.js"></script>
-    <script src="../components/Footer.js"></script>
-    <script src="../components/Header.js"></script>
-    <script src="../components/ProductModal.js"></script>
+    <script src="../scripts/components/CardProduct.js"></script>
+    <script src="../scripts/components/Footer.js"></script>
+    <script src="../scripts/components/Header.js"></script>
+    <script src="../scripts/components/ProductModal.js"></script>
   </head>
 
   <body>
@@ -33,24 +32,24 @@
         <div class="frame">
           <div class="frame-wrapper">
             <div class="div">
-              <img src="../../images/banner/banner1.png" alt="" srcset="" />
+              <img src="./images/banner/banner1.png" alt="" srcset="" />
             </div>
           </div>
           <div class="overlap-group">
             <div class="div-wrapper">
               <div class="frame-3">
-                <img src="../../images/banner/banner2.png" alt="" srcset="" />
+                <img src="./images/banner/banner2.png" alt="" srcset="" />
               </div>
             </div>
           </div>
           <div class="frame-4">
             <div class="frame-5">
-              <img src="../../images/banner/banner3.png" alt="" srcset="" />
+              <img src="./images/banner/banner3.png" alt="" srcset="" />
             </div>
           </div>
         </div>
         <div class="frame-6">
-          <img src="../../images/banner/main-banner.png" alt="" />
+          <img src="./images/banner/main-banner.png" alt="" />
         </div>
       </div>
       <div class="frame-7">
@@ -76,51 +75,19 @@
             class="card-product-container grid grid-cols-2 md:grid-cols-4 gap-4"
             data-product="product"
           ></div>
-          <div
-            id="pagination"
-            class="flex justify-center items-center space-x-2 mt-4"
-          >
-            <!-- Nút Previous -->
+          <div class="flex justify-center mt-8">
             <button
-              id="prev"
-              class="border border-[#AD6E23] px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 disabled:opacity-50"
-              disabled
+              id="loadMoreBtn"
+              class="inline-flex items-center px-6 py-3 bg-[#AD6E23] text-white font-medium rounded-full hover:bg-[#8a561c] transition-colors shadow-md hover:shadow-lg"
             >
-              <i class="fa-solid fa-angles-left"></i>
-            </button>
-
-            <!-- Phân trang: Hiển thị số trang cho cả Mobile và Desktop -->
-            <button
-              class="border border-[#AD6E23] page-number px-4 py-2 bg-white text-gray-700 rounded-md cursor-pointer hover:bg-gray-300 active:bg-blue-500"
-            >
-              1
-            </button>
-            <button
-              class="border border-[#AD6E23] page-number px-4 py-2 bg-white text-gray-700 rounded-md cursor-pointer hover:bg-gray-300 active:bg-blue-500"
-            >
-              2
-            </button>
-            <span class="inline-block px-4 py-2 text-gray-700">...</span>
-            <button
-              class="border border-[#AD6E23] page-number px-4 py-2 bg-white text-gray-700 rounded-md cursor-pointer hover:bg-gray-300 active:bg-blue-500"
-            >
-              6
-            </button>
-
-            <!-- Nút Next -->
-            <button
-              id="next"
-              class="border border-[#AD6E23] px-4 py-2 bg-white text-gray-700 rounded-md hover:bg-gray-300 disabled:opacity-50"
-            >
-              <i class="fa-solid fa-angles-right"></i>
+              Xem thêm sản phẩm
+              <i class="fa-solid fa-chevron-down ml-2"></i>
             </button>
           </div>
         </div>
       </div>
 
-      <div
-        class="featured-product md:px-10 md:pt-[176px] pb-10 h-auto md:h-[700px] py-20"
-      >
+      <div class="featured-product md:px-10 md:pt-[176px] pb-10 h-auto py-20">
         <div
           class="flex gap-8 items-center container mx-auto px-4 sm:px-6 lg:px-8"
         >
@@ -152,17 +119,17 @@
             id="image-stack"
           >
             <img
-              src="../../images/featured/feature_1.jpg"
+              src="./images/featured/feature_1.jpg"
               alt=""
               class="stacked-img absolute top-0 left-0 rounded-xl z-30 h-[220px] transition-all duration-700 ease-in-out"
             />
             <img
-              src="../../images/featured/feature_2.jpg"
+              src="./images/featured/feature_2.jpg"
               alt=""
               class="stacked-img absolute top-0 left-0 rounded-xl z-20 h-[290px] transition-all duration-700 ease-in-out"
             />
             <img
-              src="../../images/featured/feature_3.jpg"
+              src="./images/featured/feature_3.jpg"
               alt=""
               class="stacked-img absolute top-0 left-0 rounded-xl z-10 h-[260px] transition-all duration-700 ease-in-out"
             />
@@ -179,7 +146,7 @@
           loop
           playsinline
         >
-          <source src="../../images/video/video.mp4" type="video/mp4" />
+          <source src="./images/video/video.mp4" type="video/mp4" />
         </video>
         <div
           class="absolute inset-0 w-auto h-auto bg-black/40 z-10 opacity-80"
@@ -211,7 +178,7 @@
                 class="relative overflow-hidden rounded-xl shadow-2xl h-64 md:h-96"
               >
                 <img
-                  src="../../images/productIndex/product1.jpg"
+                  src="./images/productIndex/product1.jpg"
                   alt="Ưu đãi đặc biệt"
                   class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
@@ -328,7 +295,7 @@
             >
               <div class="relative overflow-hidden h-60">
                 <img
-                  src="https://source.unsplash.com/600x400/?fashion,trend"
+                  src="./images/posts/post1.png"
                   alt="Xu hướng thời trang"
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -388,7 +355,7 @@
             >
               <div class="relative overflow-hidden h-60">
                 <img
-                  src="https://source.unsplash.com/600x400/?spring,fashion"
+                  src="./images/posts/post2.jpg"
                   alt="Item mùa xuân"
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -444,7 +411,7 @@
             >
               <div class="relative overflow-hidden h-60">
                 <img
-                  src="https://source.unsplash.com/600x400/?photoshoot,model"
+                  src="./images/posts/post3.jpg"
                   alt="Hậu trường chụp hình"
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -504,7 +471,7 @@
             >
               <div class="relative overflow-hidden h-60">
                 <img
-                  src="../../images/productIndex/product1.jpg"
+                  src="./images/posts/post4.jpeg"
                   alt="Bộ sưu tập mới"
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -645,14 +612,11 @@
     countDownDate.setDate(countDownDate.getDate() + 3);
     countDownDate.setHours(23, 59, 59, 0);
 
-  
     const countdownTimer = setInterval(function () {
-     
       const now = new Date().getTime();
 
       const distance = countDownDate - now;
 
-     
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
         (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -683,5 +647,8 @@
     }, 1000);
   </script>
 
-  <script type="module" src="../renderComponent/renderProduct.js"></script>
+  <script
+    type="module"
+    src="./scripts/renderComponent/renderProduct.js"
+  ></script>
 </html>

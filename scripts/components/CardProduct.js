@@ -58,7 +58,6 @@ class CardProduct extends HTMLElement {
     container.addEventListener("mouseenter", () => (imgEl.src = hoverSrc));
     container.addEventListener("mouseleave", () => (imgEl.src = defaultSrc));
 
-    // Các phần tử cần click
     // Ngăn sự kiện click từ icon không bị lan lên container
     const icons = this.querySelectorAll(".icon-img-hover i");
     icons.forEach((icon) => {
@@ -101,15 +100,15 @@ class CardProduct extends HTMLElement {
 
   showProductModal() {
     const container = document.querySelector("#product-modal-container");
-    
+
     // Lấy thông tin sản phẩm từ card
-    const id = this.getAttribute("id")
+    const id = this.getAttribute("id");
     const name = this.getAttribute("name") || "Sản phẩm";
     const price = this.getAttribute("price") || "0đ";
     const image = this.getAttribute("img") || "";
     const colors = JSON.parse(this.getAttribute("colors")) || "";
-    
-    container.innerHTML = '';
+
+    container.innerHTML = "";
     const productModalEl = document.createElement("product-modal");
 
     productModalEl.setAttribute("id", id);
@@ -119,27 +118,27 @@ class CardProduct extends HTMLElement {
     productModalEl.setAttribute("colors", JSON.stringify(colors));
 
     container.appendChild(productModalEl.cloneNode(true));
-    const modal = document.getElementById('product-modal');
+    const modal = document.getElementById("product-modal");
 
     // Hiển thị modal
-    modal.classList.remove('hidden');
-    
+    modal.classList.remove("hidden");
+
     // Thêm hiệu ứng slide up trên mobile
     if (window.innerWidth < 768) {
       setTimeout(() => {
-        const modalContent = modal.querySelector('.absolute.bottom-0');
-        modalContent.classList.remove('translate-y-full');
+        const modalContent = modal.querySelector(".absolute.bottom-0");
+        modalContent.classList.remove("translate-y-full");
       }, 10);
     }
-    
+
     // Thêm sự kiện đóng modal
-    const closeButton = document.getElementById('close-product-modal');
-    closeButton.addEventListener('click', () => {
-      this.hideProductModal(); 
+    const closeButton = document.getElementById("close-product-modal");
+    closeButton.addEventListener("click", () => {
+      this.hideProductModal();
     });
-    
+
     // Đóng khi click ra ngoài modal
-    container.addEventListener('click', (e) => {
+    container.addEventListener("click", (e) => {
       if (e.target === container) {
         this.hideProductModal();
       }
@@ -147,16 +146,16 @@ class CardProduct extends HTMLElement {
   }
 
   hideProductModal() {
-    const modal = document.getElementById('product-modal');
-    const modalContent = modal.querySelector('.absolute.bottom-0');
-    
+    const modal = document.getElementById("product-modal");
+    const modalContent = modal.querySelector(".absolute.bottom-0");
+
     if (window.innerWidth < 768) {
-      modalContent.classList.add('translate-y-full');
+      modalContent.classList.add("translate-y-full");
       setTimeout(() => {
-        modal.classList.add('hidden');
+        modal.classList.add("hidden");
       }, 300);
     } else {
-      modal.classList.add('hidden');
+      modal.classList.add("hidden");
     }
   }
 }

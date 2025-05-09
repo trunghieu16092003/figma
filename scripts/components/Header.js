@@ -10,7 +10,7 @@ class Header extends HTMLElement {
           </div>
 
           <div class="absolute left-1/2 transform -translate-x-1/2 text-xl w-16 h-16 font-bold text-orange-700 md:static md:transform-none">
-            <a href="./index.html"><img src="../../images/logo/logo.png" /></a>
+            <a href="../../index.html"><img src="../../images/logo/logo.png" /></a>
           </div>
 
           <nav id="main-nav" class="hidden fixed top-0 left-0 w-3/4 h-full bg-white px-4 flex-col space-y-4 text-sm text-gray-700 font-medium shadow-md z-30 md:static md:flex md:flex-row md:space-y-0 md:bg-transparent md:shadow-none md:w-auto md:h-auto md:items-center">
@@ -20,15 +20,15 @@ class Header extends HTMLElement {
               <button id="close-menu" class="text-2xl text-gray-600">&times;</button>
             </div>
 
-            <a href="./" class="hover:text-white block md:inline-block px-4 py-2 hover:bg-[#AD6E23]">Trang chủ</a>
+            <a href="../../index.html" class="hover:text-white block md:inline-block px-4 py-2 hover:bg-[#AD6E23]">Trang chủ</a>
 
             <div class="relative group md:cursor-pointer">
               <a href="#" id="product-toggle" class="group-hover:text-white px-4 py-2 group-hover:bg-[#AD6E23] block md:inline-block md:ml-0">Sản phẩm</a>
               <ul id="product-submenu" class="hidden flex-col space-y-2 mt-2 md:absolute md:top-full md:left-0 md:mt-0 pt-2 md:bg-white md:shadow-lg md:rounded-md md:space-y-1 md:min-w-[200px] md:hidden group-hover:block z-40">
-                <li><a href="./category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Thời trang nữ</a></li>
-                <li><a href="./category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Thời trang nam</a></li>
-                <li><a href="./category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Phụ kiện</a></li>
-                <li><a href="./category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Bộ sưu tập mới nhất</a></li>
+                <li><a href="./pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Thời trang nữ</a></li>
+                <li><a href="./pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Thời trang nam</a></li>
+                <li><a href="./pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Phụ kiện</a></li>
+                <li><a href="./pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Bộ sưu tập mới nhất</a></li>
               </ul>
             </div>
 
@@ -106,9 +106,11 @@ class Header extends HTMLElement {
     const searchToggle = this.querySelector("#search-toggle");
     const searchModal = this.querySelector("#search-modal");
     const closeSearch = this.querySelector("#close-search");
-    
+
     // Form search
-    const desktopSearchForm = this.querySelector("form.relative.hidden.md\\:block");
+    const desktopSearchForm = this.querySelector(
+      "form.relative.hidden.md\\:block"
+    );
     const desktopSearchInput = desktopSearchForm?.querySelector("input");
     const mobileSearchForm = searchModal.querySelector("form");
     const mobileSearchInput = mobileSearchForm.querySelector("input");
@@ -136,7 +138,7 @@ class Header extends HTMLElement {
 
     // Sự kiện cho nút menu toggle
     toggle.addEventListener("click", toggleMenu);
-    
+
     // Sự kiện cho nút đóng menu
     closeMenuBtn.addEventListener("click", toggleMenu);
 
@@ -167,7 +169,7 @@ class Header extends HTMLElement {
 
     // Xử lý giỏ hàng
     cartToggle.addEventListener("click", () => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (!token) {
         this.showLoginAlert();
         return;
@@ -183,7 +185,7 @@ class Header extends HTMLElement {
       } else {
         cartModal.classList.toggle("hidden");
       }
-      
+
       this.loadCartItems();
     });
 
@@ -209,10 +211,10 @@ class Header extends HTMLElement {
   openSearchModal() {
     const searchModal = this.querySelector("#search-modal");
     const overlay = this.querySelector("#overlay");
-    
+
     searchModal.classList.remove("hidden");
     overlay.classList.remove("hidden");
-    
+
     setTimeout(() => {
       const input = searchModal.querySelector("input");
       input.focus();
@@ -222,7 +224,7 @@ class Header extends HTMLElement {
   closeSearchModal() {
     const searchModal = this.querySelector("#search-modal");
     const overlay = this.querySelector("#overlay");
-    
+
     searchModal.classList.add("hidden");
     overlay.classList.add("hidden");
   }
@@ -235,7 +237,8 @@ class Header extends HTMLElement {
 
     if (email) {
       if (accountText) {
-        const displayEmail = email.length > 7 ? email.slice(0, 7) + "..." : email;
+        const displayEmail =
+          email.length > 7 ? email.slice(0, 7) + "..." : email;
         accountText.textContent = displayEmail;
       }
 
@@ -245,39 +248,44 @@ class Header extends HTMLElement {
           <a href="#" id="logout-btn" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng xuất</a>
         `;
 
-        dropdownMenu.querySelector("#logout-btn").addEventListener("click", (e) => {
-          e.preventDefault();
-          localStorage.removeItem("email");
-          location.reload();
-        });
+        dropdownMenu
+          .querySelector("#logout-btn")
+          .addEventListener("click", (e) => {
+            e.preventDefault();
+            localStorage.removeItem("email");
+            location.reload();
+          });
       }
     }
   }
 
   showLoginAlert() {
-    const alertDiv = document.createElement('div');
-    alertDiv.className = 'fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-fade-in';
+    const alertDiv = document.createElement("div");
+    alertDiv.className =
+      "fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-fade-in";
     alertDiv.innerHTML = `
       <div class="flex items-center">
         <i class="fas fa-exclamation-circle mr-2"></i>
         <span>Vui lòng đăng nhập để xem giỏ hàng</span>
       </div>
     `;
-    
+
     document.body.appendChild(alertDiv);
-    
+
     setTimeout(() => {
-      alertDiv.classList.add('animate-fade-out');
+      alertDiv.classList.add("animate-fade-out");
       setTimeout(() => alertDiv.remove(), 300);
     }, 3000);
   }
 
   loadCartItems() {
-    const cartItemsContainer = this.querySelector('#cart-modal #cart-items');
-    const cartTotalElement = this.querySelector('#cart-modal .font-medium.text-lg');
-    
-    const cart = JSON.parse(localStorage.getItem('carts')) || [];
-    
+    const cartItemsContainer = this.querySelector("#cart-modal #cart-items");
+    const cartTotalElement = this.querySelector(
+      "#cart-modal .font-medium.text-lg"
+    );
+
+    const cart = JSON.parse(localStorage.getItem("carts")) || [];
+
     if (cart.length === 0) {
       cartItemsContainer.innerHTML = `
         <div class="text-center py-4 text-gray-500">
@@ -285,13 +293,17 @@ class Header extends HTMLElement {
           <p>Giỏ hàng trống</p>
         </div>
       `;
-      cartTotalElement.textContent = 'Tổng: 0đ';
+      cartTotalElement.textContent = "Tổng: 0đ";
       return;
     }
-    
-    cartItemsContainer.innerHTML = cart.map((item,index) => `
+
+    cartItemsContainer.innerHTML = cart
+      .map(
+        (item, index) => `
       <div class="flex items-center justify-between py-2 border-b relative">
-        <img src="${item.img}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+        <img src="${item.img}" alt="${
+          item.name
+        }" class="w-16 h-16 object-cover rounded">
         <div class="ml-2 flex-1">
           <p class="text-sm font-medium">${item.name}</p>
           <div class="flex items-center gap-2">
@@ -302,7 +314,9 @@ class Header extends HTMLElement {
           </div>
           <p class="text-sm">${item.price} x ${item.quantity}</p>
         </div>
-        <span class="text-sm font-medium">${(parseInt(item.price.replace(/\D/g, '')) * item.quantity).toLocaleString()}đ</span>
+        <span class="text-sm font-medium">${(
+          parseInt(item.price.replace(/\D/g, "")) * item.quantity
+        ).toLocaleString()}đ</span>
         <button 
           class="absolute top-2 right-2 text-gray-400 hover:text-red-500 delete-item" 
           data-index="${index}"
@@ -310,28 +324,34 @@ class Header extends HTMLElement {
           <i class="fa-solid fa-trash"></i>
         </button>
       </div>
-    `).join('');
+    `
+      )
+      .join("");
     this.addDeleteEvents();
-    
-    const total = cart.reduce((sum, item) => sum + (parseInt(item.price.replace(/\D/g, '')) * item.quantity), 0);
+
+    const total = cart.reduce(
+      (sum, item) =>
+        sum + parseInt(item.price.replace(/\D/g, "")) * item.quantity,
+      0
+    );
     cartTotalElement.textContent = `Tổng: ${total.toLocaleString()}đ`;
   }
 
   addDeleteEvents() {
-    const buttons = this.querySelectorAll('.delete-item');
-    buttons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        const index = parseInt(button.getAttribute('data-index'));
+    const buttons = this.querySelectorAll(".delete-item");
+    buttons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        const index = parseInt(button.getAttribute("data-index"));
         this.handleDeleteItem(index);
         window.dispatchEvent(new CustomEvent("cart:updated"));
       });
     });
   }
-  
+
   handleDeleteItem(index) {
-    let cart = JSON.parse(localStorage.getItem('carts')) || [];
+    let cart = JSON.parse(localStorage.getItem("carts")) || [];
     cart.splice(index, 1);
-    localStorage.setItem('carts', JSON.stringify(cart));
+    localStorage.setItem("carts", JSON.stringify(cart));
     this.loadCartItems();
   }
 

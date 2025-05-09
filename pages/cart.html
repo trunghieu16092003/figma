@@ -2,9 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../output.css" />
-    <link rel="stylesheet" href="../../global.css" />
-    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -18,10 +17,14 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <script type="module" src="../components/Cart.js"></script>
-    <script src="../components/Footer.js"></script>
-    <script src="../components/Header.js"></script>
-    <script type="module" src="../renderComponent/renderCart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="../scripts/components/Cart.js"></script>
+    <script src="../scripts/components/Footer.js"></script>
+    <script src="../scripts/components/Header.js"></script>
+    <script
+      type="module"
+      src="../scripts/renderComponent/renderCart.js"
+    ></script>
     <title>Giỏ hàng</title>
   </head>
   <body>
@@ -53,58 +56,57 @@
         <div class="max-w-6xl mx-auto bg-white p-6">
           <h2 class="text-2xl font-bold mb-6 text-center">Giỏ hàng của bạn</h2>
 
-          <div class="cart-container"><div
-            class="hidden md:grid grid-cols-6 gap-4 font-semibold text-gray-700 border-b pb-3 mb-4 text-sm md:text-base"
-          >
-            <div class="col-span-1 flex items-center justify-center">Ảnh</div>
-            <div class="col-span-1 flex items-center justify-center">
-              Sản phẩm
+          <div class="cart-container">
+            <div
+              class="hidden md:grid grid-cols-6 gap-4 font-semibold text-gray-700 border-b pb-3 mb-4 text-sm md:text-base"
+            >
+              <div class="col-span-1 flex items-center justify-center">Ảnh</div>
+              <div class="col-span-1 flex items-center justify-center">
+                Sản phẩm
+              </div>
+              <div class="col-span-1 flex items-center justify-center">
+                Số lượng
+              </div>
+              <div class="col-span-1 flex items-center justify-center">Giá</div>
+              <div class="col-span-1 flex items-center justify-center">
+                Thành tiền
+              </div>
+              <div class="col-span-1 flex items-center justify-center">
+                Hành động
+              </div>
             </div>
-            <div class="col-span-1 flex items-center justify-center">
-              Số lượng
-            </div>
-            <div class="col-span-1 flex items-center justify-center">Giá</div>
-            <div class="col-span-1 flex items-center justify-center">
-              Thành tiền
-            </div>
-            <div class="col-span-1 flex items-center justify-center">
-              Hành động
+            <div class="cart-table"></div>
+            <!-- Tổng cộng -->
+            <div
+              class="flex flex-col md:flex-row justify-between items-center mt-10 space-y-4 md:space-y-0"
+            >
+              <div class="">
+                <span class="text-xs">Tổng cộng:</span>
+                <span
+                  class="cart-total-amount text-[#AD6E23] text-lg font-semibold"
+                ></span>
+              </div>
+              <a
+                href="./checkout.html"
+                class="bg-[#AD6E23] hover:bg-[#AD6E23 ] text-white font-bold py-3 px-6 rounded transition"
+              >
+                Thanh toán
+              </a>
             </div>
           </div>
-          <div class="cart-table"></div>
-          <!-- Tổng cộng -->
-          <div
-            class="flex flex-col md:flex-row justify-between items-center mt-10 space-y-4 md:space-y-0"
-          >
-            <div class="">
-              <span class="text-xs">Tổng cộng:</span>
-              <span
-                class="cart-total-amount text-[#AD6E23] text-lg font-semibold"
-              ></span>
-            </div>
-            <a
-              href="./checkout.html"
-              class="bg-[#AD6E23] hover:bg-[#AD6E23 ] text-white font-bold py-3 px-6 rounded transition"
-            >
-              Thanh toán
-            </a>
-          </div></div>
           <!-- Header -->
-          
         </div>
       </section>
     </div>
     <app-footer></app-footer>
     <script>
+      const carts = JSON.parse(localStorage.getItem("carts")) || [];
 
-const carts = JSON.parse(localStorage.getItem("carts")) || [];
-
-
-// Nếu hết sản phẩm
-if (carts.length === 0) {
-  const cartContainer = document.querySelector(".cart-container");
-  if (cartContainer) {
-    cartContainer.innerHTML = `
+      // Nếu hết sản phẩm
+      if (carts.length === 0) {
+        const cartContainer = document.querySelector(".cart-container");
+        if (cartContainer) {
+          cartContainer.innerHTML = `
       <div class="text-center py-8">
         <p class="text-gray-500 mb-4">Giỏ hàng của bạn đang trống</p>
         <a href="/san-pham" class="bg-[#AD6E23] text-white px-4 py-2 rounded">
@@ -112,8 +114,8 @@ if (carts.length === 0) {
         </a>
       </div>
     `;
-  }
-}
+        }
+      }
     </script>
   </body>
 </html>
