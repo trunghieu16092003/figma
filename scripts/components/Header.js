@@ -25,10 +25,10 @@ class Header extends HTMLElement {
             <div class="relative group md:cursor-pointer">
               <a href="#" id="product-toggle" class="group-hover:text-white px-4 py-2 group-hover:bg-[#AD6E23] block md:inline-block md:ml-0">Sản phẩm</a>
               <ul id="product-submenu" class="hidden flex-col space-y-2 mt-2 md:absolute md:top-full md:left-0 md:mt-0 pt-2 md:bg-white md:shadow-lg md:rounded-md md:space-y-1 md:min-w-[200px] md:hidden group-hover:block z-40">
-                <li><a href="./pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Thời trang nữ</a></li>
-                <li><a href="./pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Thời trang nam</a></li>
-                <li><a href="./pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Phụ kiện</a></li>
-                <li><a href="./pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Bộ sưu tập mới nhất</a></li>
+                <li><a href="../../pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Thời trang nữ</a></li>
+                <li><a href="../../pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Thời trang nam</a></li>
+                <li><a href="../../pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Phụ kiện</a></li>
+                <li><a href="../../pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Bộ sưu tập mới nhất</a></li>
               </ul>
             </div>
 
@@ -45,7 +45,7 @@ class Header extends HTMLElement {
             <form class="relative hidden md:block">
               <input type="text" placeholder="Tìm kiếm sản phẩm"
                 class="border w-[270px] h-10 rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring focus:ring-[#efc28c] focus:border-[#AD6E23]" />
-              <button type="submit" class="absolute top-0 right-0 py-3 text-[#AD6E23] px-2">
+              <button type="submit" class="absolute top-0 right-0 py-2 text-[#AD6E23] px-2">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
             </form>
@@ -55,13 +55,14 @@ class Header extends HTMLElement {
                 <i class="fa-solid fa-user"></i> <span class="hidden md:inline">Tài khoản</span>
               </span>
               <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <a href="./login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng nhập</a>
+                <a href="../../pages/login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng nhập</a>
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng ký</a>
               </div>
             </div>
             
-            <button id="cart-toggle" class="text-[#AD6E23]">
+            <button id="cart-toggle" class="text-[#AD6E23] relative">
               <i class="fa-solid fa-cart-shopping"></i>
+              <span id="cart-badge" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center hidden">0</span>
             </button>
           </div>
         </div>
@@ -187,6 +188,7 @@ class Header extends HTMLElement {
       }
 
       this.loadCartItems();
+      this.updateCartBadge();
     });
 
     // Đóng giỏ hàng mobile
@@ -204,7 +206,10 @@ class Header extends HTMLElement {
 
     // Cập nhật UI header
     this.updateHeaderUI();
-    window.addEventListener("cart:updated", () => this.loadCartItems());
+    window.addEventListener("cart:updated", () => {
+      this.loadCartItems();
+      this.updateCartBadge(); // Thêm dòng này
+    });
   }
 
   // Các phương thức khác giữ nguyên như trước...
@@ -253,10 +258,13 @@ class Header extends HTMLElement {
           .addEventListener("click", (e) => {
             e.preventDefault();
             localStorage.removeItem("email");
+            localStorage.removeItem("carts");
+            localStorage.removeItem("token");
             location.reload();
           });
       }
     }
+    this.updateCartBadge();
   }
 
   showLoginAlert() {
@@ -337,6 +345,24 @@ class Header extends HTMLElement {
     cartTotalElement.textContent = `Tổng: ${total.toLocaleString()}đ`;
   }
 
+  updateCartBadge() {
+    const token = localStorage.getItem("token");
+    const cartBadge = this.querySelector("#cart-badge");
+
+    if (!token) {
+      cartBadge.classList.add("hidden");
+      return;
+    }
+
+    const cart = JSON.parse(localStorage.getItem("carts")) || [];
+    if (cart.length > 0) {
+      cartBadge.textContent = cart.length;
+      cartBadge.classList.remove("hidden");
+    } else {
+      cartBadge.classList.add("hidden");
+    }
+  }
+
   addDeleteEvents() {
     const buttons = this.querySelectorAll(".delete-item");
     buttons.forEach((button) => {
@@ -360,7 +386,7 @@ class Header extends HTMLElement {
       alert("Vui lòng nhập từ khóa tìm kiếm");
       return;
     } else {
-      window.location.href = `./category.html?q=${value}`;
+      window.location.href = `../../pages/category.html?q=${value}`;
     }
   }
 }
