@@ -56,7 +56,7 @@ class Header extends HTMLElement {
               </span>
               <div class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <a href="../../pages/login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng nhập</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng ký</a>
+                <a href="../../pages/signup.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Đăng ký</a>
               </div>
             </div>
             

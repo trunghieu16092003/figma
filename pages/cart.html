@@ -26,6 +26,12 @@
       src="../scripts/renderComponent/renderCart.js"
     ></script>
     <title>Giỏ hàng</title>
+    <style>
+      /* Ẩn body cho đến khi xác minh token */
+      body {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <app-header></app-header>
@@ -100,6 +106,23 @@
       </section>
     </div>
     <app-footer></app-footer>
+    <script>
+      const isAuthenticated = () => {
+        const token = localStorage.getItem("token");
+        return !!token;
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        if (!isAuthenticated()) {
+          window.location.href =
+            "./login.html?from=" + encodeURIComponent(window.location.pathname);
+          return;
+        }
+
+        // ✔️ Nếu có token -> hiển thị trang
+        document.body.style.display = "block";
+      });
+    </script>
     <script>
       const carts = JSON.parse(localStorage.getItem("carts")) || [];
 

@@ -26,11 +26,15 @@ class Cart extends HTMLElement {
             </div>
             <div class="flex items-center md:justify-center">
               <span class="md:hidden text-gray-500 mr-2">Giá thành:</span>
-              <span class="text-gray-700 price">${price.toLocaleString("vi-VN")} đ</span>
+              <span class="text-gray-700 price">${price.toLocaleString(
+                "vi-VN"
+              )} đ</span>
             </div>
             <div class="flex items-center font-bold text-gray-700 md:justify-center">
               <span class="md:hidden text-gray-500 mr-2">Thành tiền:</span>
-              <span class="cart-table-total text-gray-700">${total.toLocaleString("vi-VN")} đ</span>
+              <span class="cart-table-total text-gray-700">${total.toLocaleString(
+                "vi-VN"
+              )} đ</span>
             </div>
             <div class="hidden md:flex delete-btn items-center md:col-span-1 justify-center md:order-1">
               <button class="bg-[#AD6E23] text-white rounded p-2 transition">
@@ -49,7 +53,9 @@ class Cart extends HTMLElement {
 
     // Gắn sự kiện xóa
     this.querySelectorAll(".delete-btn").forEach((btn) =>
-      btn.addEventListener("click", () => this.handleDeleteCart(productId, this))
+      btn.addEventListener("click", () =>
+        this.handleDeleteCart(productId, this)
+      )
     );
 
     // Gắn sự kiện thay đổi số lượng
@@ -59,8 +65,10 @@ class Cart extends HTMLElement {
 
     // Cập nhật tổng tiền ban đầu
     this.updateCartTotal();
-    
-    window.addEventListener("cart:updated", () => this.handleDeleteCart(productId, this));
+
+    window.addEventListener("cart:updated", () =>
+      this.handleDeleteCart(productId, this)
+    );
   }
 
   handleQuantityChange(e, id, price) {
@@ -69,7 +77,9 @@ class Cart extends HTMLElement {
 
     // Cập nhật thành tiền
     const totalElement = this.querySelector(".cart-table-total");
-    totalElement.textContent = `${(newQuantity * price).toLocaleString("vi-VN")} đ`;
+    totalElement.textContent = `${(newQuantity * price).toLocaleString(
+      "vi-VN"
+    )} đ`;
 
     // Cập nhật localStorage
     const carts = JSON.parse(localStorage.getItem("carts")) || [];
@@ -90,11 +100,12 @@ class Cart extends HTMLElement {
     if (recalculate) {
       // Tính lại toàn bộ từ localStorage
       const carts = JSON.parse(localStorage.getItem("carts")) || [];
-      const total = carts.reduce(
-        (sum, item) => {
-          return sum + parseInt(item.price.replace(/\D/g, "")) * parseInt(item.quantity)},
-        0
-      );
+      const total = carts.reduce((sum, item) => {
+        return (
+          sum +
+          parseInt(item.price.replace(/\D/g, "")) * parseInt(item.quantity)
+        );
+      }, 0);
       const totalAmountElement = document.querySelector(".cart-total-amount");
       if (totalAmountElement) {
         totalAmountElement.textContent = `${total.toLocaleString("vi-VN")} đ`;
@@ -118,15 +129,20 @@ class Cart extends HTMLElement {
     try {
       element.remove();
 
-      const carts = JSON.parse(localStorage.getItem('carts')) || [];
+      const carts = JSON.parse(localStorage.getItem("carts")) || [];
 
       const size = this.getAttribute("size");
       const color = this.getAttribute("color");
-  
-      const updatedCarts = carts.filter(item =>
-        !(item.productId === productId && item.size === size && item.color === color)
+
+      const updatedCarts = carts.filter(
+        (item) =>
+          !(
+            item.productId === productId &&
+            item.size === size &&
+            item.color === color
+          )
       );
-  
+
       localStorage.setItem("carts", JSON.stringify(updatedCarts));
 
       // Nếu hết sản phẩm
