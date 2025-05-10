@@ -8,7 +8,7 @@ class Footer extends HTMLElement {
             <div class="">
               <div class="mb-6 flex justify-center md:justify-start">
                 <a href="./index.html" class="text-2xl font-bold">
-                  <img src="../../images/logo/logo_footer.png" alt="FASHION Logo" class="h-12">
+                  <img src="../../images/logo/logo_footer.png" alt="FASHION Logo" class="w-16 h-16">
                 </a>
               </div>
               <p class="text-white/90 text-sm leading-relaxed mb-4">
