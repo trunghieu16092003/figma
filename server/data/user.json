@@ -4,6 +4,22 @@
       "id": 1,
       "email": "trunghieuubhs@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": 2,
+      "fullname": "Nguyễn Thành Vinh",
+      "email": "20111180766@hunre.edu.vn",
+      "password": "Vinh@1234",
+      "phone": "0869165329",
+      "createdAt": "2025-05-10T20:19:55.170Z"
+    },
+    {
+      "id": 3,
+      "fullname": "Vũ Trung Hiếu",
+      "email": "Vietjack02@vietjack.com",
+      "password": "Vinh@1234",
+      "phone": "0869165329",
+      "createdAt": "2025-05-10T20:27:12.630Z"
     }
   ]
 }

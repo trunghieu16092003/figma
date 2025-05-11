@@ -7,11 +7,11 @@ class CardProduct extends HTMLElement {
     const oldPrice = this.getAttribute("oldPrice") || "0đ";
     const id = this.getAttribute("id") || "0";
     const slug = this.slugify(name);
-    const detailUrl = `detail.html?slug=${slug}&id=${id}`;
+    const detailUrl = `../../pages/detail.html?slug=${slug}&id=${id}`;
 
     this.innerHTML = `
       <div class="bg-white rounded-lg shadow hover:shadow-md transition">
-        <div class="relative overflow-hidden rounded-t-md rounded-b-none h-44 md:h-[400px] group cursor-pointer product-click">
+        <div class="relative overflow-hidden rounded-t-md rounded-b-none h-52 md:h-[400px] group cursor-pointer product-click">
           <img 
             src="${img}" 
             alt="${name}" 
@@ -21,7 +21,7 @@ class CardProduct extends HTMLElement {
           />
           <div class="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
           <div class="absolute inset-0 flex justify-center items-center z-20">
-            <div class="icon-img-hover absolute inset-0 justify-center items-center z-20 flex gap-3 opacity-0 translate-x-[200%] group-hover:opacity-100">
+            <div class="icon-img-hover absolute inset-0 justify-center items-center z-20 flex gap-3 opacity-0 group-hover:opacity-100">
               <i class="fa-solid fa-heart text-[#AD6E23] bg-white p-3 rounded-full shadow cursor-pointer"></i>
               <i class="fa-solid fa-cart-shopping text-[#AD6E23] bg-white p-3 rounded-full shadow cursor-pointer"></i>
               <i class="fa-solid fa-eye text-[#AD6E23] bg-white p-3 rounded-full shadow cursor-pointer view-detail"></i>
@@ -42,8 +42,8 @@ class CardProduct extends HTMLElement {
             <i class="fa-solid fa-star-half text-[#AD6E23]"></i>
           </div>
           <div class=" mt-4">
-            <span class="text-gray-500 line-through font-normal text-xs md:text-lg inline-block mr-1">${oldPrice}</span>
-            <span class="text-red-500 font-bold text-[14px] md:text-xl">${price}</span>
+            <span class="text-gray-500 line-through font-normal text-xs md:text-[16px] inline-block mr-1">${oldPrice}</span>
+            <span class="text-red-500 font-bold text-[14px] md:text-[18px]">${price}</span>
           </div>
         </div>
       </div>

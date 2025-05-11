@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <!-- Phần head giữ nguyên như cũ -->
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/just-validate@4.2.0/dist/css/just-validate.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/just-validate@4.2.0/dist/just-validate.production.min.js"></script>
+    <script src="../scripts/components/Input.js"></script>
+  </head>
+
+  <body>
+    <!-- Phần body giữ nguyên như cũ -->
+    <div class="flex flex-row h-full">
+      <div class="hidden md:block relative w-full md:w-1/2 h-1/3 md:h-full">
+        <img
+          src="../../images/login.png"
+          alt=""
+          class="w-full h-full object-cover object-top"
+        />
+      </div>
+      <div
+        class="w-full md:w-1/2 flex items-center h-full justify-center p-6 bg-white/80 md:bg-white bg-[url('../../images/login.png')] bg-cover bg-center md:bg-none"
+      >
+        <form
+          id="register-form"
+          class="w-full max-w-md bg-white md:bg-none p-6 rounded-md shadow-md md:shadow-none"
+        >
+          <h1 class="text-center text-2xl font-bold mb-4">Đăng ký tài khoản</h1>
+
+          <custom-input
+            type="text"
+            name="fullname"
+            label="Họ và tên"
+          ></custom-input>
+
+          <custom-input type="email" name="email" label="Email"></custom-input>
+
+          <custom-input
+            type="password"
+            name="password"
+            label="Mật khẩu"
+          ></custom-input>
+
+          <custom-input
+            type="password"
+            name="confirm_password"
+            label="Nhập lại mật khẩu"
+          ></custom-input>
+
+          <custom-input
+            type="tel"
+            name="phone"
+            label="Số điện thoại"
+          ></custom-input>
+
+          <div class="mt-4">
+            <span>Bạn đã có tài khoản ?</span>
+            <a href="./login.html" class="text-[#AD6E23] underline"
+              >Đăng nhập ngay</a
+            >
+          </div>
+          <button
+            type="submit"
+            class="bg-white w-full text-[#AD6E23] hover:text-white border transition-all border-[#AD6E23] px-4 py-3 hover:bg-[#AD6E23] mt-4 rounded"
+          >
+            Đăng ký
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script type="module">
+      import callApi from "../scripts/services/callApi.js";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("register-form");
+
+        const validator = new JustValidate("#register-form", {
+          errorFieldCssClass: "is-invalid",
+          errorLabelCssClass: "text-red-500 text-xs mt-1",
+          focusInvalidField: true,
+          lockForm: true,
+        });
+
+        validator
+          .addField("#fullname", [
+            {
+              rule: "required",
+              errorMessage: "Họ và tên không được để trống",
+            },
+            {
+              rule: "minLength",
+              value: 3,
+              errorMessage: "Họ và tên phải có ít nhất 3 ký tự",
+            },
+          ])
+          .addField("#email", [
+            {
+              rule: "required",
+              errorMessage: "Email không được để trống",
+            },
+            {
+              rule: "email",
+              errorMessage: "Email không đúng định dạng",
+            },
+          ])
+          .addField("#password", [
+            {
+              rule: "required",
+              errorMessage: "Mật khẩu không được để trống",
+            },
+            {
+              rule: "strongPassword",
+              errorMessage:
+                "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số",
+            },
+          ])
+          .addField("#confirm_password", [
+            {
+              rule: "required",
+              errorMessage: "Vui lòng nhập lại mật khẩu",
+            },
+            {
+              validator: (value, fields) => {
+                return value === fields["#password"].elem.value;
+              },
+              errorMessage: "Mật khẩu nhập lại không khớp",
+            },
+          ])
+          .addField("#phone", [
+            {
+              rule: "required",
+              errorMessage: "Số điện thoại không được để trống",
+            },
+            {
+              rule: "number",
+              errorMessage: "Số điện thoại chỉ được chứa số",
+            },
+            {
+              rule: "minLength",
+              value: 10,
+              errorMessage: "Số điện thoại phải có ít nhất 10 số",
+            },
+            {
+              rule: "maxLength",
+              value: 11,
+              errorMessage: "Số điện thoại không được quá 11 số",
+            },
+          ])
+          .onSuccess(async (event) => {
+            event.preventDefault();
+
+            // Lấy giá trị từ các trường input
+            const fullname = form
+              .querySelector('custom-input[name="fullname"]')
+              .querySelector("input").value;
+            const email = form
+              .querySelector('custom-input[name="email"]')
+              .querySelector("input").value;
+            const password = form
+              .querySelector('custom-input[name="password"]')
+              .querySelector("input").value;
+            const phone = form
+              .querySelector('custom-input[name="phone"]')
+              .querySelector("input").value;
+
+            try {
+              const res = await callApi.post("users/register", {
+                fullname,
+                email,
+                password,
+                phone,
+              });
+
+              if (res.success) {
+                localStorage.setItem("token", res.token);
+                localStorage.setItem("email", email);
+                window.location.href = "../index.html";
+              }
+            } catch (error) {
+              console.error("Lỗi đăng ký:", error);
+              alert(`Đăng ký không thành công: ${error.message}`);
+            }
+          });
+      });
+    </script>
+  </body>
+</html>
