@@ -1,10 +1,10 @@
-import callApi from "../services/callApi.js";
+import products from "../data/products.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
-    const product = await callApi.getById("products", id);
+    const id = parseInt(params.get("id"));
+    const product = products.find((product) => product.id === id);
     const container = document.querySelector("#product-detail");
 
     const productEl = document.createElement("product-detail");
