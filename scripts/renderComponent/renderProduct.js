@@ -4,11 +4,19 @@ const itemsPerPage = 8; // 8 sản phẩm/trang
 let currentPage = 1;
 let searchValue = "";
 let displayProducts = [];
+let currentSort = null;
 
 // Khởi tạo trang đầu tiên
 document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   searchValue = urlParams.get("q");
+
+  //Lắng nghe sự kiện change select
+  const sortSelect = document.getElementById("sort");
+  sortSelect?.addEventListener("change", (e) => {
+    currentPage = 1; // Reset về trang 1 khi sắp xếp
+    renderProducts(currentPage, searchValue, e.target.value);
+  });
 
   if (searchValue) {
     // Hiển thị từ khóa tìm kiếm trên trang
@@ -22,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-async function renderProducts(page = 1, searchValue = "") {
+function renderProducts(page = 1, searchValue = "", sortType = null) {
   const container = document.querySelector("[data-product]");
   const pagination = document.querySelector("#pagination");
   container.innerHTML = "";
@@ -31,7 +39,7 @@ async function renderProducts(page = 1, searchValue = "") {
       return product.name.toLowerCase().includes(searchValue.toLowerCase());
     });
   } else {
-    displayProducts = products;
+    displayProducts = [...products]; // Tạo bản sao của mảng gốc
   }
 
   // Kiểm tra nếu không có sản phẩm nào phù hợp khi tìm kiếm
@@ -48,6 +56,15 @@ async function renderProducts(page = 1, searchValue = "") {
       </div>
     `;
     pagination.innerHTML = "";
+  }
+
+  // Sắp xếp sản phẩm nếu có yêu cầu
+  if (sortType) {
+    currentSort = sortType;
+    sortProducts(displayProducts, sortType);
+  } else if (currentSort) {
+    // Nếu đã có trạng thái sắp xếp trước đó, tiếp tục áp dụng
+    sortProducts(displayProducts, currentSort);
   }
 
   const startIndex = (page - 1) * itemsPerPage;
@@ -70,7 +87,7 @@ async function renderProducts(page = 1, searchValue = "") {
   updatePaginationControls();
 }
 
-async function updatePaginationControls() {
+function updatePaginationControls() {
   const totalPages = Math.ceil(displayProducts.length / itemsPerPage);
   const prevBtn = document.getElementById("prev");
   const nextBtn = document.getElementById("next");
@@ -100,6 +117,21 @@ async function updatePaginationControls() {
   } else {
     dots[0].style.display = "inline-block";
   }
+}
+
+// Hàm sắp xếp sản phẩm
+function sortProducts(productsArray, sortType) {
+  productsArray.sort((a, b) => {
+    const priceA = extractPrice(a.price);
+    const priceB = extractPrice(b.price);
+
+    return sortType === "asc" ? priceA - priceB : priceB - priceA;
+  });
+}
+
+// Hàm chuyển đổi giá từ chuỗi thành số
+function extractPrice(priceStr) {
+  return parseInt(priceStr.replace(/[^\d]/g, "")) || 0;
 }
 
 // Sự kiện click nút Previous
