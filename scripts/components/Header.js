@@ -13,29 +13,30 @@ class Header extends HTMLElement {
             <a href="../../index.html"><img src="../../images/logo/logo.png" /></a>
           </div>
 
-          <nav id="main-nav" class="hidden fixed top-0 left-0 w-3/4 h-full bg-white px-4 flex-col space-y-4 text-sm text-gray-700 font-medium shadow-md z-30 md:static md:flex md:flex-row md:space-y-0 md:bg-transparent md:shadow-none md:w-auto md:h-auto md:items-center">
-            <!-- Nút đóng menu mobile -->
-            <div class="flex justify-between items-center border-b pb-4 pt-2 md:hidden">
-              <span class="font-bold">Menu</span>
-              <button id="close-menu" class="text-2xl text-gray-600">&times;</button>
-            </div>
+          <nav id="main-nav" class="hidden fixed top-0 left-0 w-3/4 h-full bg-white px-4 flex-col space-y-0 text-sm text-gray-700 font-medium shadow-md z-30 transform -translate-x-full transition-transform duration-300 ease-in-out md:static md:flex md:flex-row md:space-y-0 md:bg-transparent md:shadow-none md:w-auto md:h-auto md:items-center md:transform-none">
+        <!-- Nút đóng menu mobile -->
+        <div class="flex justify-between items-center border-b border-[#AD6E23] pb-4 pt-2 md:hidden">
+          <span class="font-bold text-[#AD6E23]">Menu</span>
+          <button id="close-menu" class="text-2xl text-gray-600">&times;</button>
+        </div>
 
-            <a href="../../index.html" class="hover:text-white block md:inline-block px-4 py-2 hover:bg-[#AD6E23]">Trang chủ</a>
+        <a href="../../index.html" class="hover:text-white block md:inline-block px-4 py-3 hover:bg-[#AD6E23] border-b border-solid border-[#AD6E23]/30 md:border-none">Trang chủ</a>
 
-            <div class="relative group md:cursor-pointer">
-              <a href="#" id="product-toggle" class="group-hover:text-white px-4 py-2 group-hover:bg-[#AD6E23] block md:inline-block md:ml-0">Sản phẩm</a>
-              <ul id="product-submenu" class="hidden flex-col space-y-2 mt-2 md:absolute md:top-full md:left-0 md:mt-0 pt-2 md:bg-white md:shadow-lg md:rounded-md md:space-y-1 md:min-w-[200px] md:hidden group-hover:block z-40">
-                <li><a href="../../pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Thời trang nữ</a></li>
-                <li><a href="../../pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Thời trang nam</a></li>
-                <li><a href="../../pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Phụ kiện</a></li>
-                <li><a href="../../pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-2">Bộ sưu tập mới nhất</a></li>
-              </ul>
-            </div>
+        <div class="relative group md:cursor-pointer">
+          <a href="#" id="product-toggle" class="group-hover:text-white px-4 py-3 group-hover:bg-[#AD6E23] block md:inline-block md:ml-0 border-b border-solid border-[#AD6E23]/30 md:border-none">Sản phẩm</a>
+          <ul id="product-submenu" class="hidden flex-col space-y-0 mt-0 md:absolute md:top-full md:left-0 md:mt-0 pt-0 md:bg-white md:shadow-lg md:rounded-md md:min-w-[200px] md:hidden group-hover:block z-40">
+            <li><a href="../../pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-3 border-b border-solid border-[#AD6E23]/30">Thời trang nữ</a></li>
+            <li><a href="../../pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-3 border-b border-solid border-[#AD6E23]/30">Thời trang nam</a></li>
+            <li><a href="../../pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-3 border-b border-solid border-[#AD6E23]/30">Phụ kiện</a></li>
+            <li><a href="../../pages/category.html" class="block hover:text-white hover:bg-[#AD6E23] px-4 py-3 border-b border-solid border-[#AD6E23]/30">Bộ sưu tập mới nhất</a></li>
+          </ul>
+        </div>
 
-            <a href="#" class="hover:text-white block md:inline-block px-4 py-2 hover:bg-[#AD6E23]">Tin tức</a>
-            <a href="#" class="hover:text-white block md:inline-block px-4 py-2 hover:bg-[#AD6E23]">Liên hệ</a>
-            <a href="#" class="hover:text-white block md:inline-block px-4 py-2 hover:bg-[#AD6E23]">Tuyển dụng</a>
-          </nav>
+        <a href="#" class="hover:text-white block md:inline-block px-4 py-3 hover:bg-[#AD6E23] border-b border-solid border-[#AD6E23]/30 md:border-none">Tin tức</a>
+        <a href="#" class="hover:text-white block md:inline-block px-4 py-3 hover:bg-[#AD6E23] border-b border-solid border-[#AD6E23]/30 md:border-none">Liên hệ</a>
+        <a href="#" class="hover:text-white block md:inline-block px-4 py-3 hover:bg-[#AD6E23]">Tuyển dụng</a>
+      </nav>
+
 
           <div class="flex items-center space-x-3 absolute right-4 md:static z-30">
             <button id="search-toggle" class="md:hidden text-[#AD6E23]">
@@ -120,6 +121,13 @@ class Header extends HTMLElement {
     const toggleMenu = () => {
       nav.classList.toggle("hidden");
       overlay.classList.toggle("hidden");
+
+      // Thêm/xóa class transform để tạo hiệu ứng trượt
+      if (nav.classList.contains("hidden")) {
+        nav.classList.add("-translate-x-full");
+      } else {
+        nav.classList.remove("-translate-x-full");
+      }
     };
 
     // Xử lý sự kiện cho form search desktop
