@@ -11,7 +11,7 @@ class CardProduct extends HTMLElement {
 
     this.innerHTML = `
       <div class="bg-white rounded-lg shadow hover:shadow-md transition">
-        <div class="relative overflow-hidden rounded-t-md rounded-b-none h-44 md:h-[400px] group cursor-pointer product-click">
+        <div class="relative overflow-hidden rounded-t-md rounded-b-none h-52 md:h-[400px] group cursor-pointer product-click">
           <img 
             src="${img}" 
             alt="${name}" 
